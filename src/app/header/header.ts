@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserAuth } from '../User_Authentication/user-auth/user-auth';
 
 @Component({
   selector: 'header',
-  imports: [],
+  imports: [RouterLink, UserAuth],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header {
 
-    menuType: string = 'default';
+  menuType: string = 'default';
   sellerName:string="";
   userName:string="";
   // searchResult:undefined|product[];
