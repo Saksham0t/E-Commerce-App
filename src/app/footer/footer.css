@@ -9,7 +9,7 @@ ul{
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #fff;
+    background-color: black;
 }
 .footer ul{
     list-style-type: none;
@@ -17,6 +17,6 @@ ul{
     justify-content: space-between;
 }
 .footer ul li a{
-    color: blueviolet;
+    color: white;
     text-decoration: none;
 }

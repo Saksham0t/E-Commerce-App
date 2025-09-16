@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { UserAuth } from '../User_Authentication/user-auth/user-auth';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'header',
-  imports: [RouterLink, UserAuth],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
