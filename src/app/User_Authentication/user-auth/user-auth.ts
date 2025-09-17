@@ -17,6 +17,7 @@ import {Router} from '@angular/router';
 })
 export class UserAuth {
   user={
+    username:'',
     email:'',
     password:''
   };
