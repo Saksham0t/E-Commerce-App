@@ -13,6 +13,7 @@ import { Customers } from './Admin_Dashboard/components/customers/customers';
 import { Reports } from './Admin_Dashboard/components/reports/reports';
 import { admin } from './Admin_Dashboard/admin/admin';
 import { UserSignupComponent } from './User_Authentication/user-signup/user-signup';
+import { LoginComponent } from './User_Authentication/user-login/user-login';
 
 NgModule({
     imports: [
@@ -31,7 +32,8 @@ NgModule({
 export const routes: Routes = [
 
     {path:'cart', component: Cart},
-    {path:'user-auth', component: UserSignupComponent},
+    {path:'user-signup', component: UserSignupComponent},
+    {path:'user-login', component: LoginComponent},
     {path:'admin',component:admin,
         children:[
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
