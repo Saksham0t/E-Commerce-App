@@ -1,0 +1,56 @@
+<div class="container py-4">
+  <h3 class="mb-4">📦 Manage Orders</h3>
+
+  <!-- Search Bar -->
+  <input type="text" class="form-control mb-3" placeholder="Search by Order ID or Customer Name"
+         [(ngModel)]="searchTerm">
+
+  <!-- Orders List -->
+  <div *ngFor="let order of getFilteredOrders()" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Order #{{ order.id }}</h5>
+      <p>Customer: {{ getCustomerName(order.userId) }}</p>
+
+      <!-- Current Status Display -->
+      <p>
+        <strong>Current Status:</strong>
+        <span class="badge bg-info text-dark">{{ order.orderStatus }}</span>
+      </p>
+
+      <!-- Status Change Dropdown -->
+      <div class="mb-2">
+        <label for="statusSelect-{{ order.id }}" class="form-label">Shipping Status:</label>
+        <select id="statusSelect-{{ order.id }}"
+                class="form-select form-select-sm w-auto"
+                (change)="updateOrderStatus(order.id, $event)">
+          <option disabled selected>-- Change Status --</option>
+          <option>Processing</option>
+          <option>Shipped</option>
+          <option>Delivered</option>
+          <option>Cancelled</option>
+        </select>
+      </div>
+
+      <p>Total: ₹{{ order.totalPrice }}</p>
+
+      <!-- Action Buttons -->
+      <button class="btn btn-outline-primary btn-sm me-2" (click)="toggleDetails(order.orderId)">
+        {{ selectedOrderId === order.orderId ? 'Hide Details' : 'View Details' }}
+      </button>
+
+      <!-- Product Details -->
+      <div *ngIf="selectedOrderId === order.orderId" class="mt-3">
+        <h6>Products:</h6>
+        <div *ngFor="let p of order.products" class="d-flex align-items-center mb-2">
+          <img [src]="getProductDetails(p.productId)?.ImageURL" alt="Product Image" width="60" class="me-3 rounded">
+          <div>
+            <strong>{{ getProductDetails(p.productId)?.name }}</strong><br>
+            Quantity: {{ p.quantity }}<br>
+            Price: ₹{{ getProductDetails(p.productId)?.Price }}
+          </div>
+        </div>
+        <p>Payment Status: {{ order.paymentStatus }}</p>
+      </div>
+    </div>
+  </div>
+</div>
