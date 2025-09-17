@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
@@ -14,3 +15,5 @@ export class Header {
   userName: string = "";
   cartItems = 0;
 }
+=======
+>>>>>>> Stashed changes
