@@ -3,18 +3,3 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.common-form{
-    text-align: center;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    width: 250px;
-}
-
-.form-input{
-    
-}
-
-.form-button{
-
-}

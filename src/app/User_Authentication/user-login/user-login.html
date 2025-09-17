@@ -1,0 +1,35 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 350px; border-radius: 12px;">
+    <h3 class="text-center mb-4">User Login</h3>
+
+    <form (ngSubmit)="onLogin()">
+
+      <!-- Email -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-envelope-fill"></i>
+        </span>
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-lock-fill"></i>
+        </span>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary w-100">
+        Login
+      </button>
+    </form>
+
+    <!-- Signup Redirect -->
+    <p class="text-center mt-3 mb-0">
+      New user? 
+      <a href="javascript:void(0)" (click)="goToSignup()">Click here to sign up</a>
+    </p>
+  </div>
+</div>
