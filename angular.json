@@ -31,13 +31,8 @@
               }
             ],
             "styles": [
-<<<<<<< HEAD
-              "src/custom-theme.scss",
-              "src/styles.css"
-=======
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
->>>>>>> 7be06ea612af6b05adf1b42c4a91e2e6e7176fee
             ]
           },
           "configurations": {
