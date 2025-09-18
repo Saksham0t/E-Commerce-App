@@ -1,6 +1,7 @@
-<nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4" *ngIf="showHeader">
+@if (showHeader) {
+<nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
   <!-- Brand / Logo -->
-  <a class="navbar-brand d-flex align-items-center" routerLink="/">
+  <a class="navbar-brand d-flex align-items-center" routerLink="/home">
     <img
       src="/logo.png"
       alt="Logo"
@@ -34,29 +35,29 @@
     </form>
 
     <!-- Navigation Links -->
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      <li class="nav-item">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+      <!-- Admin Link -->
+      <li class="nav-item me-lg-4">
         <a class="nav-link" routerLink="/admin-login">Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home">Home</a>
       </li>
 
       <!-- Cart Link with Live Count -->
-      <li class="nav-item">
-        <a class="nav-link position-relative" routerLink="/cart">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-            alt="Cart"
-            width="20"
-            class="me-1"
-            style="filter: brightness(0) invert(1)"
-          />
-          Cart @if (cartCount > 0) {
-          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
-            {{ cartCount }}
+      <li class="nav-item me-lg-4">
+        <a class="nav-link d-flex align-items-center" routerLink="/cart">
+          <span class="position-relative me-1">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
+              alt="Cart"
+              width="25"
+              style="filter: brightness(0) invert(1)"
+            />
+            @if (cartCount > 0) {
+              <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                {{ cartCount }}
+              </span>
+            }
           </span>
-          }
+          Cart
         </a>
       </li>
 
@@ -98,5 +99,9 @@
     </ul>
   </div>
 </nav>
+}
 
-<router-outlet></router-outlet>
+<!-- Push page content down so it doesn't hide behind fixed header -->
+<div style="padding-top: 100px">
+  <router-outlet></router-outlet>
+</div>
