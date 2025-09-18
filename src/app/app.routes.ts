@@ -15,6 +15,7 @@ import { Orders } from './Admin_Dashboard/components/orders/orders';
 import { Customers } from './Admin_Dashboard/components/customers/customers';
 import { Reports } from './Admin_Dashboard/components/reports/reports';
 import { admin } from './Admin_Dashboard/admin/admin';
+import { Home } from './Product_Management/home/home';
 
 NgModule({
   imports: [
@@ -41,7 +42,8 @@ export const routes: Routes = [
             {path:'customers',component:Customers},
             {path:'reports',component:Reports}
         ]
-    }
+    },
+    {path:'home',component:Home}
 
 ];
 
