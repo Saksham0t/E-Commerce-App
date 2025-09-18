@@ -1,0 +1,53 @@
+<header></header>
+<div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 350px; border-radius: 12px;">
+    <h3 class="text-center mb-4">User Signup</h3>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+        <!-- Name -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-person-fill"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Name" formControlName="name">
+      </div>
+      <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="text-danger small">
+        Name is required
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-envelope-fill"></i>
+        </span>
+        <input type="email" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+      <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger small">
+        Enter a valid email
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-primary text-white">
+          <i class="bi bi-lock-fill"></i>
+        </span>
+        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+      </div>
+      <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger small">
+        Password must be at least 6 characters
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary w-100">
+        Sign Up
+      </button>
+    </form>
+
+    <!-- Login Redirect -->
+    <p class="text-center mt-3 mb-0">
+      Already a user? 
+      <a href="/user-login" (click)="goToLogin()">Click here to login</a>
+    </p>
+  </div>
+</div>
