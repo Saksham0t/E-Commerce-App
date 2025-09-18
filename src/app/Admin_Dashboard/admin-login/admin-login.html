@@ -2,7 +2,7 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
   <div class="card shadow-lg p-4" style="width: 350px; border-radius: 12px;">
     <h3 class="text-center mb-4">Admin Login</h3>
-
+ 
     <form (ngSubmit)="onLogin()">
       <!-- Admin ID -->
       <div class="mb-3 input-group">
@@ -11,7 +11,7 @@
         </span>
         <input type="text" class="form-control" placeholder="Admin ID" [(ngModel)]="adminId" name="adminId" required>
       </div>
-
+ 
       <!-- Password -->
       <div class="mb-3 input-group">
         <span class="input-group-text bg-dark text-white">
@@ -19,12 +19,13 @@
         </span>
         <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required>
       </div>
-
+ 
       <!-- Error -->
       <div *ngIf="errorMessage" class="text-danger mb-2">{{ errorMessage }}</div>
-
+ 
       <!-- Submit -->
       <button type="submit" routerLink="/admin" class="btn btn-primary w-100">Login</button>
     </form>
   </div>
 </div>
+ 
