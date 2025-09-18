@@ -243,16 +243,10 @@
   ],
   "cartItems": [
     {
-      "id": "201",
-      "Productid": "101",
-      "Quantity": 2,
-      "TotalPrice": 1798
-    },
-    {
-      "id": "202",
-      "Productid": "102",
-      "Quantity": 3,
-      "TotalPrice": 597
+      "id": "ec55",
+      "Productid": "107",
+      "Quantity": 5,
+      "TotalPrice": 3995
     }
   ],
   "OrdersList": [
