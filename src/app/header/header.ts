@@ -1,24 +1,49 @@
-import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CartService } from '../Shopping_Cart/cart-service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrls: ['./header.css']
 })
-export class Header {
+export class Header implements OnInit {
 
-  menuType: string = 'default';
-  sellerName: string = "";
-  userName: string = "";
-  cartItems = 0;
+  cartCount = 0;
+  isLoggedIn = false; // Replace with real auth check later
+  userName = 'Guest';
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private cartService: CartService
+  ) {}
 
-  // This will return false if the current URL starts with /admin
-  get showHeader() {
+  ngOnInit(): void {
+    // Subscribe to cart count updates
+    this.cartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
+    });
+
+    // Example: check login status (replace with real auth logic)
+    // this.isLoggedIn = authService.isLoggedIn();
+    // this.userName = authService.getUserName();
+  }
+
+  get showHeader(): boolean {
     return !this.router.url.startsWith('/admin');
+  }
+
+  goToHome(): void {
+    this.router.navigate(['/home']);
+  }
+
+  logout(): void {
+    // Add your logout logic here
+    this.isLoggedIn = false;
+    this.userName = 'Guest';
+    this.router.navigate(['/home']);
   }
 }

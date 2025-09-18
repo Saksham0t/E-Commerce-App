@@ -48,8 +48,6 @@
       "Description": "Lightweight and breathable running shorts",
       "ImageURL": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/521351/01/fnd/IND/fmt/png/Run-Fav-2-In-1-Men's-Running-Shorts"
     },
-
-    
     {
       "id": "107",
       "name": "Samsung Galaxy S23",
@@ -245,16 +243,22 @@
   ],
   "cartItems": [
     {
-      "id": "201",
-      "Productid": "101",
-      "Quantity": 2,
-      "TotalPrice": 1798
+      "id": "0d36",
+      "Productid": "107",
+      "Quantity": 5,
+      "TotalPrice": 3995
     },
     {
-      "id": "202",
-      "Productid": "102",
-      "Quantity": 3,
-      "TotalPrice": 597
+      "id": "95da",
+      "Productid": "105",
+      "Quantity": 1,
+      "TotalPrice": 199
+    },
+    {
+      "id": "ccd6",
+      "Productid": "113",
+      "Quantity": 1,
+      "TotalPrice": 699
     }
   ],
   "OrdersList": [
@@ -393,5 +397,4 @@
       "PaymentDetails": "Paytm Wallet: yashv123"
     }
   ]
-  
 }

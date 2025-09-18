@@ -7,7 +7,7 @@ import { Header } from '../../header/header';
 
 @Component({
   selector: 'app-user-signup',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, Header],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './user-signup.html',
   styleUrls: ['./user-signup.css']
 })
