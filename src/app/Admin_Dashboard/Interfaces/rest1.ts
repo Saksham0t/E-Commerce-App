@@ -35,6 +35,11 @@ export class Rest1 {
     let strUpdateUrl=this.strUrl+"/users/"+UserRec.id;
     return this.rest.put(strUpdateUrl,UserRec);
   }
+  
+  insertOrderRecord(OrderRec:Orders):Observable<any>{
+    let strUpdateUrl=this.strUrl+"/OrdersList/";
+    return this.rest.post(strUpdateUrl,OrderRec);
+  }
 
   
 }

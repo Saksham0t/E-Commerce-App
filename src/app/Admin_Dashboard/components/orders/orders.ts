@@ -23,9 +23,11 @@ export class Orders {
       complete: () => console.log("Data from backend recieved")
     })
   }
+
+  
   getProductsfromService() {
     this.productObj.getData("/ProductsList").subscribe({
-      next: (data) => { console.log("Orders received:", data); this.ProductsList = data },
+      next: (data) => { this.ProductsList = data },
       error: (err) => alert(JSON.stringify(err)),
       complete: () => console.log("Data from backend recieved")
     })

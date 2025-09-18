@@ -17,6 +17,7 @@ import { LoginComponent } from './User_Authentication/user-login/user-login';
 import { AdminLoginComponent } from './Admin_Dashboard/admin-login/admin-login';
 import { AdminAuthGuard } from './Admin_Dashboard/admin-auth-guard';
 import { Home } from './Product_Management/home/home';
+import { PlaceOrder } from './Order_Management/place-order/place-order';
 
 NgModule({
     imports: [
@@ -48,7 +49,9 @@ export const routes: Routes = [
             {path:'reports',component:Reports}
         ]
     },
-    {path:'home',component:Home}
+    {path:'home',component:Home},
+    {path:'',redirectTo:'home',pathMatch:'full'},
+    {path:'summary',component:PlaceOrder}
 
 ];
 
