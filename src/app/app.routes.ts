@@ -13,10 +13,12 @@ import { Customers } from './Admin_Dashboard/components/customers/customers';
 import { Reports } from './Admin_Dashboard/components/reports/reports';
 import { admin } from './Admin_Dashboard/admin/admin';
 import { UserSignupComponent } from './User_Authentication/user-signup/user-signup';
-import { LoginComponent } from './User_Authentication/user-login/user-login';
 import { AdminLoginComponent } from './Admin_Dashboard/admin-login/admin-login';
 import { AdminAuthGuard } from './Admin_Dashboard/admin-auth-guard';
 import { Home } from './Product_Management/home/home';
+import { HttpClientModule } from '@angular/common/http';
+import { UserLoginComponent } from './User_Authentication/user-login/user-login';
+import { CommonModule } from '@angular/common';
 import { PlaceOrder } from './Order_Management/place-order/place-order';
 
 NgModule({
@@ -29,15 +31,17 @@ NgModule({
         FormsModule,
         RouterModule,
         FormGroup,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule,
+        CommonModule
     ]
 })
 
 export const routes: Routes = [
 
     {path:'cart', component: Cart},
-    {path:'users-signup', component: UserSignupComponent},
-    {path:'user-login', component: LoginComponent},
+    {path:'user-signup', component: UserSignupComponent},
+    {path:'user-login', component: UserLoginComponent},
     {path:'admin-login', component: AdminLoginComponent},
     {path:'admin', component:admin, canActivate: [AdminAuthGuard] },
     {path:'admin',component:admin,
@@ -57,4 +61,4 @@ export const routes: Routes = [
 
 
 
-export class AppModule { }
+export class AppModule {}

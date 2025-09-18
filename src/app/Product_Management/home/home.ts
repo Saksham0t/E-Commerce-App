@@ -8,7 +8,7 @@ import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule,RouterOutlet,HttpClientModule,FormsModule,CommonModule],
+  imports: [RouterModule,HttpClientModule,FormsModule,CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   providers:[Rest1,HttpClientModule]

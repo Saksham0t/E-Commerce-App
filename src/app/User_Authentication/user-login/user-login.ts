@@ -1,31 +1,39 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../services/user';
+// import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-user-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './user-login.html',
-  styleUrls: ['./user-login.css']
+  imports: [FormsModule, CommonModule],
+  templateUrl: './user-login.html'
 })
-export class LoginComponent {
+export class UserLoginComponent {
   email = '';
   password = '';
+  loginError = false;
 
-  constructor(private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   onLogin() {
-    console.log('Login Data:', {
-      email: this.email,
-      password: this.password
+    this.userService.getUsers().subscribe(users => {
+      const foundUser = users.find(
+        u => u.email === this.email && u.password === this.password
+      );
+
+      if (foundUser) {
+        alert(`Login successful! Welcome ${foundUser.username} (User ID: ${foundUser.userId})`);
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.loginError = true;
+      }
     });
-    alert('Login successful!');
-    // TODO: Call your login API here
   }
 
   goToSignup() {
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/user-signup']);
   }
 }

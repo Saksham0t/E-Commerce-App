@@ -1,4 +1,12 @@
 {
+  "admins": [
+    {
+      "id": "1",
+      "adminId": "admin123",
+      "password": "adminpass",
+      "role": "admin"
+    }
+  ],
   "ProductsList": [
     {
       "id": "101",
@@ -469,7 +477,27 @@
       "Password": "hashed_password_205",
       "ShippingAddress": "Pune, Maharashtra",
       "PaymentDetails": "Paytm Wallet: yashv123"
+    },
+    {
+      "id": "6563",
+      "username": "jayesh123",
+      "email": "jayesh@test.com",
+      "password": "jay12345",
+      "userId": "USR-4441"
+    },
+    {
+      "id": "9a64",
+      "username": "saksham123",
+      "email": "saksham@test.com",
+      "password": "saksham12",
+      "userId": "USR-4031"
+    },
+    {
+      "id": "9d8b",
+      "username": "jqew1234567",
+      "email": "fghjkl@gjg.com",
+      "password": "fghjkfgh",
+      "userId": "USR-9563"
     }
   ]
-  
 }
