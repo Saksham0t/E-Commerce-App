@@ -1,8 +1,9 @@
+<header></header>
 <div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
   <div class="card shadow-lg p-4" style="width: 350px; border-radius: 12px;">
     <h3 class="text-center mb-4">User Signup</h3>
 
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
         <!-- Name -->
       <div class="mb-3 input-group">

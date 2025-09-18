@@ -14,4 +14,11 @@ export class Header {
   sellerName: string = "";
   userName: string = "";
   cartItems = 0;
+
+  constructor(public router: Router) {}
+
+  // This will return false if the current URL starts with /admin
+  get showHeader() {
+    return !this.router.url.startsWith('/admin');
+  }
 }
