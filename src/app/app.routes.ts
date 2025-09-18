@@ -16,6 +16,7 @@ import { UserSignupComponent } from './User_Authentication/user-signup/user-sign
 import { LoginComponent } from './User_Authentication/user-login/user-login';
 import { AdminLoginComponent } from './Admin_Dashboard/admin-login/admin-login';
 import { AdminAuthGuard } from './Admin_Dashboard/admin-auth-guard';
+import { Home } from './Product_Management/home/home';
 
 NgModule({
     imports: [
@@ -46,7 +47,8 @@ export const routes: Routes = [
             {path:'customers',component:Customers},
             {path:'reports',component:Reports}
         ]
-    }
+    },
+    {path:'home',component:Home}
 
 ];
 
