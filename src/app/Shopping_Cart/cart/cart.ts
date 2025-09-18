@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'cart',
-  imports: [CommonModule, Header],
+  imports: [CommonModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })

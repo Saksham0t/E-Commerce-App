@@ -1,4 +1,12 @@
 {
+  "admins": [
+    {
+      "id": "1",
+      "adminId": "admin123",
+      "password": "adminpass",
+      "role": "admin"
+    }
+  ],
   "ProductsList": [
     {
       "id": "101",
@@ -48,8 +56,6 @@
       "Description": "Lightweight and breathable running shorts",
       "ImageURL": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/521351/01/fnd/IND/fmt/png/Run-Fav-2-In-1-Men's-Running-Shorts"
     },
-
-    
     {
       "id": "107",
       "name": "Samsung Galaxy S23",
@@ -391,7 +397,27 @@
       "Password": "hashed_password_205",
       "ShippingAddress": "Pune, Maharashtra",
       "PaymentDetails": "Paytm Wallet: yashv123"
+    },
+    {
+      "id": "6563",
+      "username": "jayesh123",
+      "email": "jayesh@test.com",
+      "password": "jay12345",
+      "userId": "USR-4441"
+    },
+    {
+      "id": "9a64",
+      "username": "saksham123",
+      "email": "saksham@test.com",
+      "password": "saksham12",
+      "userId": "USR-4031"
+    },
+    {
+      "id": "9d8b",
+      "username": "jqew1234567",
+      "email": "fghjkl@gjg.com",
+      "password": "fghjkfgh",
+      "userId": "USR-9563"
     }
   ]
-  
 }
