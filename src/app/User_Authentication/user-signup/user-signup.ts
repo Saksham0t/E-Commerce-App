@@ -1,55 +1,54 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Header } from '../../header/header';
+import { User, UserService } from '../services/user';
 
 @Component({
   selector: 'app-user-signup',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
-  templateUrl: './user-signup.html',
-  styleUrls: ['./user-signup.css']
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './user-signup.html'
 })
 export class UserSignupComponent {
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.signupForm = this.fb.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]]
     });
   }
 
   onSubmit() {
-  if (this.signupForm.valid) {
-    const newUser = {
-      name: this.signupForm.value.name,
-      email: this.signupForm.value.email,
-      password: this.signupForm.value.password,
-      role: 'user',
-      createdAt: new Date().toISOString()
-    };
+    if (this.signupForm.valid) {
+      const formValue = this.signupForm.value;
 
-    // Check if email already exists
-    this.http.get<any[]>(`http://localhost:3000/users?email=${encodeURIComponent(newUser.email)}`)
-      .subscribe((existing: string | any[]) => {
-        if (existing.length > 0) {
-          alert('Email is already registered!');
-        } else {
-          // Save new user
-          this.http.post('http://localhost:3000/users', newUser)
-            .subscribe(() => {
-              alert('Signup successful!');
-              this.router.navigate(['/login']);
-            });
-        }
+      // Generate a custom userId
+      const generatedId = 'USR-' + Math.floor(1000 + Math.random() * 9000);
+
+      const newUser: User = {
+        username: formValue.username,
+        email: formValue.email,
+        password: formValue.password,
+        userId: generatedId
+      };
+
+      this.userService.addUser(newUser).subscribe(() => {
+        alert(`Signup successful! Your User ID is ${generatedId}`);
+        this.router.navigate(['/user-login']);
       });
+    } else {
+      this.signupForm.markAllAsTouched();
+    }
   }
-}
 
   goToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user-login']);
   }
 }
