@@ -36,16 +36,10 @@
 
     <!-- Navigation Links -->
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-      <!-- Admin Link -->
+      <!-- TEMPORARY ROUTING TO USER LOGIN -->
       <li class="nav-item me-lg-4">
-        <a class="nav-link" routerLink="/admin-login">Admin</a>
+        <a (click)="openLogin()" class="nav-link">Login</a>
       </li>
-
-<!-- //TEMPORAY ROUTING TO THE USER LOGIN -->
- <li class="nav-item me-lg-4">
-            <a (click)="openLogin()" class="login-link">Login</a>
-      </li>
-
 
       <!-- Cart Link with Live Count -->
       <li class="nav-item me-lg-4">
@@ -92,6 +86,12 @@
           <li>
             <a class="dropdown-item py-2" routerLink="/orders">
               <i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders
+            </a>
+          </li>
+          <!-- ✅ Admin Login moved here -->
+          <li>
+            <a class="dropdown-item py-2" routerLink="/admin-login">
+              <i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login
             </a>
           </li>
           <li><hr class="dropdown-divider" /></li>

@@ -3,7 +3,7 @@ import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ProductList } from '../../Product_Management/product-list/product-list';
+// import { ProductList } from '../../Product_Management/product-list/product-list';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { Orders } from '../../Admin_Dashboard/Interfaces/Orders';
 import { CartService } from '../../Shopping_Cart/cart-service';
