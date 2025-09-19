@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  login(userId: string) {
+  login(id: string) {
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userId', userId);
+    localStorage.setItem('userId', id);
   }
 
   logout() {
