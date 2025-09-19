@@ -117,7 +117,7 @@
                 <span>₹{{ grandTotal | number : '1.0-0' }}</span>
               </li>
             </ul>
-            <button class="btn btn-success w-100 btn-lg" [disabled]="cartItems.length === 0">
+            <button class="btn btn-success w-100 btn-lg" [disabled]="cartItems.length === 0"(click)="goToSummary()">
               <i class="bi bi-bag-check-fill me-2"></i> Proceed to Checkout
             </button>
           </div>

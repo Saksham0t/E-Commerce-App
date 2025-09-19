@@ -17,6 +17,15 @@ export class CartService {
   constructor(private http: HttpClient) {
     this.updateCartCount();
   }
+  private discountAmount = 0;
+
+  setDiscount(amount: number): void {
+    this.discountAmount = amount;
+  }
+
+  getDiscount(): number {
+    return this.discountAmount;
+  }
 
   /** Get the latest cart count and update the observable */
   private updateCartCount(): void {

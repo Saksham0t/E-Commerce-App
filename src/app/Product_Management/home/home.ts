@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 import { CartService } from '../../Shopping_Cart/cart-service';
 import { MatDialog } from '@angular/material/dialog';
 

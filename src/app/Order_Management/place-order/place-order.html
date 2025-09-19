@@ -1,0 +1,77 @@
+<div class="container my-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white text-center">
+      <h2 class="mb-0">
+        <i class="bi bi-clipboard-check me-2"></i> Place Your Order
+      </h2>
+    </div>
+
+    <div class="card-body">
+      <form #orderForm="ngForm">
+        <!-- Shipping Details -->
+        <div class="mb-4">
+          <h4 class="text-secondary">Shipping Details</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="shipping.name" name="name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="shipping.address" name="address" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <h4 class="mt-4 text-secondary">Cart Summary</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex align-items-center" *ngFor="let item of enrichedCart">
+            <img [src]="item.image" alt="{{ item.name }}" width="60" class="me-3 rounded shadow-sm">
+            <div class="flex-grow-1">
+              <h6 class="mb-1">{{ item.name }}</h6>
+              <small class="text-muted">{{ item.description }}</small><br>
+              <span class="badge bg-light text-dark mt-1">Qty: {{ item.Quantity }}</span>
+            </div>
+            <strong class="ms-3 text-success">₹{{ item.TotalPrice }}</strong>
+          </li>
+          <li class="list-group-item text-end">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-danger fw-bold">
+                <i class="bi bi-tag-fill me-1"></i> Discount
+              </span>
+              <span class="text-danger fw-bold">− ₹{{ getDiscountfromcartService() }}</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-2">
+              <span class="fw-bold fs-5">Total</span>
+              <span class="fw-bold fs-5 text-success">₹{{ getTotal() }}</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Place Order Button -->
+        <button class="btn btn-success w-100 btn-lg" (click)="showPaymentOptions = true" *ngIf="!showPaymentOptions">
+          <i class="bi bi-cash-stack me-2"></i> Place Order
+        </button>
+
+        <!-- Payment Options -->
+        <div *ngIf="showPaymentOptions" class="mt-4">
+          <h4 class="text-secondary">Choose Payment Method</h4>
+          <div class="form-check mb-2" *ngFor="let method of paymentMethods">
+            <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment"
+              required>
+            <label class="form-check-label">{{ method }}</label>
+          </div>
+
+          <button class="btn btn-primary w-100 btn-lg mt-3" (click)="submitOrder()" [disabled]="!selectedPayment">
+            <i class="bi bi-check-circle-fill me-2"></i> Confirm & Submit Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

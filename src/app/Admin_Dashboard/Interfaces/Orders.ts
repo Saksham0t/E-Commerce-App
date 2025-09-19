@@ -5,8 +5,8 @@ export interface Orders {
   totalPrice: number;
   orderDate: string; // ISO format date string
   ShippingAddress: string;
-  orderStatus: 'Processing' | 'Confirmed' | 'Delivered' | 'Shipped'; // restrict to known statuses
-  paymentStatus: 'Paid' | 'Pending';
+  orderStatus: string; // restrict to known statuses
+  paymentStatus: string;
   id: string; // internal tracking or frontend reference
 }
 

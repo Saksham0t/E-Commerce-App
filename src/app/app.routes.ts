@@ -19,6 +19,7 @@ import { Home } from './Product_Management/home/home';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginComponent } from './User_Authentication/user-login/user-login';
 import { CommonModule } from '@angular/common';
+import { PlaceOrder } from './Order_Management/place-order/place-order';
 
 NgModule({
     imports: [
@@ -51,7 +52,9 @@ export const routes: Routes = [
             {path:'reports',component:Reports}
         ]
     },
-    {path:'home',component:Home}
+    {path:'home',component:Home},
+    {path:'',redirectTo:'/home',pathMatch:'full'},
+    {path:'summary',component:PlaceOrder}
 
 ];
 
