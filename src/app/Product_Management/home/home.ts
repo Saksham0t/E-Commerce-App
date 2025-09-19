@@ -12,14 +12,15 @@ import { CartService } from '../../Shopping_Cart/cart-service';
   imports: [RouterModule, HttpClientModule, FormsModule, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
-  providers: [Rest1, HttpClientModule]
+  providers: [Rest1, HttpClientModule],
 })
 export class Home {
-
   productsByCategory: { [key: string]: ProductsList[] } = {};
   products: ProductsList[] = [];
 
-  // ✅ Inject both Rest1 and CartService
+  // ✅ Track added products by string ID
+  addedToCart = new Set<string>();
+
   constructor(private productService: Rest1, private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -27,28 +28,31 @@ export class Home {
   }
 
   getProductsfromService() {
-    this.productService.getData("/ProductsList").subscribe({
-      next: (data) => { 
+    this.productService.getData('/ProductsList').subscribe({
+      next: (data) => {
         this.products = data;
         const categories = ['T-shirts', 'Footwear', 'Electronics'];
-        categories.forEach(cat => {
+        categories.forEach((cat) => {
           this.productsByCategory[cat] = this.getProductsByCategory(cat);
         });
       },
       error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log('Getting data from backend..')
+      complete: () => console.log('Getting data from backend..'),
     });
   }
 
   getProductsByCategory(category: string): ProductsList[] {
-    return this.products.filter(p => p.Category === category);
+    return this.products.filter((p) => p.Category === category);
   }
 
-  // ✅ Updated to use CartService
   addToCart(product: ProductsList): void {
     this.cartService.addToCart(product, 1).subscribe({
-      next: () => console.log('Added to cart:', product.name),
-      error: (err) => console.error('Error adding to cart', err)
+      next: () => {
+        console.log('Added to cart:', product.name);
+        // ✅ Store the string ID
+        this.addedToCart.add(product.id);
+      },
+      error: (err) => console.error('Error adding to cart', err),
     });
   }
 }

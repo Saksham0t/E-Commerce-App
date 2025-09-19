@@ -66,7 +66,10 @@ async getOrdersfromService(): Promise<void> {
   };
 
   getTotal(): number {
-    return this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0)-this.cartService.getDiscount();
+    return this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0)-this.getDiscountfromcartService();
+  }
+  getDiscountfromcartService():number{
+    return Math.round(this.cartService.getDiscount());
   }
 
   submitOrder(): void {

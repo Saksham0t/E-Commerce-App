@@ -39,8 +39,17 @@
             </div>
             <strong class="ms-3 text-success">₹{{ item.TotalPrice }}</strong>
           </li>
-          <li class="list-group-item fw-bold text-end fs-5">
-            Total: ₹{{ getTotal() }}
+          <li class="list-group-item text-end">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-danger fw-bold">
+                <i class="bi bi-tag-fill me-1"></i> Discount
+              </span>
+              <span class="text-danger fw-bold">− ₹{{ getDiscountfromcartService() }}</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-2">
+              <span class="fw-bold fs-5">Total</span>
+              <span class="fw-bold fs-5 text-success">₹{{ getTotal() }}</span>
+            </div>
           </li>
         </ul>
 
@@ -53,7 +62,8 @@
         <div *ngIf="showPaymentOptions" class="mt-4">
           <h4 class="text-secondary">Choose Payment Method</h4>
           <div class="form-check mb-2" *ngFor="let method of paymentMethods">
-            <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment" required>
+            <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment"
+              required>
             <label class="form-check-label">{{ method }}</label>
           </div>
 
