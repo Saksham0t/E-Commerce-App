@@ -28,12 +28,12 @@ export class UserLoginComponent {
   onLogin() {
     this.userService.getUsers().subscribe(users => {
       const foundUser = users.find(
-        u => u.email === this.email && u.password === this.password
+        u => u.Email === this.email && u.Password === this.password
       );
 
       if (foundUser) {
-        if (foundUser.userId) {
-          this.authService.login(foundUser.userId);
+        if (foundUser.id) {
+          this.authService.login(foundUser.id.toString());
           this.dialogRef.close();
           this.router.navigate(['/profile']);
         } else {
