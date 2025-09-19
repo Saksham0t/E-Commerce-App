@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { Cart } from './Shopping_Cart/cart/cart';
 import { UserAuth } from './User_Authentication/user-auth/user-auth';
 import { SellerAuth } from './User_Authentication/seller-auth/seller-auth';
@@ -15,6 +15,7 @@ import { Orders } from './Admin_Dashboard/components/orders/orders';
 import { Customers } from './Admin_Dashboard/components/customers/customers';
 import { Reports } from './Admin_Dashboard/components/reports/reports';
 import { admin } from './Admin_Dashboard/admin/admin';
+//import { ProductList } from './Product_Management/product-list/product-list';
 
 NgModule({
   imports: [
@@ -23,8 +24,10 @@ NgModule({
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
-  ]
+    MatIconModule,
+    RouterModule,
+  ],
+  exports:[RouterModule]
 })
 
 export const routes: Routes = [
@@ -41,7 +44,7 @@ export const routes: Routes = [
             {path:'customers',component:Customers},
             {path:'reports',component:Reports}
         ]
-    }
+    },
 
 ];
 
