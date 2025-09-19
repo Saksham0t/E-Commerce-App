@@ -257,8 +257,14 @@
     {
       "id": "0750",
       "Productid": "116",
+      "Quantity": 7,
+      "TotalPrice": 6993
+    },
+    {
+      "id": "2de4",
+      "Productid": "107",
       "Quantity": 1,
-      "TotalPrice": 999
+      "TotalPrice": 799
     }
   ],
   "OrdersList": [
@@ -585,18 +591,12 @@
       "PaymentDetails": "Paytm Wallet: yashv123"
     },
     {
-      "id": "44a6",
-      "username": "divij123",
-      "email": "divij@gmail.com",
-      "password": "divijpass",
-      "userId": "USR-8323"
-    },
-    {
-      "id": "1e83",
-      "username": "saksham",
-      "email": "saksham@test.com",
-      "password": "saksham12",
-      "userId": "USR-2122"
+      "id": 1009,
+      "Name": "jayesh",
+      "Email": "jay@test.com",
+      "Password": "12341234",
+      "ShippingAddress": "",
+      "PaymentDetails": ""
     }
   ]
 }
