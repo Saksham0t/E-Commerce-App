@@ -1,40 +1,113 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand d-flex align-items-center" routerLink="/">
-    <img src="/logo.png" alt="Logo" class="me-2" style="height: 65px; width: 75px; margin-top: -13px; margin-bottom: -13px;">
-    <span class="fw-bold fs-4 text-gradient">Matrix.Shop</span>
+@if (showHeader) {
+<nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
+  <!-- Brand / Logo -->
+  <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+    <img
+      src="/logo.png"
+      alt="Logo"
+      class="me-2"
+      style="height: 75px; width: 75px; margin-top: -13px; margin-bottom: -13px"
+    />
+    <span class="fw-bold fs-4 text-gradient">Matrix</span>
   </a>
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+  <!-- Mobile toggle button -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarContent"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <!-- Navbar content -->
   <div class="collapse navbar-collapse" id="navbarContent">
     <!-- Search Bar -->
     <form class="d-flex mx-auto w-50">
-      <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search Products"
+        aria-label="Search"
+      />
       <button class="btn btn-outline-light" type="submit">Search</button>
     </form>
 
     <!-- Navigation Links -->
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/seller-auth">Seller</a>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+      <!-- TEMPORARY ROUTING TO USER LOGIN -->
+      <li class="nav-item me-lg-4">
+        <a (click)="openLogin()" class="nav-link">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/user-auth">Login / Sign-up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link position-relative" routerLink="/cart">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Cart" width="20" class="me-1">
+
+      <!-- Cart Link with Live Count -->
+      <li class="nav-item me-lg-4">
+        <a class="nav-link d-flex align-items-center" routerLink="/cart">
+          <span class="position-relative me-1">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
+              alt="Cart"
+              width="25"
+              style="filter: brightness(0) invert(1)"
+            />
+            @if (cartCount > 0) {
+              <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                {{ cartCount }}
+              </span>
+            }
+          </span>
           Cart
-          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
         </a>
+      </li>
+
+      <!-- Profile Dropdown -->
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle d-flex align-items-center"
+          href="#"
+          id="profileDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-person-circle me-2 fs-5"></i>
+          {{ userName }}
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3"
+          aria-labelledby="profileDropdown"
+        >
+          <li>
+            <a class="dropdown-item py-2" routerLink="/profile">
+              <i class="bi bi-person-lines-fill me-2 text-primary"></i> My Profile
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item py-2" routerLink="/orders">
+              <i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders
+            </a>
+          </li>
+          <!-- ✅ Admin Login moved here -->
+          <li>
+            <a class="dropdown-item py-2" routerLink="/admin-login">
+              <i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login
+            </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item py-2 text-danger fw-semibold" (click)="logout()">
+              <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
 </nav>
+}
 
-<router-outlet></router-outlet>
+<!-- Push page content down so it doesn't hide behind fixed header -->
+<div style="padding-top: 100px">
+  <router-outlet></router-outlet>
+</div>

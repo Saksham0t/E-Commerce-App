@@ -3,18 +3,9 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.common-form{
-    text-align: center;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    width: 250px;
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(6px);
 }
-
-.form-input{
-    
-}
-
-.form-button{
-
+.custom-dialog-container .mat-mdc-dialog-surface {
+  border-radius: 8px;
 }
