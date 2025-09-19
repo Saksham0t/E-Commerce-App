@@ -36,9 +36,9 @@
 
     <!-- Navigation Links -->
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-      <!-- Admin Link -->
+      <!-- Login Link -->
       <li class="nav-item me-lg-4">
-        <a class="nav-link" routerLink="/admin-login">Admin</a>
+        <a class="nav-link" routerLink="/user-login">Login</a>
       </li>
 
       <!-- Cart Link with Live Count -->
@@ -86,6 +86,11 @@
           <li>
             <a class="dropdown-item py-2" routerLink="/orders">
               <i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item py-2" routerLink="/admin-login">
+              <i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login
             </a>
           </li>
           <li><hr class="dropdown-divider" /></li>
