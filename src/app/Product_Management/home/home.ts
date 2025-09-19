@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../Shopping_Cart/cart-service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class Home {
   productsByCategory: { [key: string]: ProductsList[] } = {};
   products: ProductsList[] = [];
 
-  // ✅ Track added products by string ID
+  // Track added products by string ID
   addedToCart = new Set<string>();
 
   constructor(private productService: Rest1, private cartService: CartService) {}
@@ -49,7 +50,7 @@ export class Home {
     this.cartService.addToCart(product, 1).subscribe({
       next: () => {
         console.log('Added to cart:', product.name);
-        // ✅ Store the string ID
+        // Store the string ID
         this.addedToCart.add(product.id);
       },
       error: (err) => console.error('Error adding to cart', err),

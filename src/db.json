@@ -241,7 +241,38 @@
       "ImageURL": "data:image/jpeg;base64,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"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "6696",
+      "Productid": "103",
+      "Quantity": 1,
+      "TotalPrice": 399
+    },
+    {
+      "id": "038d",
+      "Productid": "105",
+      "Quantity": 1,
+      "TotalPrice": 199
+    },
+    {
+      "id": "d246",
+      "Productid": "113",
+      "Quantity": 1,
+      "TotalPrice": 699
+    },
+    {
+      "id": "2ae8",
+      "Productid": "118",
+      "Quantity": 1,
+      "TotalPrice": 249
+    },
+    {
+      "id": "0750",
+      "Productid": "116",
+      "Quantity": 1,
+      "TotalPrice": 999
+    }
+  ],
   "OrdersList": [
     {
       "id": "5004",
@@ -255,7 +286,7 @@
       "totalPrice": 135,
       "orderDate": "2025-09-14",
       "ShippingAddress": "22 Nehru Street, Coimbatore",
-      "orderStatus": "Delivered",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentId": "zz11"
     },
@@ -376,6 +407,13 @@
       "Password": "hashed_password_205",
       "ShippingAddress": "Pune, Maharashtra",
       "PaymentDetails": "Paytm Wallet: yashv123"
+    },
+    {
+      "id": "44a6",
+      "username": "divij123",
+      "email": "divij@gmail.com",
+      "password": "divijpass",
+      "userId": "USR-8323"
     }
   ]
 }
