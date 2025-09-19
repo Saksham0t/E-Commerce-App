@@ -32,20 +32,24 @@ export class UserSignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const generatedId = 'USR-' + Math.floor(1000 + Math.random() * 9000);
+      const generatedId = Math.floor(1000 + Math.random() * 900);
       const newUser: User = {
-        username: this.signupForm.value.username,
-        email: this.signupForm.value.email,
-        password: this.signupForm.value.password,
-        userId: generatedId
+        id: generatedId,
+        Name: this.signupForm.value.username,
+        Email: this.signupForm.value.email,
+        Password: this.signupForm.value.password,
+        ShippingAddress: '',
+        PaymentDetails: ''
       };
 
       this.userService.addUser(newUser).subscribe(() => {
-        this.authService.login(generatedId);
+        this.authService.login(generatedId.toString());
         this.dialogRef.close();
         this.router.navigate(['/profile']);
       });
-    }
+    }else {
+    this.signupForm.markAllAsTouched();
+  }
   }
 
   closeDialog() {

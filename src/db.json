@@ -243,6 +243,18 @@
   ],
   "cartItems": [
     {
+      "id": "6696",
+      "Productid": "103",
+      "Quantity": 1,
+      "TotalPrice": 399
+    },
+    {
+      "id": "038d",
+      "Productid": "105",
+      "Quantity": 1,
+      "TotalPrice": 199
+    },
+    {
       "id": "d246",
       "Productid": "113",
       "Quantity": 1,
@@ -590,13 +602,6 @@
       "email": "divij@gmail.com",
       "password": "divijpass",
       "userId": "USR-8323"
-    },
-    {
-      "id": "1e83",
-      "username": "saksham",
-      "email": "saksham@test.com",
-      "password": "saksham12",
-      "userId": "USR-2122"
     }
   ]
 }
