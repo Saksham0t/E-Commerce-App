@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user';
-// import { UserService } from '../../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './user-login.html'
+  imports: [FormsModule, CommonModule, MatDialogModule],
+  templateUrl: './user-login.html',
+  styleUrls: ['./user-login.css']
 })
 export class UserLoginComponent {
   email = '';
   password = '';
   loginError = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
+    public dialogRef: MatDialogRef<UserLoginComponent>
+  ) {}
 
   onLogin() {
     this.userService.getUsers().subscribe(users => {
@@ -25,15 +32,25 @@ export class UserLoginComponent {
       );
 
       if (foundUser) {
-        alert(`Login successful! Welcome ${foundUser.username} (User ID: ${foundUser.userId})`);
-        this.router.navigate(['/dashboard']);
+        if (foundUser.userId) {
+          this.authService.login(foundUser.userId);
+          this.dialogRef.close();
+          this.router.navigate(['/profile']);
+        } else {
+          this.loginError = true;
+        }
       } else {
         this.loginError = true;
       }
     });
   }
 
-  goToSignup() {
-    this.router.navigate(['/user-signup']);
+  closeDialog() {
+    this.dialogRef.close();
   }
+
+  switchToSignup() {
+  this.dialogRef.close('open-signup'); // send signal to open signup dialog
+   }
 }
+
