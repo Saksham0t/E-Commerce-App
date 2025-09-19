@@ -1,0 +1,22 @@
+<div class="form-container">
+  <button class="close-btn" (click)="closeDialog()">×</button>
+  <h2>User Login</h2>
+  <form (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <i class="bi bi-envelope"></i>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-lock"></i>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+    </div>
+
+    <div *ngIf="loginError" class="error-msg">Invalid email or password</div>
+<p class="switch-link">
+  Don't have an account?
+  <a (click)="switchToSignup()">Sign up</a>
+</p>
+    <button type="submit" class="btn-primary">Login</button>
+  </form>
+</div>
