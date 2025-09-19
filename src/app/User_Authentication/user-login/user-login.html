@@ -1,35 +1,22 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <div class="card shadow-lg p-4" style="width: 350px; border-radius: 12px;">
-    <h3 class="text-center mb-4">User Login</h3>
+<div class="form-container">
+  <button class="close-btn" (click)="closeDialog()">×</button>
+  <h2>User Login</h2>
+  <form (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <i class="bi bi-envelope"></i>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    </div>
 
-    <form (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <i class="bi bi-lock"></i>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+    </div>
 
-      <!-- Email -->
-      <div class="mb-3 input-group">
-        <span class="input-group-text bg-primary text-white">
-          <i class="bi bi-envelope-fill"></i>
-        </span>
-        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" required>
-      </div>
-
-      <!-- Password -->
-      <div class="mb-3 input-group">
-        <span class="input-group-text bg-primary text-white">
-          <i class="bi bi-lock-fill"></i>
-        </span>
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required>
-      </div>
-
-      <!-- Submit -->
-      <button type="submit" class="btn btn-primary w-100">
-        Login
-      </button>
-    </form>
-
-    <!-- Signup Redirect -->
-    <p class="text-center mt-3 mb-0">
-      New user? 
-      <a href="/user-signup" (click)="goToSignup()">Click here to sign up</a>
-    </p>
-  </div>
+    <div *ngIf="loginError" class="error-msg">Invalid email or password</div>
+<p class="switch-link">
+  Don't have an account?
+  <a (click)="switchToSignup()">Sign up</a>
+</p>
+    <button type="submit" class="btn-primary">Login</button>
+  </form>
 </div>
