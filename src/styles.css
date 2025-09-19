@@ -11,5 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 250px;
 }
 
-
+.MyOrders{
+    justify-content: center;
+    display: flex;
+}
 
