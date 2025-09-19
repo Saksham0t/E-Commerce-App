@@ -243,10 +243,34 @@
   ],
   "cartItems": [
     {
-      "id": "eea9",
-      "Productid": "120",
-      "Quantity": 4,
-      "TotalPrice": 100
+      "id": "6696",
+      "Productid": "103",
+      "Quantity": 1,
+      "TotalPrice": 399
+    },
+    {
+      "id": "038d",
+      "Productid": "105",
+      "Quantity": 1,
+      "TotalPrice": 199
+    },
+    {
+      "id": "d246",
+      "Productid": "113",
+      "Quantity": 1,
+      "TotalPrice": 699
+    },
+    {
+      "id": "2ae8",
+      "Productid": "118",
+      "Quantity": 1,
+      "TotalPrice": 249
+    },
+    {
+      "id": "0750",
+      "Productid": "116",
+      "Quantity": 1,
+      "TotalPrice": 999
     }
   ],
   "OrdersList": [
@@ -262,7 +286,7 @@
       "totalPrice": 135,
       "orderDate": "2025-09-14",
       "ShippingAddress": "22 Nehru Street, Coimbatore",
-      "orderStatus": "Delivered",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentId": "zz11"
     },
@@ -383,6 +407,13 @@
       "Password": "hashed_password_205",
       "ShippingAddress": "Pune, Maharashtra",
       "PaymentDetails": "Paytm Wallet: yashv123"
+    },
+    {
+      "id": "44a6",
+      "username": "divij123",
+      "email": "divij@gmail.com",
+      "password": "divijpass",
+      "userId": "USR-8323"
     }
   ]
 }

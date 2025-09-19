@@ -40,7 +40,6 @@ export const routes: Routes = [
 
     {path:'cart', component: Cart},
     {path:'user-signup', component: UserSignupComponent},
-    {path:'user-login', component: UserLoginComponent},
     {path:'admin-login', component: AdminLoginComponent},
     {path:'admin', component:admin, canActivate: [AdminAuthGuard] },
     {path:'admin',component:admin,

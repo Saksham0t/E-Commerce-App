@@ -7,7 +7,7 @@ import { Header } from '../../header/header';
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Header],
   templateUrl: './admin-login.html',
   styleUrls: ['./admin-login.css']
 })
