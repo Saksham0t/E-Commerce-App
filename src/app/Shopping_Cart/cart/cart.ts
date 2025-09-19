@@ -19,7 +19,7 @@ export class Cart implements OnInit {
   totalAmount = 0;       // Subtotal of all items
   grandTotal = 0;        // Final total after delivery & discount
   deliveryCharge = 0;    // Delivery fee (if any)
-  discountAmount = 0;    // Discount amount (if any)
+  discountAmount=0;// Discount amount (if any)
 
   // Messages for the UI
   deliveryMessage = '';
@@ -29,10 +29,11 @@ export class Cart implements OnInit {
     private cartService: CartService,
     private router: Router
   ) {}
+  
 
   ngOnInit(): void {
     this.loadCartItems();
-  }
+  } 
 
   /** Load cart items from the service */
   loadCartItems(): void {
@@ -57,6 +58,10 @@ export class Cart implements OnInit {
       (sum, item) => sum + (item.Price * item.Quantity),
       0
     );
+    // this.cartItems.reduce(
+    //   (sum, item) => sum + (item.Price * item.Quantity),
+    //   0
+    // );
 
     // Reset values
     this.deliveryCharge = 0;
@@ -85,6 +90,8 @@ export class Cart implements OnInit {
         this.discountMessage = `🛍 Spend ₹${needed} more to unlock 10% OFF!`;
       }
     }
+
+    this.cartService.setDiscount(this.discountAmount);
 
     // Final total
     this.grandTotal = this.totalAmount + this.deliveryCharge - this.discountAmount;
@@ -130,5 +137,9 @@ export class Cart implements OnInit {
   /** Navigate to the home page */
   goToHome(): void {
     this.router.navigate(['/home']);
+  }
+
+  goToSummary(): void {
+    this.router.navigate(['/summary']);
   }
 }

@@ -1,52 +1,67 @@
-<div class="container mt-5">
-  <h2 class="mb-4">Place Your Order</h2>
-
-  <form (ngSubmit)="submitOrder()" #orderForm="ngForm">
-    <div class="mb-3">
-      <label>Name</label>
-      <input type="text" class="form-control" [(ngModel)]="shipping.name" name="name" required>
-    </div>
-    <div class="mb-3">
-      <label>Phone</label>
-      <input type="tel" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
-    </div>
-    <div class="mb-3">
-      <label>Address</label>
-      <textarea class="form-control" [(ngModel)]="shipping.address" name="address" required></textarea>
+<div class="container my-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white text-center">
+      <h2 class="mb-0">
+        <i class="bi bi-clipboard-check me-2"></i> Place Your Order
+      </h2>
     </div>
 
-    <h4 class="mt-4">Cart Summary</h4>
+    <div class="card-body">
+      <form #orderForm="ngForm">
+        <!-- Shipping Details -->
+        <div class="mb-4">
+          <h4 class="text-secondary">Shipping Details</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="shipping.name" name="name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="shipping.address" name="address" required></textarea>
+            </div>
+          </div>
+        </div>
 
-<ul class="list-group mb-3">
-  <li class="list-group-item d-flex align-items-center" *ngFor="let item of enrichedCart">
-    <img [src]="item.image" alt="{{ item.name }}" width="60" class="me-3 rounded">
-    <div class="flex-grow-1">
-      <h6 class="mb-1">{{ item.name }}</h6>
-      <small class="text-muted">{{ item.description }}</small><br>
-      <span>Quantity: {{ item.Quantity }}</span>
+        <!-- Cart Summary -->
+        <h4 class="mt-4 text-secondary">Cart Summary</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex align-items-center" *ngFor="let item of enrichedCart">
+            <img [src]="item.image" alt="{{ item.name }}" width="60" class="me-3 rounded shadow-sm">
+            <div class="flex-grow-1">
+              <h6 class="mb-1">{{ item.name }}</h6>
+              <small class="text-muted">{{ item.description }}</small><br>
+              <span class="badge bg-light text-dark mt-1">Qty: {{ item.Quantity }}</span>
+            </div>
+            <strong class="ms-3 text-success">₹{{ item.TotalPrice }}</strong>
+          </li>
+          <li class="list-group-item fw-bold text-end fs-5">
+            Total: ₹{{ getTotal() }}
+          </li>
+        </ul>
+
+        <!-- Place Order Button -->
+        <button class="btn btn-success w-100 btn-lg" (click)="showPaymentOptions = true" *ngIf="!showPaymentOptions">
+          <i class="bi bi-cash-stack me-2"></i> Place Order
+        </button>
+
+        <!-- Payment Options -->
+        <div *ngIf="showPaymentOptions" class="mt-4">
+          <h4 class="text-secondary">Choose Payment Method</h4>
+          <div class="form-check mb-2" *ngFor="let method of paymentMethods">
+            <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment" required>
+            <label class="form-check-label">{{ method }}</label>
+          </div>
+
+          <button class="btn btn-primary w-100 btn-lg mt-3" (click)="submitOrder()" [disabled]="!selectedPayment">
+            <i class="bi bi-check-circle-fill me-2"></i> Confirm & Submit Order
+          </button>
+        </div>
+      </form>
     </div>
-    <strong class="ms-3">₹{{ item.TotalPrice }}</strong>
-  </li>
-  <li class="list-group-item fw-bold text-end">
-    Total: ₹{{ getTotal() }}
-  </li>
-</ul>
-
-    <button class="btn btn-success w-100" (click)="showPaymentOptions = true" *ngIf="!showPaymentOptions">
-  Place Order
-</button>
-<div *ngIf="showPaymentOptions" class="mt-4">
-  <h4>Choose Payment Method</h4>
-  <div class="form-check" *ngFor="let method of paymentMethods">
-    <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment" required>
-    <label class="form-check-label">{{ method }}</label>
   </div>
-
-  <button class="btn btn-primary mt-3 w-100" (click)="submitOrder()" [disabled]="!selectedPayment">
-    Confirm & Submit Order
-  </button>
-</div>
-
-
-  </form>
 </div>

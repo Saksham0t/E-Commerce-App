@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ProductList } from '../../Product_Management/product-list/product-list';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { Orders } from '../../Admin_Dashboard/Interfaces/Orders';
+import { CartService } from '../../Shopping_Cart/cart-service';
 
 @Component({
   selector: 'app-place-order',
@@ -16,7 +17,7 @@ import { Orders } from '../../Admin_Dashboard/Interfaces/Orders';
 
 })
 export class PlaceOrder {
-  constructor(private productObj: Rest1,private http: HttpClient) { }
+  constructor(private productObj: Rest1,private http: HttpClient,private cartService:CartService) { }
   CartItems: any[]=[];
   OrdersList: any[]=[];
   ProductsList:ProductsList[]=[];
@@ -65,7 +66,7 @@ async getOrdersfromService(): Promise<void> {
   };
 
   getTotal(): number {
-    return this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0);
+    return this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0)-this.cartService.getDiscount();
   }
 
   submitOrder(): void {
