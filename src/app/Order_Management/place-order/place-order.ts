@@ -27,6 +27,7 @@ export class PlaceOrder {
   showPaymentOptions = false;
   paymentMethods = ['UPI', 'Debit/Credit Card', 'Cash on Delivery', 'Net Banking'];
 selectedPayment = '';
+total:number=0;
 
 
   async getCartItemsfromService(): Promise<void> {
@@ -68,7 +69,9 @@ async getOrdersfromService(): Promise<void> {
   };
 
   getTotal(): number {
-    return this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0)-this.getDiscountfromcartService();
+    this.cartService.setTotalAmount(this.CartItems.reduce((sum, item) => sum + item.TotalPrice, 0)-this.getDiscountfromcartService());
+    this.total=this.cartService.getTotalAmount();
+    return this.total;
   }
   getDiscountfromcartService():number{
     return Math.round(this.cartService.getDiscount());
