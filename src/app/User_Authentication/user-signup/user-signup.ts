@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { User, UserService } from '../services/user';
+import { UserService } from '../services/user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -30,33 +30,34 @@ export class UserSignupComponent {
     });
   }
 
-  onSubmit() {
-  if (this.signupForm.valid) {
-    const generatedId = Math.floor(100 + Math.random() * 900);
+  onSubmit(): void {
+    if (this.signupForm.valid) {
+      const generatedId = Math.floor(100 + Math.random() * 900);
 
-    const newUser = {
-      id: generatedId,
-      Name: this.signupForm.value.username,
-      Email: this.signupForm.value.email,
-      Password: this.signupForm.value.password, // hash if needed
-      ShippingAddress: '',
-      PaymentDetails: ''
-    };
+      const newUser = {
+        id: generatedId,
+        Name: this.signupForm.value.username,
+        Email: this.signupForm.value.email,
+        Password: this.signupForm.value.password,
+        ShippingAddress: '',
+        PaymentDetails: ''
+      };
 
-    this.userService.addUser(newUser).subscribe(() => {
-      this.dialogRef.close(); // close signup popup
-      this.router.navigate(['/home']); // send back to home
-    });
-  } else {
-    this.signupForm.markAllAsTouched();
+      this.userService.addUser(newUser).subscribe(() => {
+        this.authService.login(newUser.id.toString(), newUser.Name);
+        this.dialogRef.close();
+        this.router.navigate(['/home']);
+      });
+    } else {
+      this.signupForm.markAllAsTouched();
+    }
   }
-}
 
-
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close();
   }
-switchToLogin() {
-  this.dialogRef.close('open-login'); // send signal to open login dialog
-}
+
+  switchToLogin(): void {
+    this.dialogRef.close('open-login'); // signal Header to open login popup
+  }
 }
