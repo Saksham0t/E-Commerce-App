@@ -73,7 +73,7 @@ async getOrdersfromService(): Promise<void> {
   }
 
   submitOrder(): void {
-  const order:Orders= {
+const order: Orders = {
   Id: 'zz' + Math.floor(Math.random() * 10000), // internal tracking ID
   userId: '204',
   products: this.CartItems.map(item => ({
@@ -85,6 +85,7 @@ async getOrdersfromService(): Promise<void> {
   ShippingAddress: this.shipping.address,
   orderStatus: 'Processing', // must be one of: 'Processing' | 'Confirmed' | 'Delivered' | 'Shipped'
   paymentStatus: 'Pending',
+  paymentMethod: this.selectedPayment, // <-- Added required property
   id: 'zz' + Math.floor(Math.random() * 10000),
 };
 

@@ -31,26 +31,27 @@ export class UserSignupComponent {
   }
 
   onSubmit() {
-    if (this.signupForm.valid) {
-      const generatedId = Math.floor(1000 + Math.random() * 900);
-      const newUser: User = {
-        id: generatedId,
-        Name: this.signupForm.value.username,
-        Email: this.signupForm.value.email,
-        Password: this.signupForm.value.password,
-        ShippingAddress: '',
-        PaymentDetails: ''
-      };
+  if (this.signupForm.valid) {
+    const generatedId = Math.floor(100 + Math.random() * 900);
 
-      this.userService.addUser(newUser).subscribe(() => {
-        this.authService.login(generatedId.toString());
-        this.dialogRef.close();
-        this.router.navigate(['/profile']);
-      });
-    }else {
+    const newUser = {
+      id: generatedId,
+      Name: this.signupForm.value.username,
+      Email: this.signupForm.value.email,
+      Password: this.signupForm.value.password, // hash if needed
+      ShippingAddress: '',
+      PaymentDetails: ''
+    };
+
+    this.userService.addUser(newUser).subscribe(() => {
+      this.dialogRef.close(); // close signup popup
+      this.router.navigate(['/home']); // send back to home
+    });
+  } else {
     this.signupForm.markAllAsTouched();
   }
-  }
+}
+
 
   closeDialog() {
     this.dialogRef.close();
