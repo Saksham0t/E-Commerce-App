@@ -718,6 +718,90 @@
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
       "Id": ""
+    },
+    {
+      "id": "zz4686",
+      "userId": "777",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 4
+        },
+        {
+          "id": "116",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 3793,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "pune, maharashtra",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz2695",
+      "userId": "",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 4
+        },
+        {
+          "id": "116",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 3224,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "pune, maharashtra",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz6042",
+      "userId": "777",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 4
+        },
+        {
+          "id": "116",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 3224,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "pune, maharashtra",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz9830",
+      "userId": "777",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 4
+        },
+        {
+          "id": "116",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 3793,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
     }
   ],
   "users": [
@@ -765,6 +849,7 @@
       "id": 777,
       "Name": "Saksham",
       "Email": "sg@test.com",
+      "Phone": "9876543210",
       "Password": "saksham12",
       "ShippingAddress": "",
       "PaymentDetails": ""

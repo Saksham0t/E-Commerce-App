@@ -13,6 +13,8 @@ export class CartService {
   // Observable to keep track of total items in cart
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();
+  setTotalAmount: any;
+  getTotalAmount: any;
 
   constructor(private http: HttpClient) {
     this.updateCartCount();
