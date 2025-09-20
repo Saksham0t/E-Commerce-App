@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { Orders } from '../../Admin_Dashboard/Interfaces/Orders';
 import { CartService } from '../../Shopping_Cart/cart-service';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderSuccessDialogComponent } from './order-success-dialog';
 
 @Component({
   selector: 'app-place-order',
@@ -17,7 +19,7 @@ import { CartService } from '../../Shopping_Cart/cart-service';
 
 })
 export class PlaceOrder {
-  constructor(private productObj: Rest1,private http: HttpClient,private cartService:CartService) { }
+  constructor(private productObj: Rest1,private http: HttpClient,private cartService:CartService,private dialog: MatDialog) { }
   CartItems: any[]=[];
   OrdersList: any[]=[];
   ProductsList:ProductsList[]=[];
@@ -73,29 +75,34 @@ async getOrdersfromService(): Promise<void> {
   }
 
   submitOrder(): void {
-const order: Orders = {
-  Id: 'zz' + Math.floor(Math.random() * 10000), // internal tracking ID
-  userId: '204',
-  products: this.CartItems.map(item => ({
-    id: item.Productid, // renamed to match OrderedProduct interface
-    quantity: item.Quantity
-  })),
-  totalPrice: this.getTotal(),
-  orderDate: new Date().toISOString().split('T')[0],
-  ShippingAddress: this.shipping.address,
-  orderStatus: 'Processing', // must be one of: 'Processing' | 'Confirmed' | 'Delivered' | 'Shipped'
-  paymentStatus: 'Pending',
-  paymentMethod: this.selectedPayment, // <-- Added required property
-  id: 'zz' + Math.floor(Math.random() * 10000),
-};
+  const orderId = 'zz' + Math.floor(Math.random() * 10000);
 
+  const order: Orders = {
+    id: orderId,
+    userId: localStorage.getItem('userId') || '',
+    products: this.CartItems.map(item => ({
+      id: item.Productid, // ✅ matches OrderedProduct
+      quantity: item.Quantity
+    })),
+    totalPrice: this.getTotal(),
+    orderDate: new Date().toISOString().split('T')[0],
+    ShippingAddress: this.shipping.address,
+    orderStatus: 'Processing',
+    paymentStatus: 'Pending',
+    paymentMethod: this.selectedPayment,
+    Id: ''
+  };
 
   this.productObj.insertOrderRecord(order).subscribe({
-    next: (data) => {
-      alert("Insert successful");
-      this.getOrdersfromService(); 
+    next: () => {
+      this.getOrdersfromService();
+      // ✅ open popup with orderId
+      this.dialog.open(OrderSuccessDialogComponent, {
+        width: '400px',
+        data: { orderId }
+      });
     },
-    error: (err) => alert("Insert failed: " + JSON.stringify(err))
+    error: (err) => alert('Insert failed: ' + JSON.stringify(err))
   });
+ }
 }
-  };
