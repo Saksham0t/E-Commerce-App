@@ -15,10 +15,10 @@ import { UserSignupComponent } from '../User_Authentication/user-signup/user-sig
   styleUrls: ['./header.css']
 })
 export class Header implements OnInit {
-
+  
+  userName: string = 'Guest';
   cartCount = 0;
   isLoggedIn = false; // Replace with real auth check later
-  userName = 'Guest';
   // dialog property removed to avoid duplicate identifier error
 
   constructor(
@@ -28,15 +28,12 @@ export class Header implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    // Subscribe to cart count updates
-    this.cartService.cartCount$.subscribe(count => {
-      this.cartCount = count;
-    });
-
-    // Example: check login status (replace with real auth logic)
-    // this.isLoggedIn = authService.isLoggedIn();
-    // this.userName = authService.getUserName();
+  ngOnInit() {
+    this.authService.userName$.subscribe((name: string) => this.userName = name);
+    const storedName: string | null = this.authService.getUserName();
+    if (storedName !== null && storedName !== undefined && storedName !== '') {
+      this.userName = storedName;
+    }
   }
 
   get showHeader(): boolean {
@@ -49,14 +46,9 @@ export class Header implements OnInit {
 
   logout(): void {
     this.authService.logout(); 
+    this.router.navigate(['/home']);
   }
 
-  // openLogin() {
-  //   this.dialog.open(UserLoginComponent, {
-  //     width: '400px',
-  //     panelClass: 'custom-dialog-container'
-  //   });
-  // }
 openLogin() {
   const dialogRef = this.dialog.open(UserLoginComponent, {
     width: '400px',
