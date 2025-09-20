@@ -1,26 +1,66 @@
-<div class="form-container">
-  <button class="close-btn" (click)="closeDialog()">×</button>
-  <h2>User Signup</h2>
+<div class="modal-body p-4 bg-light rounded shadow-sm">
+  <h4 class="text-center mb-4 fw-bold">
+    <i class="bi bi-person-plus-fill me-2"></i> User Signup
+  </h4>
+
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <i class="bi bi-person"></i>
-      <input type="text" formControlName="username" placeholder="Username" />
+    <!-- Username -->
+    <div class="mb-3">
+      <label for="username" class="form-label fw-semibold">Username</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control"
+        placeholder="Enter your username"
+      />
+      <div *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid"
+           class="text-danger small mt-1">
+        Username is required.
+      </div>
     </div>
 
-    <div class="form-group">
-      <i class="bi bi-envelope"></i>
-      <input type="email" formControlName="email" placeholder="Email" />
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Email address</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Enter your email"
+      />
+      <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid"
+           class="text-danger small mt-1">
+        Please enter a valid email.
+      </div>
     </div>
 
-    <div class="form-group">
-      <i class="bi bi-lock"></i>
-      <input type="password" formControlName="password" placeholder="Password" />
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label fw-semibold">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter your password"
+      />
+      <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid"
+           class="text-danger small mt-1">
+        Password must be at least 8 characters.
+      </div>
     </div>
-<p class="switch-link">
-  Already have an account?
-  <a (click)="switchToLogin()">Login</a>
-</p>
 
-    <button type="submit" class="btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+    <!-- Sign Up button -->
+    <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="signupForm.invalid">
+      <i class="bi bi-check-circle-fill me-1"></i> Sign Up
+    </button>
+
+    <!-- Switch to login -->
+    <div class="text-center">
+      <span>Already have an account?</span>
+      <a (click)="switchToLogin()" class="fw-semibold" style="cursor: pointer;">Login</a>
+    </div>
   </form>
 </div>

@@ -1,56 +1,33 @@
 @if (showHeader) {
 <nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
-  <!-- Brand / Logo -->
   <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-    <img
-      src="/logo.png"
-      alt="Logo"
-      class="me-2"
-      style="height: 75px; width: 75px; margin-top: -13px; margin-bottom: -13px"
-    />
+    <img src="/logo.png" alt="Logo" class="me-2"
+         style="height: 75px; width: 75px; margin-top: -13px; margin-bottom: -13px" />
     <span class="fw-bold fs-4 text-gradient">Matrix</span>
   </a>
 
-  <!-- Mobile toggle button -->
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarContent"
-  >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- Navbar content -->
   <div class="collapse navbar-collapse" id="navbarContent">
-    <!-- Search Bar -->
     <form class="d-flex mx-auto w-50">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search Products"
-        aria-label="Search"
-      />
+      <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" />
       <button class="btn btn-outline-light" type="submit">Search</button>
     </form>
 
-    <!-- Navigation Links -->
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-      <!-- TEMPORARY ROUTING TO USER LOGIN -->
-      <li class="nav-item me-lg-4">
-        <a (click)="openLogin()" class="nav-link">Login</a>
+      <!-- Show login only if NOT logged in -->
+      <li class="nav-item me-lg-4" *ngIf="!isLoggedIn">
+        <a (click)="openLogin()" class="nav-link" style="cursor: pointer">Login</a>
       </li>
 
-      <!-- Cart Link with Live Count -->
-       <li class="nav-item me-lg-4">
+      <!-- Cart -->
+      <li class="nav-item me-lg-4">
         <a class="nav-link d-flex align-items-center" routerLink="/cart">
           <span class="position-relative me-1">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-              alt="Cart"
-              width="25"
-              style="filter: brightness(0) invert(1)"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
+                 alt="Cart" width="25" style="filter: brightness(0) invert(1)" />
             @if (cartCount > 0) {
               <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
                 {{ cartCount }}
@@ -61,23 +38,15 @@
         </a>
       </li>
 
-      <!-- Profile Dropdown -->
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle d-flex align-items-center"
-          href="#"
-          id="profileDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+      <!-- Profile Dropdown only if logged in -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+           id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-person-circle me-2 fs-5"></i>
           {{ userName }}
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3"
-          aria-labelledby="profileDropdown"
-        >
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3"
+            aria-labelledby="profileDropdown">
           <li>
             <a class="dropdown-item py-2" routerLink="/my_profile">
               <i class="bi bi-person-lines-fill me-2 text-primary"></i> My Profile
@@ -88,7 +57,6 @@
               <i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders
             </a>
           </li>
-          <!--  Admin Login moved here -->
           <li>
             <a class="dropdown-item py-2" routerLink="/admin-login">
               <i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login
@@ -107,7 +75,6 @@
 </nav>
 }
 
-<!-- Push page content down so it doesn't hide behind fixed header -->
 <div style="padding-top: 100px">
   <router-outlet></router-outlet>
 </div>

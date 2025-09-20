@@ -25,32 +25,28 @@ export class UserLoginComponent {
     public dialogRef: MatDialogRef<UserLoginComponent>
   ) {}
 
-  onLogin() {
+  onLogin(): void {
     this.userService.getUsers().subscribe(users => {
       const foundUser = users.find(
         u => u.Email === this.email && u.Password === this.password
       );
 
-      if (foundUser) {
-        if (foundUser.id) {
-          this.authService.login(foundUser.id.toString());
-          this.dialogRef.close();
-          this.router.navigate(['/profile']);
-        } else {
-          this.loginError = true;
-        }
+      if (foundUser && foundUser.id) {
+        this.authService.login(foundUser.id.toString(), foundUser.Name);
+        this.dialogRef.close();
+        this.router.navigate(['/home']);
       } else {
         this.loginError = true;
       }
     });
   }
 
-  closeDialog() {
-    this.dialogRef.close();
+  goToSignup(): void {
+    this.dialogRef.close('open-signup'); // signal Header to open signup popup
   }
 
-  switchToSignup() {
-  this.dialogRef.close('open-signup'); // send signal to open signup dialog
-   }
+  goToAdminLogin(): void {
+    this.dialogRef.close();
+    this.router.navigate(['/admin-login']);
+  }
 }
-

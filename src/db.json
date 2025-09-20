@@ -268,7 +268,7 @@
       "totalPrice": 135,
       "orderDate": "2025-09-14",
       "ShippingAddress": "22 Nehru Street, Coimbatore",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentId": "zz11"
     },
@@ -762,42 +762,10 @@
       "PaymentDetails": "Paytm Wallet: yashv123"
     },
     {
-      "id": "1009",
-      "Name": "jayesh",
-      "Email": "jay@test.com",
-      "Password": "12341234",
-      "ShippingAddress": "",
-      "PaymentDetails": ""
-    },
-    {
-      "id": 1595,
-      "Name": "anuj",
-      "Email": "anuj@test.com",
-      "Password": "hshshhshsh",
-      "ShippingAddress": "",
-      "PaymentDetails": ""
-    },
-    {
-      "id": 1651,
-      "Name": "ajay",
-      "Email": "ajay@test.com",
-      "Password": "ajay12345",
-      "ShippingAddress": "",
-      "PaymentDetails": ""
-    },
-    {
-      "id": 163,
-      "Name": "bhawesh",
-      "Email": "b@test.com",
-      "Password": "bhawesh11",
-      "ShippingAddress": "",
-      "PaymentDetails": ""
-    },
-    {
-      "id": 678,
-      "Name": "saksham",
-      "Email": "s@test.com",
-      "Password": "saksham1122",
+      "id": 777,
+      "Name": "Saksham",
+      "Email": "sg@test.com",
+      "Password": "saksham12",
       "ShippingAddress": "",
       "PaymentDetails": ""
     }
