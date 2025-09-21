@@ -243,6 +243,7 @@
   ],
   "cartItems": [
     {
+<<<<<<< HEAD
       "id": "4d6b",
       "Productid": "105",
       "Quantity": 4,
@@ -253,6 +254,18 @@
       "Productid": "116",
       "Quantity": 3,
       "TotalPrice": 2997
+=======
+      "id": "f590",
+      "Productid": "107",
+      "Quantity": 4,
+      "TotalPrice": 3196
+    },
+    {
+      "id": "c93d",
+      "Productid": "105",
+      "Quantity": 1,
+      "TotalPrice": 199
+>>>>>>> 58cbb28eae5d0e865cf7077f38a983dab4c3b3a9
     }
   ],
   "OrdersList": [
@@ -798,6 +811,602 @@
       "totalPrice": 3793,
       "orderDate": "2025-09-20",
       "ShippingAddress": "",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz9017",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 799,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz1178",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 799,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz5380",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 799,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz8097",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 799,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz3288",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz1280",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz8429",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz6259",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz4404",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz5015",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz5734",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz5502",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz2624",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz3618",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz2692",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz4390",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz7636",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2157,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz2779",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz9570",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2397,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz7637",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz6965",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz9112",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz7931",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3395,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz1303",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3395,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz6539",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3395,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz1805",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3395,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz3389",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz3195",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz6972",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz7557",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz2044",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz4813",
+      "userId": "777",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 4
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2886,
+      "orderDate": "2025-09-20",
+      "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",

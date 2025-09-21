@@ -1,0 +1,22 @@
+/* Pop-in animation for icon */
+.animate-pop {
+  animation: popIn 0.4s ease-in-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Button hover lift effect */
+.btn:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Center the dialog and make it look like a login popup */
+::ng-deep .order-success-dialog .mat-mdc-dialog-container {
+  border-radius: 1rem;
+  padding: 0;
+  max-width: 380px;
+}
