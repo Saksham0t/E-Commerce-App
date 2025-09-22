@@ -27,7 +27,7 @@ export class Header implements OnInit {
   productList: ProductsList[] = [];
 
   // Categories toggle + list
-  showCategories = false;
+  showCategories = true; // open by default
   categories: string[] = ['Electronics', 'Footwear', 'T-Shirts', 'Watches', 'Accessories'];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
