@@ -6,3 +6,69 @@
 .carousel-caption {
   bottom: 20%;
 }
+
+/* Product Card Styling */
+.card {
+  border-radius: 20px; /* Pipe-like rounded corners */
+  border: 1px solid #CABA9C;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+/* Hover Effect */
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(77, 45, 24, 0.3); /* Café Noir shadow */
+}
+
+/* Product Title */
+.card-title {
+  color: #8A6240; /* Raw Umber */
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Product Description */
+.card-text.text-muted {
+  color: #CABA9C; /* Khaki */
+  font-size: 0.9rem;
+}
+
+/* Product Price */
+.card-text.fw-bold.text-success {
+  color: #5c3a24; /* Café Noir */
+  font-size: 1.1rem;
+}
+
+/* Add to Cart Button */
+.btn-outline-primary {
+  background-color: #fff;
+  color: #8A6240;
+  border: 2px solid #8A6240;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #5c3a24;
+  color: #fff;
+  border-color: #5c3a24;
+}
+
+/* View Cart Button */
+.btn-primary {
+  background-color: #5c3a24;
+  border-color: #8A6240;
+  color: #fff;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #5c3a24;
+  border-color: #5c3a24;
+  text-decoration-color: #fff;
+}
