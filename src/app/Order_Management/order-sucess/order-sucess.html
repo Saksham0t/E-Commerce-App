@@ -1,0 +1,30 @@
+<div class="text-center p-4" style="max-width: 360px; margin: auto;">
+  
+  <!-- Success Icon -->
+  <div class="mb-3">
+    <i class="bi bi-check-circle-fill text-success animate-pop" style="font-size: 3rem;"></i>
+  </div>
+
+  <!-- Heading -->
+  <h4 class="fw-bold text-success mb-2">
+    Order Placed Successfully
+  </h4>
+
+  <!-- Emoji -->
+  <div class="fs-3 mb-3">🎉</div>
+
+  <!-- Order Info -->
+  <p class="text-muted fs-6 mb-4">
+    Your order <strong>#{{ data.orderId }}</strong> has been placed successfully.
+  </p>
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-center gap-2 flex-wrap">
+    <button class="btn btn-outline-primary px-3 py-1 rounded-pill fw-semibold shadow-sm" (click)="goHome()">
+      <i class="bi bi-house-door me-1"></i> Home
+    </button>
+    <button class="btn btn-primary px-3 py-1 rounded-pill fw-semibold shadow-sm" (click)="viewOrderDetails()">
+      <i class="bi bi-receipt me-1"></i> Details
+    </button>
+  </div>
+</div>

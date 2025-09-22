@@ -1,0 +1,15 @@
+.cart-item-card {
+  min-height: 160px;
+}
+
+.cart-item-img {
+  width: 100%;
+  max-width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.alert-link {
+  cursor: pointer;
+}

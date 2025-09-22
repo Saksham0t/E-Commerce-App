@@ -1,0 +1,97 @@
+<div class="container my-5">
+  <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+    <div class="card-header bg-primary text-white text-center py-3">
+      <h2 class="mb-0 fw-bold">
+        <i class="bi bi-clipboard-check me-2"></i> Complete Your Purchase
+      </h2>
+    </div>
+
+    <div class="card-body p-4">
+      <form #orderForm="ngForm">
+        <!-- Shipping Details -->
+        <div class="mb-4">
+          <h4 class="text-secondary mb-3">
+            <i class="bi bi-truck me-2"></i> Shipping Information
+          </h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Full Name</label>
+              <input type="text" class="form-control" [(ngModel)]="shipping.name" name="name" required>
+              <div class="text-danger small mt-1" *ngIf="formSubmitted && !shipping.name">
+                Name is required.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Phone Number</label>
+              <input type="tel" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
+              <div class="text-danger small mt-1" *ngIf="formSubmitted && !shipping.phone">
+                Phone is required.
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold">Full Address</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="shipping.address" name="address" required></textarea>
+              <div class="text-danger small mt-1" *ngIf="formSubmitted && !shipping.address">
+                Address is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <h4 class="mt-4 text-secondary mb-3">
+          <i class="bi bi-bag-check me-2"></i> Your Cart
+        </h4>
+        <ul class="list-group mb-3 shadow-sm rounded">
+          <li class="list-group-item d-flex align-items-center" *ngFor="let item of enrichedCart">
+            <img [src]="item.image" alt="{{ item.name }}" width="60" class="me-3 rounded shadow-sm">
+            <div class="flex-grow-1">
+              <h6 class="mb-1 fw-semibold">{{ item.name }}</h6>
+              <small class="text-muted">{{ item.description }}</small><br>
+              <span class="badge bg-light text-dark mt-1">Qty: {{ item.Quantity }}</span>
+            </div>
+            <strong class="ms-3 text-success">₹{{ item.TotalPrice }}</strong>
+          </li>
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span class="text-danger fw-bold">
+                <i class="bi bi-tag-fill me-1"></i> Discount
+              </span>
+              <span class="text-danger fw-bold">− ₹{{ getDiscountfromcartService() }}</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 border-top pt-2">
+              <span class="fw-bold fs-5">Total</span>
+              <span class="fw-bold fs-5 text-success">₹{{ getTotal() }}</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Proceed to Payment Button -->
+        <button type="button"
+                class="btn btn-success w-100 btn-lg rounded-pill"
+                (click)="proceedToPayment()"
+                *ngIf="!showPaymentOptions">
+          <i class="bi bi-cash-stack me-2"></i> Proceed to Payment
+        </button>
+
+        <!-- Payment Options -->
+        <div *ngIf="showPaymentOptions" class="mt-4">
+          <h4 class="text-secondary mb-3">
+            <i class="bi bi-credit-card me-2"></i> Select Payment Method
+          </h4>
+          <div class="form-check mb-2" *ngFor="let method of paymentMethods">
+            <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment" required>
+            <label class="form-check-label">{{ method }}</label>
+          </div>
+
+          <button type="button"
+                  class="btn btn-primary w-100 btn-lg mt-3 rounded-pill"
+                  (click)="submitOrder()"
+                  [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
+            <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
