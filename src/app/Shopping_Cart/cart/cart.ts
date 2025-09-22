@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../cart-service';
+import { AuthService } from '../../User_Authentication/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserLoginComponent } from '../../User_Authentication/user-login/user-login';
 
 @Component({
   selector: 'cart',
@@ -11,35 +14,28 @@ import { CartService } from '../cart-service';
   styleUrls: ['./cart.css']
 })
 export class Cart implements OnInit {
-
-  // Data for the cart
   cartItems: any[] = [];
-
-  // Summary values
-  totalAmount = 0;       // Subtotal of all items
-  grandTotal = 0;        // Final total after delivery & discount
-  deliveryCharge = 0;    // Delivery fee (if any)
-  discountAmount=0;// Discount amount (if any)
-
-  // Messages for the UI
+  totalAmount = 0;
+  grandTotal = 0;
+  deliveryCharge = 0;
+  discountAmount = 0;
   deliveryMessage = '';
   discountMessage = '';
 
   constructor(
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
-  
 
   ngOnInit(): void {
     this.loadCartItems();
-  } 
+  }
 
-  /** Load cart items from the service */
   loadCartItems(): void {
     this.cartService.getCartItemsWithDetails().subscribe({
       next: (items) => {
-        // Ensure numeric values for Quantity and Price
         this.cartItems = items.map(item => ({
           ...item,
           Quantity: Number(item?.Quantity || 0),
@@ -51,26 +47,18 @@ export class Cart implements OnInit {
     });
   }
 
-  /** Calculate totals, delivery charges, and discounts */
   updateSummary(): void {
-    // Calculate subtotal
     this.totalAmount = this.cartItems.reduce(
       (sum, item) => sum + (item.Price * item.Quantity),
       0
     );
-    // this.cartItems.reduce(
-    //   (sum, item) => sum + (item.Price * item.Quantity),
-    //   0
-    // );
 
-    // Reset values
     this.deliveryCharge = 0;
     this.discountAmount = 0;
     this.deliveryMessage = '';
     this.discountMessage = '';
 
     if (this.cartItems.length > 0) {
-      // Delivery logic
       if (this.totalAmount < 500) {
         this.deliveryCharge = 50;
         this.deliveryMessage = '🚚 Orders below ₹500 incur a ₹50 delivery charge.';
@@ -78,7 +66,6 @@ export class Cart implements OnInit {
         this.deliveryMessage = '🎉 Free delivery on your order!';
       }
 
-      // Discount logic
       if (this.totalAmount >= 3000) {
         this.discountAmount = this.totalAmount * 0.15;
         this.discountMessage = '🔥 You unlocked 15% OFF for spending over ₹3000!';
@@ -92,13 +79,10 @@ export class Cart implements OnInit {
     }
 
     this.cartService.setDiscount(this.discountAmount);
-
-    // Final total
     this.grandTotal = this.totalAmount + this.deliveryCharge - this.discountAmount;
     if (this.grandTotal < 0) this.grandTotal = 0;
   }
 
-  /** Increase quantity of an item */
   increaseQuantity(item: any): void {
     const newQty = item.Quantity + 1;
     const newTotal = item.Price * newQty;
@@ -111,9 +95,8 @@ export class Cart implements OnInit {
       });
   }
 
-  /** Decrease quantity of an item */
   decreaseQuantity(item: any): void {
-    if (item.Quantity <= 1) return; // Prevent going below 1
+    if (item.Quantity <= 1) return;
 
     const newQty = item.Quantity - 1;
     const newTotal = item.Price * newQty;
@@ -126,7 +109,6 @@ export class Cart implements OnInit {
       });
   }
 
-  /** Remove an item from the cart */
   removeItem(id: number | string): void {
     this.cartService.removeFromCart(id).subscribe(() => {
       this.cartItems = this.cartItems.filter(item => item.id !== id);
@@ -134,12 +116,19 @@ export class Cart implements OnInit {
     });
   }
 
-  /** Navigate to the home page */
   goToHome(): void {
     this.router.navigate(['/home']);
   }
 
   goToSummary(): void {
+    if (!this.authService.isAuthenticated()) {
+      // Open login popup instead of navigating
+      this.dialog.open(UserLoginComponent, {
+        width: '400px',
+        panelClass: 'custom-dialog-container'
+      });
+      return;
+    }
     this.router.navigate(['/summary']);
   }
 }

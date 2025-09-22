@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { User, UserService } from '../services/user';
+import { UserService } from '../services/user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -30,10 +30,11 @@ export class UserSignupComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.signupForm.valid) {
-      const generatedId = Math.floor(1000 + Math.random() * 900);
-      const newUser: User = {
+      const generatedId = Math.floor(100 + Math.random() * 900);
+
+      const newUser = {
         id: generatedId,
         Name: this.signupForm.value.username,
         Email: this.signupForm.value.email,
@@ -43,19 +44,20 @@ export class UserSignupComponent {
       };
 
       this.userService.addUser(newUser).subscribe(() => {
-        this.authService.login(generatedId.toString());
+        this.authService.login(newUser.id.toString(), newUser.Name);
         this.dialogRef.close();
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/home']);
       });
-    }else {
-    this.signupForm.markAllAsTouched();
-  }
+    } else {
+      this.signupForm.markAllAsTouched();
+    }
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close();
   }
-switchToLogin() {
-  this.dialogRef.close('open-login'); // send signal to open login dialog
-}
+
+  switchToLogin(): void {
+    this.dialogRef.close('open-login'); // signal Header to open login popup
+  }
 }

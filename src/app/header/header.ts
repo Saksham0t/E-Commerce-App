@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../Shopping_Cart/cart-service';
 import { AuthService } from '../User_Authentication/services/auth.service';
 import { UserLoginComponent } from '../User_Authentication/user-login/user-login';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserSignupComponent } from '../User_Authentication/user-signup/user-signup';
 
 @Component({
@@ -15,11 +15,11 @@ import { UserSignupComponent } from '../User_Authentication/user-signup/user-sig
   styleUrls: ['./header.css']
 })
 export class Header implements OnInit {
-
+  userName: string = 'Guest';
   cartCount = 0;
-  isLoggedIn = false; // Replace with real auth check later
-  userName = 'Guest';
-  // dialog property removed to avoid duplicate identifier error
+  isLoggedIn = false;
+
+  private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
 
   constructor(
     public router: Router,
@@ -29,57 +29,48 @@ export class Header implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to cart count updates
-    this.cartService.cartCount$.subscribe(count => {
-      this.cartCount = count;
-    });
+    this.cartService.cartCount$.subscribe(count => this.cartCount = count);
+    this.authService.userName$.subscribe(name => this.userName = name);
+    this.authService.isLoggedIn$.subscribe(status => this.isLoggedIn = status);
 
-    // Example: check login status (replace with real auth logic)
-    // this.isLoggedIn = authService.isLoggedIn();
-    // this.userName = authService.getUserName();
+    const storedName = this.authService.getUserName();
+    if (storedName) this.userName = storedName;
   }
 
-  get showHeader(): boolean {
-    return !this.router.url.startsWith('/admin');
-  }
-
-  goToHome(): void {
-    this.router.navigate(['/home']);
-  }
+  // get showHeader(): boolean {
+  //   return !this.router.url.startsWith('/admin');
+  // }
 
   logout(): void {
-    this.authService.logout(); 
+    this.authService.logout();
   }
 
-  // openLogin() {
-  //   this.dialog.open(UserLoginComponent, {
-  //     width: '400px',
-  //     panelClass: 'custom-dialog-container'
-  //   });
-  // }
-openLogin() {
-  const dialogRef = this.dialog.open(UserLoginComponent, {
-    width: '400px',
-    panelClass: 'custom-dialog-container'
-  });
+  openLogin(): void {
+    if (this.loginDialogRef) return; // prevent multiple popups
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result === 'open-signup') {
-      this.openSignup();
-    }
-  });
-}
+    this.loginDialogRef = this.dialog.open(UserLoginComponent, {
+      width: '400px',
+      panelClass: 'custom-dialog-container'
+    });
 
-openSignup() {
-  const dialogRef = this.dialog.open(UserSignupComponent, {
-    width: '400px',
-    panelClass: 'custom-dialog-container'
-  });
+    this.loginDialogRef.afterClosed().subscribe((result: any) => {
+      this.loginDialogRef = null;
+      if (result === 'open-signup') {
+        this.openSignup();
+      }
+    });
+  }
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result === 'open-login') {
-      this.openLogin();
-    }
-  });
-}
+  openSignup(): void {
+    const signupDialogRef = this.dialog.open(UserSignupComponent, {
+      width: '400px',
+      panelClass: 'custom-dialog-container'
+    });
+
+    signupDialogRef.afterClosed().subscribe((result: any) => {
+      if (result === 'open-login') {
+        this.openLogin();
+      }
+    });
+  }
 }

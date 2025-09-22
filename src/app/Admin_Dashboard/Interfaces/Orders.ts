@@ -7,6 +7,7 @@ export interface Orders {
   ShippingAddress: string;
   orderStatus: string; // restrict to known statuses
   paymentStatus: string;
+  paymentMethod: string;
   id: string; // internal tracking or frontend reference
 }
 

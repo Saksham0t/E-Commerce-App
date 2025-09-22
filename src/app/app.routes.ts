@@ -16,10 +16,10 @@ import { UserSignupComponent } from './User_Authentication/user-signup/user-sign
 import { AdminLoginComponent } from './Admin_Dashboard/admin-login/admin-login';
 import { AdminAuthGuard } from './Admin_Dashboard/admin-auth-guard';
 import { Home } from './Product_Management/home/home';
-import { HttpClientModule } from '@angular/common/http';
-import { UserLoginComponent } from './User_Authentication/user-login/user-login';
 import { CommonModule } from '@angular/common';
 import { PlaceOrder } from './Order_Management/place-order/place-order';
+import { ViewOrders } from './Order_Management/view-orders/view-orders';
+import { MyProfileComponent } from './User_Authentication/my-profile/my-profile';
 
 NgModule({
     imports: [
@@ -32,7 +32,6 @@ NgModule({
         RouterModule,
         FormGroup,
         ReactiveFormsModule,
-        HttpClientModule,
         CommonModule
     ]
 })
@@ -54,8 +53,9 @@ export const routes: Routes = [
     },
     {path:'home',component:Home},
     {path:'',redirectTo:'/home',pathMatch:'full'},
-    {path:'summary',component:PlaceOrder}
-
+    {path:'summary',component:PlaceOrder},
+    {path:'my-profile',component:MyProfileComponent},
+    {path:'view-orders',component:ViewOrders}
 ];
 
 
