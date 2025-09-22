@@ -54,7 +54,8 @@ export const routes: Routes = [
     {path:'home',component:Home},
     {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'summary',component:PlaceOrder},
-    {path:'my-profile',component:MyProfileComponent}
+    {path:'my-profile',component:MyProfileComponent},
+    {path:'view-orders',component:ViewOrders}
 ];
 
 
