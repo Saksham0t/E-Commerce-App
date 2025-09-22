@@ -1,72 +1,75 @@
-<h4 class="text-center fw-bold mb-4">
-  <i class="bi bi-bag-check-fill me-2 text-primary"></i> My Orders
-</h4>
+<div class="container py-4">
+  <h4 class="text-center fw-bold mb-4">
+    <i class="bi bi-bag-check-fill me-2 text-primary"></i> My Orders
+  </h4>
 
-<table class="table table-bordered table-hover text-center align-middle">
-  <thead class="table-primary">
-    <tr>
-      <th>Order Number</th>
-      <th>No. of Products</th>
-      <th>Total Price</th>
-      <th>Order Date</th>
-      <th>Shipping Address</th>
-      <th>Order Status</th>
-      <th>Payment Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let o of OrdersLst">
-      <td class="fw-semibold">#{{ o.id }}</td>
-      <td>{{ o.products.length }}</td>
-      <td class="text-success">₹{{ o.totalPrice }}</td>
-      <td>{{ o.orderDate }}</td>
-      <td>{{ o.ShippingAddress }}</td>
-      <td><span class="badge bg-warning text-dark">{{ o.orderStatus }}</span></td>
-      <td><span class="badge bg-danger">{{ o.paymentStatus }}</span></td>
-      <td>
-        <button class="btn btn-sm btn-outline-primary" (click)="viewOrderDetails(o)">
-          <i class="bi bi-eye-fill me-1"></i> Details
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr class="text-secondary">
+          <th>Order #</th>
+          <th>Products</th>
+          <th>Total</th>
+          <th>Date</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Payment</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let o of OrdersLst">
+          <!-- Order Row -->
+          <tr>
+            <td class="fw-semibold">#{{ o.id }}</td>
+            <td>{{ o.products.length }}</td>
+            <td class="text-success">₹{{ o.totalPrice }}</td>
+            <td>{{ o.orderDate }}</td>
+            <td>{{ o.ShippingAddress }}</td>
+            <td><span class="badge bg-warning text-dark">{{ o.orderStatus }}</span></td>
+            <td><span class="badge bg-danger">{{ o.paymentStatus }}</span></td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2 mx-auto"
+                      (click)="viewOrderDetails(o)">
+                <i class="bi"
+                   [ngClass]="selectedOrder?.id === o.id ? 'bi-x-circle-fill text-danger' : 'bi-eye-fill text-primary'"></i>
+                <span>
+                  {{ selectedOrder?.id === o.id ? 'Hide Details' : 'View Details' }}
+                </span>
+              </button>
+            </td>
+          </tr>
 
-<div *ngIf="selectedOrder" class="card mt-4 shadow-sm border-0">
-  <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Order Details - #{{ selectedOrder.id }}</h5>
-    <span class="badge bg-light text-dark">{{ selectedOrder.orderStatus }}</span>
-  </div>
-  <div class="card-body">
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <p><strong>Shipping Address:</strong> {{ selectedOrder.ShippingAddress }}</p>
-        <p><strong>Order Date:</strong> {{ selectedOrder.orderDate }}</p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>Payment Status:</strong> {{ selectedOrder.paymentStatus }}</p>
-        <p><strong>Total Price:</strong> ₹{{ selectedOrder.totalPrice }}</p>
-      </div>
-    </div>
-
-    <h6 class="mb-3">Products:</h6>
-    <ul class="list-group">
-      <li class="list-group-item d-flex align-items-center" *ngFor="let p of selectedOrder.products">
-        <img
-          [src]="getProductDetails(p.id)?.ImageURL"
-          alt="Product Image"
-          width="60"
-          class="me-3 rounded border"
-        />
-        <div class="flex-grow-1">
-          <div><strong>{{ getProductDetails(p.id)?.name }}</strong></div>
-          <small>Quantity: {{ p.quantity }} | Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
-        </div>
-      </li>
-      <li class="list-group-item text-end fw-bold">
-        Total: ₹{{ selectedOrder.totalPrice }}
-      </li>
-    </ul>
+          <!-- Inline Details Row -->
+          <tr *ngIf="selectedOrder?.id === o.id">
+            <td colspan="8" class="bg-light">
+              <div class="p-3 border rounded shadow-sm">
+                <h6 class="mb-3 text-primary">🛒 Products in Order #{{ o.id }}</h6>
+                <div class="row g-3">
+                  <div *ngFor="let p of o.products" class="col-md-6">
+                    <div class="d-flex align-items-center border rounded p-2 bg-white shadow-sm">
+                      <img
+                        [src]="getProductDetails(p.id)?.ImageURL"
+                        alt="Product Image"
+                        width="60"
+                        class="me-3 rounded border"
+                      />
+                      <div>
+                        <h6 class="mb-1">{{ getProductDetails(p.id)?.name }}</h6>
+                        <small class="text-muted">Quantity: {{ p.quantity }}</small><br>
+                        <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-3">
+                <p class="mb-0"><strong>💳 Payment Status:</strong> {{ o.paymentStatus }}</p>
+                <p class="text-end fw-bold mt-2">🧾 Total Price: ₹{{ o.totalPrice }}</p>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </div>

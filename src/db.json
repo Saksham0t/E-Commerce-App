@@ -3,7 +3,7 @@
     {
       "id": "101",
       "name": "Nike T-shirt",
-      "Price": 100,
+      "Price": 1000,
       "Category": "T-shirts",
       "Description": "Very beautiful T-shirt",
       "ImageURL": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQzUT7Y_DUcvjUhbncSdKB9IpLaO_M_kswYBqojdD91QBCjwhQ9TJ9cOtbr7QT4Tuv2ytc85DG1WiBp8Vg5s7r56O73Vq2aXCRFqZ17gYqcMcuYoRQzKeOK"
@@ -243,107 +243,34 @@
   ],
   "cartItems": [
     {
-      "id": "e341",
-      "Productid": "101",
+      "id": "5663",
+      "Productid": "105",
       "Quantity": 1,
-      "TotalPrice": 100
+      "TotalPrice": 199
+    },
+    {
+      "id": "d9f8",
+      "Productid": "122",
+      "Quantity": 1,
+      "TotalPrice": 130
+    },
+    {
+      "id": "44bc",
+      "Productid": "118",
+      "Quantity": 1,
+      "TotalPrice": 249
+    },
+    {
+      "id": "9fc6",
+      "Productid": "124",
+      "Quantity": 1,
+      "TotalPrice": 899
     }
   ],
   "OrdersList": [
+    
     {
-      "id": "5004",
-      "userId": "204",
-      "products": [
-        {
-          "productId": "106",
-          "quantity": 3
-        }
-      ],
-      "totalPrice": 135,
-      "orderDate": "2025-09-14",
-      "ShippingAddress": "22 Nehru Street, Coimbatore",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Pending",
-      "paymentId": "zz11"
-    },
-    {
-      "id": "5005",
-      "userId": "205",
-      "products": [
-        {
-          "productId": "101",
-          "quantity": 1
-        },
-        {
-          "productId": "102",
-          "quantity": 2
-        }
-      ],
-      "totalPrice": 600,
-      "orderDate": "2025-09-15",
-      "ShippingAddress": "88 Brigade Road, Bengaluru",
-      "orderStatus": "Confirmed",
-      "paymentStatus": "Paid",
-      "paymentId": "yy22"
-    },
-    {
-      "id": "5006",
-      "userId": "206",
-      "products": [
-        {
-          "productId": "103",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 399,
-      "orderDate": "2025-09-15",
-      "ShippingAddress": "12 Residency Road, Mumbai",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Paid",
-      "paymentId": "xx33"
-    },
-    {
-      "id": "5007",
-      "userId": "201",
-      "products": [
-        {
-          "productId": "105",
-          "quantity": 2
-        },
-        {
-          "productId": "104",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 473,
-      "orderDate": "2025-09-16",
-      "ShippingAddress": "5 Park Street, Kolkata",
-      "orderStatus": "Shipped",
-      "paymentStatus": "Paid",
-      "paymentId": "ww44"
-    },
-    {
-      "id": "5008",
-      "userId": "205",
-      "products": [
-        {
-          "productId": "102",
-          "quantity": 1
-        },
-        {
-          "productId": "106",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 295,
-      "orderDate": "2025-09-16",
-      "ShippingAddress": "9 Anna Nagar, Chennai",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentId": "vv55"
-    },
-    {
-      "id": "zz6869",
+      "id": "6869",
       "Id": "zz9757",
       "userId": "204",
       "products": [
@@ -971,6 +898,76 @@
       "totalPrice": 1464,
       "orderDate": "2025-09-22",
       "ShippingAddress": "e2de",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz4559",
+      "userId": "201",
+      "products": [
+        {
+          "id": "101",
+          "quantity": 1
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        },
+        {
+          "id": "107",
+          "quantity": 1
+        },
+        {
+          "id": "113",
+          "quantity": 1
+        },
+        {
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "116",
+          "quantity": 1
+        },
+        {
+          "id": "120",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2737,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "e2de",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz2561",
+      "userId": "201",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 1
+        },
+        {
+          "id": "122",
+          "quantity": 1
+        },
+        {
+          "id": "118",
+          "quantity": 1
+        },
+        {
+          "id": "124",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1329,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "118/26 CHIL SEZ IT PARK",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
