@@ -15,7 +15,7 @@ export class admin {
     localStorage.removeItem('isAdminLoggedIn');
 
     // Redirect to admin login
-    this.router.navigate(['/admin-login']);
+    this.router.navigate(['/home']);
   }
   currentScreen = 1;
 
