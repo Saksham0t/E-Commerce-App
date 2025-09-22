@@ -5,10 +5,11 @@ import { Orders } from '../../Interfaces/Orders';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-customers',
-  imports: [CommonModule,FormsModule,HttpClientModule],
+  imports: [CommonModule,FormsModule,HttpClientModule,RouterModule],
   templateUrl: './customers.html',
   styleUrl: './customers.css',
   providers:[Rest1,HttpClientModule]
