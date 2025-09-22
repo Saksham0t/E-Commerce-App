@@ -20,17 +20,38 @@
 
   <div class="collapse navbar-collapse" id="navbarContent">
     <!-- Search Bar -->
-    <form class="d-flex mx-auto w-50">
-      <input
-        class="form-control me-2 rounded-pill shadow-sm border-0 px-3"
-        type="search"
-        placeholder="🔍 Search for products..."
-        aria-label="Search"
-      />
-      <button class="btn btn-light rounded-pill px-4 fw-semibold shadow-sm" type="submit">
-        Search
-      </button>
-    </form>
+    <form class="d-flex mx-auto w-50 align-items-start position-relative">
+  <div class="w-100 position-relative">
+    <input
+      class="form-control rounded-pill shadow-sm border-0 px-3"
+      type="search"
+      placeholder="🔍 Search for products..."
+      aria-label="Search"
+      [(ngModel)]="search"
+      (input)="updateSuggestions()"
+      name="search"
+      autocomplete="off"
+    />
+
+    <ul *ngIf="suggestions.length > 0"
+        class="list-group position-absolute w-100 mt-2 bg-white shadow rounded"
+        style="z-index: 1050;">
+      <li
+        class="list-group-item list-group-item-action"
+        *ngFor="let suggestion of suggestions"
+        (click)="selectSuggestion(suggestion)"
+      >
+        {{ suggestion }}
+      </li>
+    </ul>
+  </div>
+
+  <button class="btn btn-light rounded-pill px-4 fw-semibold shadow-sm ms-2" type="submit" (click)="searchNow()">
+    Search
+  </button>
+</form>
+
+
 
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
       <!-- Login Button -->
