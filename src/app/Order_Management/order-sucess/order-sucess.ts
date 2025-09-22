@@ -22,6 +22,6 @@ export class OrderSuccessComponent {
 
   viewOrderDetails() {
     this.dialogRef.close();
-    this.router.navigate(['/order-details']);
+    this.router.navigate(['/my-profile']);
   }
 }
