@@ -37,9 +37,9 @@ export class Header implements OnInit {
     if (storedName) this.userName = storedName;
   }
 
-  // get showHeader(): boolean {
-  //   return !this.router.url.startsWith('/admin');
-  // }
+  get showHeader(): boolean {
+    return !this.router.url.startsWith('/admin');
+  }
 
   logout(): void {
     this.authService.logout();
