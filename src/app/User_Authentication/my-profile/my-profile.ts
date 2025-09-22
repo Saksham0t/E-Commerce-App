@@ -2,22 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-=======
 import { FormsModule } from '@angular/forms';
 
 // ✅ Use the global bootstrap object from angular.json scripts
 declare const bootstrap: any;
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
 
 @Component({
   selector: 'app-my-profile',
   standalone: true,
-<<<<<<< HEAD
-  imports: [CommonModule, HttpClientModule],
-=======
   imports: [CommonModule, HttpClientModule, FormsModule],
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
   templateUrl: './my-profile.html',
   styleUrls: ['./my-profile.css']
 })
@@ -28,11 +21,6 @@ export class MyProfileComponent implements OnInit {
   selectedOrder: any = null;
   isLoading = true;
 
-<<<<<<< HEAD
-  // track which section is active
-  activeTab: 'profile' | 'orders' | 'settings' = 'profile';
-
-=======
   activeTab: 'profile' | 'orders' | 'settings' = 'profile';
 
   // Modal state
@@ -41,7 +29,6 @@ export class MyProfileComponent implements OnInit {
   modalValue = '';
   private modalRef: any = null;
 
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -51,20 +38,12 @@ export class MyProfileComponent implements OnInit {
       return;
     }
 
-<<<<<<< HEAD
-    // fetch user
-=======
     // Fetch user
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
     this.http.get<any[]>(`http://localhost:3000/users?id=${userId}`).subscribe({
       next: (users) => (this.user = users[0] || {})
     });
 
-<<<<<<< HEAD
-    // fetch orders
-=======
     // Fetch orders
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
     this.http.get<any[]>(`http://localhost:3000/OrdersList?userId=${userId}`).subscribe({
       next: (data) => {
         this.orders = data;
@@ -72,11 +51,7 @@ export class MyProfileComponent implements OnInit {
       }
     });
 
-<<<<<<< HEAD
-    // fetch products
-=======
     // Fetch products
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
     this.http.get<any[]>(`http://localhost:3000/ProductsList`).subscribe({
       next: (data) => (this.products = data)
     });
@@ -95,22 +70,6 @@ export class MyProfileComponent implements OnInit {
     return this.products.find(p => p.id === productId);
   }
 
-<<<<<<< HEAD
-  logout() {
-    localStorage.removeItem('userId');
-    this.router.navigate(['/login']);
-  }
-
-  updateField(field: string, label: string) {
-    const newValue = prompt(`Enter new ${label}:`, this.user[field] || '');
-    if (newValue && newValue.trim() !== '') {
-      const updatedUser = { ...this.user, [field]: newValue };
-      this.http.put(`http://localhost:3000/users/${this.user.id}`, updatedUser).subscribe({
-        next: () => (this.user = updatedUser)
-      });
-    }
-  }
-=======
   // ✅ Open Bootstrap modal
   openUpdateModal(field: string, label: string) {
     this.modalField = field;
@@ -137,5 +96,4 @@ export class MyProfileComponent implements OnInit {
       }
     });
   }
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
 }

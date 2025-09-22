@@ -1,13 +1,4 @@
 <div class="container my-5" *ngIf="!isLoading">
-<<<<<<< HEAD
-  <div class="row">
-    <!-- Sidebar -->
-    <div class="col-md-3 mb-4">
-      <div class="list-group shadow-sm">
-        <a class="list-group-item" [class.active]="activeTab==='profile'" (click)="setTab('profile')">Profile Info</a>
-        <a class="list-group-item" [class.active]="activeTab==='orders'" (click)="setTab('orders')">My Orders</a>
-        <a class="list-group-item" [class.active]="activeTab==='settings'" (click)="setTab('settings')">Settings</a>
-=======
   <div class="row g-4">
     
     <!-- Sidebar -->
@@ -28,22 +19,11 @@
            (click)="setTab('settings')">
           <i class="bi bi-gear me-2"></i> Settings
         </a>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
       </div>
     </div>
 
     <!-- Main Content -->
     <div class="col-md-9">
-<<<<<<< HEAD
-      <!-- Profile Info -->
-      <div *ngIf="activeTab==='profile'" class="card mb-4">
-        <div class="card-header bg-primary text-white">Profile Information</div>
-        <div class="card-body">
-          <p><strong>Name:</strong> {{ user.Name }}</p>
-          <p><strong>Email:</strong> {{ user.Email }}</p>
-          <p><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
-          <p><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
-=======
       
       <!-- Profile Info -->
       <div *ngIf="activeTab==='profile'" class="card border-0 shadow-sm rounded-3 mb-4">
@@ -55,21 +35,10 @@
           <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
           <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
           <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
         </div>
       </div>
 
       <!-- Orders -->
-<<<<<<< HEAD
-      <div *ngIf="activeTab==='orders'" class="card mb-4">
-        <div class="card-header bg-secondary text-white">My Orders</div>
-        <div class="card-body">
-          <table class="table table-bordered text-center" *ngIf="orders.length; else noOrders">
-            <thead class="table-primary">
-              <tr>
-                <th>#</th><th>Products</th><th>Total</th><th>Date</th>
-                <th>Address</th><th>Status</th><th>Payment</th><th></th>
-=======
       <div *ngIf="activeTab==='orders'" class="card border-0 shadow-sm rounded-3 mb-4">
         <div class="card-header bg-secondary text-white fw-bold">
           <i class="bi bi-bag-check-fill me-2"></i> My Orders
@@ -86,20 +55,10 @@
                 <th>Status</th>
                 <th>Payment</th>
                 <th></th>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let o of orders">
-<<<<<<< HEAD
-                <td>#{{ o.id }}</td>
-                <td>{{ o.products.length }}</td>
-                <td>₹{{ o.totalPrice }}</td>
-                <td>{{ o.orderDate }}</td>
-                <td>{{ o.ShippingAddress }}</td>
-                <td>{{ o.orderStatus }}</td>
-                <td>{{ o.paymentStatus }}</td>
-=======
                 <td class="fw-semibold">#{{ o.id }}</td>
                 <td>{{ o.products.length }}</td>
                 <td class="text-success fw-bold">₹{{ o.totalPrice }}</td>
@@ -114,7 +73,6 @@
                     {{ o.paymentStatus }}
                   </span>
                 </td>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
                 <td>
                   <button class="btn btn-sm btn-outline-primary" (click)="viewOrderDetails(o)">
                     {{ selectedOrder?.id===o.id ? 'Hide' : 'Details' }}
@@ -123,12 +81,6 @@
               </tr>
             </tbody>
           </table>
-<<<<<<< HEAD
-          <ng-template #noOrders><p>No orders found.</p></ng-template>
-
-          <div *ngIf="selectedOrder" class="card mt-3">
-            <div class="card-header bg-dark text-white">Order #{{ selectedOrder.id }} Details</div>
-=======
           <ng-template #noOrders>
             <div class="alert alert-info mb-0">No orders found.</div>
           </ng-template>
@@ -138,23 +90,15 @@
             <div class="card-header bg-dark text-white fw-bold">
               Order #{{ selectedOrder.id }} Details
             </div>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
             <div class="card-body">
               <p><strong>Address:</strong> {{ selectedOrder.ShippingAddress }}</p>
               <p><strong>Date:</strong> {{ selectedOrder.orderDate }}</p>
               <p><strong>Status:</strong> {{ selectedOrder.orderStatus }}</p>
               <p><strong>Payment:</strong> {{ selectedOrder.paymentStatus }}</p>
-<<<<<<< HEAD
-              <ul class="list-group">
-                <li class="list-group-item" *ngFor="let p of selectedOrder.products">
-                  {{ getProductDetails(p.id)?.name }} × {{ p.quantity }}
-                  (₹{{ getProductDetails(p.id)?.Price }})
-=======
               <ul class="list-group list-group-flush">
                 <li class="list-group-item" *ngFor="let p of selectedOrder.products">
                   {{ getProductDetails(p.id)?.name }} × {{ p.quantity }}
                   <span class="text-muted">(₹{{ getProductDetails(p.id)?.Price }})</span>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
                 </li>
               </ul>
             </div>
@@ -163,16 +107,6 @@
       </div>
 
       <!-- Settings -->
-<<<<<<< HEAD
-      <div *ngIf="activeTab==='settings'" class="card">
-        <div class="card-header bg-dark text-white">Account Settings</div>
-        <div class="card-body">
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('Password','Password')">Change Password</button>
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('ShippingAddress','Shipping Address')">Update Address</button>
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('PaymentDetails','Payment Details')">Update Payment</button>
-          <button class="btn btn-danger" (click)="logout()">Logout</button>
-        </div>
-=======
       <div *ngIf="activeTab==='settings'" class="card border-0 shadow-sm rounded-3">
         <div class="card-header bg-dark text-white fw-bold">
           <i class="bi bi-gear-fill me-2"></i> Account Settings
@@ -220,7 +154,6 @@
         <button type="button" class="btn btn-primary" (click)="saveField()">
           Save Changes
         </button>
->>>>>>> 7ccdfa2211f709f60b02af26a296c0a6c4533bd4
       </div>
     </div>
   </div>
