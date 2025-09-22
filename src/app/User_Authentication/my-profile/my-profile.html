@@ -1,47 +1,78 @@
 <div class="container my-5" *ngIf="!isLoading">
-  <div class="row">
+  <div class="row g-4">
+    
     <!-- Sidebar -->
-    <div class="col-md-3 mb-4">
-      <div class="list-group shadow-sm">
-        <a class="list-group-item" [class.active]="activeTab==='profile'" (click)="setTab('profile')">Profile Info</a>
-        <a class="list-group-item" [class.active]="activeTab==='orders'" (click)="setTab('orders')">My Orders</a>
-        <a class="list-group-item" [class.active]="activeTab==='settings'" (click)="setTab('settings')">Settings</a>
+    <div class="col-md-3">
+      <div class="list-group shadow-sm rounded-3 overflow-hidden">
+        <a class="list-group-item list-group-item-action py-3 fw-semibold"
+           [class.active]="activeTab==='profile'" 
+           (click)="setTab('profile')">
+          <i class="bi bi-person-circle me-2"></i> Profile Info
+        </a>
+        <a class="list-group-item list-group-item-action py-3 fw-semibold"
+           [class.active]="activeTab==='orders'" 
+           (click)="setTab('orders')">
+          <i class="bi bi-bag-check me-2"></i> My Orders
+        </a>
+        <a class="list-group-item list-group-item-action py-3 fw-semibold"
+           [class.active]="activeTab==='settings'" 
+           (click)="setTab('settings')">
+          <i class="bi bi-gear me-2"></i> Settings
+        </a>
       </div>
     </div>
 
     <!-- Main Content -->
     <div class="col-md-9">
+      
       <!-- Profile Info -->
-      <div *ngIf="activeTab==='profile'" class="card mb-4">
-        <div class="card-header bg-primary text-white">Profile Information</div>
+      <div *ngIf="activeTab==='profile'" class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header bg-primary text-white fw-bold">
+          <i class="bi bi-person-lines-fill me-2"></i> Profile Information
+        </div>
         <div class="card-body">
-          <p><strong>Name:</strong> {{ user.Name }}</p>
-          <p><strong>Email:</strong> {{ user.Email }}</p>
-          <p><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
-          <p><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
+          <p class="mb-2"><strong>Name:</strong> {{ user.Name }}</p>
+          <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
+          <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
+          <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
         </div>
       </div>
 
       <!-- Orders -->
-      <div *ngIf="activeTab==='orders'" class="card mb-4">
-        <div class="card-header bg-secondary text-white">My Orders</div>
+      <div *ngIf="activeTab==='orders'" class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header bg-secondary text-white fw-bold">
+          <i class="bi bi-bag-check-fill me-2"></i> My Orders
+        </div>
         <div class="card-body">
-          <table class="table table-bordered text-center" *ngIf="orders.length; else noOrders">
+          <table class="table table-hover align-middle text-center" *ngIf="orders.length; else noOrders">
             <thead class="table-primary">
               <tr>
-                <th>#</th><th>Products</th><th>Total</th><th>Date</th>
-                <th>Address</th><th>Status</th><th>Payment</th><th></th>
+                <th>#</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Payment</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let o of orders">
-                <td>#{{ o.id }}</td>
+                <td class="fw-semibold">#{{ o.id }}</td>
                 <td>{{ o.products.length }}</td>
-                <td>₹{{ o.totalPrice }}</td>
+                <td class="text-success fw-bold">₹{{ o.totalPrice }}</td>
                 <td>{{ o.orderDate }}</td>
                 <td>{{ o.ShippingAddress }}</td>
-                <td>{{ o.orderStatus }}</td>
-                <td>{{ o.paymentStatus }}</td>
+                <td>
+                  <span class="badge bg-info text-dark">{{ o.orderStatus }}</span>
+                </td>
+                <td>
+                  <span class="badge" 
+                        [ngClass]="o.paymentStatus === 'Paid' ? 'bg-success' : 'bg-warning text-dark'">
+                    {{ o.paymentStatus }}
+                  </span>
+                </td>
                 <td>
                   <button class="btn btn-sm btn-outline-primary" (click)="viewOrderDetails(o)">
                     {{ selectedOrder?.id===o.id ? 'Hide' : 'Details' }}
@@ -50,19 +81,24 @@
               </tr>
             </tbody>
           </table>
-          <ng-template #noOrders><p>No orders found.</p></ng-template>
+          <ng-template #noOrders>
+            <div class="alert alert-info mb-0">No orders found.</div>
+          </ng-template>
 
-          <div *ngIf="selectedOrder" class="card mt-3">
-            <div class="card-header bg-dark text-white">Order #{{ selectedOrder.id }} Details</div>
+          <!-- Order Details -->
+          <div *ngIf="selectedOrder" class="card mt-3 border-0 shadow-sm rounded-3">
+            <div class="card-header bg-dark text-white fw-bold">
+              Order #{{ selectedOrder.id }} Details
+            </div>
             <div class="card-body">
               <p><strong>Address:</strong> {{ selectedOrder.ShippingAddress }}</p>
               <p><strong>Date:</strong> {{ selectedOrder.orderDate }}</p>
               <p><strong>Status:</strong> {{ selectedOrder.orderStatus }}</p>
               <p><strong>Payment:</strong> {{ selectedOrder.paymentStatus }}</p>
-              <ul class="list-group">
+              <ul class="list-group list-group-flush">
                 <li class="list-group-item" *ngFor="let p of selectedOrder.products">
                   {{ getProductDetails(p.id)?.name }} × {{ p.quantity }}
-                  (₹{{ getProductDetails(p.id)?.Price }})
+                  <span class="text-muted">(₹{{ getProductDetails(p.id)?.Price }})</span>
                 </li>
               </ul>
             </div>
@@ -71,14 +107,53 @@
       </div>
 
       <!-- Settings -->
-      <div *ngIf="activeTab==='settings'" class="card">
-        <div class="card-header bg-dark text-white">Account Settings</div>
-        <div class="card-body">
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('Password','Password')">Change Password</button>
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('ShippingAddress','Shipping Address')">Update Address</button>
-          <button class="btn btn-outline-secondary me-2" (click)="updateField('PaymentDetails','Payment Details')">Update Payment</button>
-          <button class="btn btn-danger" (click)="logout()">Logout</button>
+      <div *ngIf="activeTab==='settings'" class="card border-0 shadow-sm rounded-3">
+        <div class="card-header bg-dark text-white fw-bold">
+          <i class="bi bi-gear-fill me-2"></i> Account Settings
         </div>
+        <div class="card-body">
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Name','Name')">
+            <i class="bi bi-person me-1"></i> Edit Name
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Password','Password')">
+            <i class="bi bi-key me-1"></i> Change Password
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('ShippingAddress','Shipping Address')">
+            <i class="bi bi-geo-alt me-1"></i> Update Address
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('PaymentDetails','Payment Details')">
+            <i class="bi bi-credit-card me-1"></i> Update Payment
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Update Field Modal -->
+<div class="modal fade" id="updateFieldModal" tabindex="-1" aria-labelledby="updateFieldModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="margin-top: 80px;"> <!-- ✅ slightly above center -->
+    <div class="modal-content border-0 shadow-lg rounded-3">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="updateFieldModalLabel">
+          <i class="bi bi-pencil-square me-2"></i> Update {{ modalLabel }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-light">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">{{ modalLabel }}</label>
+          <input type="text" class="form-control" [(ngModel)]="modalValue" placeholder="Enter new {{ modalLabel }}">
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveField()">
+          Save Changes
+        </button>
       </div>
     </div>
   </div>

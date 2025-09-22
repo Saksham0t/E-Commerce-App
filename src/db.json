@@ -243,12 +243,6 @@
   ],
   "cartItems": [
     {
-      "id": "2174",
-      "Productid": "103",
-      "Quantity": 1,
-      "TotalPrice": 399
-    },
-    {
       "id": "23d2",
       "Productid": "122",
       "Quantity": 1,
@@ -957,6 +951,56 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz2582",
+      "userId": "777",
+      "products": [
+        {
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "122",
+          "quantity": 1
+        },
+        {
+          "id": "124",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1285,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz6492",
+      "userId": "777",
+      "products": [
+        {
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "122",
+          "quantity": 1
+        },
+        {
+          "id": "124",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1285,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
       "Id": ""
     }
   ],
