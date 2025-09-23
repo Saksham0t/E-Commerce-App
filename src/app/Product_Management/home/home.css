@@ -36,14 +36,14 @@
 
 /* Product Price */
 .card-text.fw-bold.text-success {
-  color: #5c3a24; /* Café Noir */
+  color: #976b44; /* Café Noir */
   font-size: 1.1rem;
 }
 
 /* Add to Cart Button */
 .btn-outline-primary {
   background-color: #fff;
-  color: #8A6240;
+  color: #976b44;
   border: 2px solid #8A6240;
   border-radius: 25px;
   padding: 6px 16px;
@@ -52,14 +52,14 @@
 }
 
 .btn-outline-primary:hover {
-  background-color: #5c3a24;
+  background-color: #976b44;
   color: #fff;
-  border-color: #5c3a24;
+  border-color: #976b44;
 }
 
 /* View Cart Button */
 .btn-primary {
-  background-color: #5c3a24;
+  background-color: #976b44;
   border-color: #8A6240;
   color: #fff;
   border-radius: 25px;
@@ -68,8 +68,8 @@
 }
 
 .btn-primary:hover {
-  background-color: #5c3a24;
-  border-color: #5c3a24;
+  background-color: #976b44;
+  border-color: #976b44;
   text-decoration-color: #fff;
 }
 

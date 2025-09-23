@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -9,11 +9,12 @@ import { UserLoginComponent } from '../User_Authentication/user-login/user-login
 import { UserSignupComponent } from '../User_Authentication/user-signup/user-signup';
 import { Rest1 } from '../Admin_Dashboard/Interfaces/rest1';
 import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
+// import { RouterLinkActive } from "../../../node_modules/@angular/router/router_module.d";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule],
+  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule, RouterLinkActive],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
