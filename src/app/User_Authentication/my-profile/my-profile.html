@@ -27,7 +27,7 @@
       
       <!-- Profile Info -->
       <div *ngIf="activeTab==='profile'" class="card border-0 shadow-sm rounded-3 mb-4">
-        <div class="card-header bg-primary text-white fw-bold">
+        <div class="card-header bg-dark text-white fw-bold">
           <i class="bi bi-person-lines-fill me-2"></i> Profile Information
         </div>
         <div class="card-body">
@@ -40,9 +40,9 @@
 
       <!-- Orders -->
       <div *ngIf="activeTab==='orders'" class="card border-0 shadow-sm rounded-3 mb-4">
-        <div class="card-header bg-secondary text-white fw-bold">
-          <i class="bi bi-bag-check-fill me-2"></i> My Orders
-        </div>
+      <div class="card-header bg-dark text-white fw-bold">
+        <i class="bi bi-bag-check-fill me-2"></i> My Orders
+      </div>
         <div class="card-body">
           <table class="table table-hover align-middle text-center" *ngIf="orders.length; else noOrders">
             <thead class="table-primary">
