@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+// ✅ Use the global bootstrap object from angular.json scripts
+declare const bootstrap: any;
 
 @Component({
   selector: 'app-my-profile',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './my-profile.html',
   styleUrls: ['./my-profile.css']
 })
@@ -17,8 +21,13 @@ export class MyProfileComponent implements OnInit {
   selectedOrder: any = null;
   isLoading = true;
 
-  // track which section is active
   activeTab: 'profile' | 'orders' | 'settings' = 'profile';
+
+  // Modal state
+  modalField = '';
+  modalLabel = '';
+  modalValue = '';
+  private modalRef: any = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -29,12 +38,12 @@ export class MyProfileComponent implements OnInit {
       return;
     }
 
-    // fetch user
+    // Fetch user
     this.http.get<any[]>(`http://localhost:3000/users?id=${userId}`).subscribe({
       next: (users) => (this.user = users[0] || {})
     });
 
-    // fetch orders
+    // Fetch orders
     this.http.get<any[]>(`http://localhost:3000/OrdersList?userId=${userId}`).subscribe({
       next: (data) => {
         this.orders = data;
@@ -42,7 +51,7 @@ export class MyProfileComponent implements OnInit {
       }
     });
 
-    // fetch products
+    // Fetch products
     this.http.get<any[]>(`http://localhost:3000/ProductsList`).subscribe({
       next: (data) => (this.products = data)
     });
@@ -61,18 +70,30 @@ export class MyProfileComponent implements OnInit {
     return this.products.find(p => p.id === productId);
   }
 
-  logout() {
-    localStorage.removeItem('userId');
-    this.router.navigate(['/login']);
+  // ✅ Open Bootstrap modal
+  openUpdateModal(field: string, label: string) {
+    this.modalField = field;
+    this.modalLabel = label;
+    this.modalValue = this.user[field] || '';
+
+    const el = document.getElementById('updateFieldModal');
+    if (el) {
+      this.modalRef = new bootstrap.Modal(el, { backdrop: 'static', keyboard: false });
+      this.modalRef.show();
+    }
   }
 
-  updateField(field: string, label: string) {
-    const newValue = prompt(`Enter new ${label}:`, this.user[field] || '');
-    if (newValue && newValue.trim() !== '') {
-      const updatedUser = { ...this.user, [field]: newValue };
-      this.http.put(`http://localhost:3000/users/${this.user.id}`, updatedUser).subscribe({
-        next: () => (this.user = updatedUser)
-      });
-    }
+  saveField() {
+    if (this.modalValue.trim() === '') return;
+
+    const updatedUser = { ...this.user, [this.modalField]: this.modalValue };
+    this.http.put(`http://localhost:3000/users/${this.user.id}`, updatedUser).subscribe({
+      next: () => {
+        this.user = updatedUser;
+        if (this.modalRef) {
+          this.modalRef.hide();
+        }
+      }
+    });
   }
 }
