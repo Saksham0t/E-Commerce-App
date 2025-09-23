@@ -58,7 +58,7 @@
                       <div>
                         <h6 class="mb-1">{{ getProductDetails(p.id)?.name }}</h6>
                         <small class="text-muted">Quantity: {{ p.quantity }}</small><br>
-                        <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
+                        <small class="text-muted">Price: ₹{{ (getProductDetails(p.id)?.Price || 0) * p.quantity }}</small>
                       </div>
                     </div>
                   </div>

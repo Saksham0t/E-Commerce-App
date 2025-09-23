@@ -106,7 +106,7 @@ export class PlaceOrder {
       orderDate: new Date().toISOString().split('T')[0],
       ShippingAddress: this.shipping.address,
       orderStatus: 'Processing',
-      paymentStatus: 'Pending',
+      paymentStatus: 'Done: Paid by '+this.selectedPayment,
       paymentMethod: this.selectedPayment,
       Id: ''
     };

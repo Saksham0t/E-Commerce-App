@@ -649,20 +649,7 @@
       "ImageURL": "https://media.littlewoods.com/i/littlewoods/V8BLG_SQ1_0000000088_NO_COLOR_SLf?$pdp_1650x2199_hi_res$&fmt=webp"
     }
   ],
-  "cartItems": [
-    {
-      "id": "2796",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
-    },
-    {
-      "id": "2cf0",
-      "Productid": "217",
-      "Quantity": 1,
-      "TotalPrice": 850
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -1621,6 +1608,78 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz262",
+      "userId": "204",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        },
+        {
+          "id": "217",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1304,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Vaibhav Khand Indirapuram",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz4739",
+      "userId": "204",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 1617,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Vaibhav Khand Indirapuram",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz2612",
+      "userId": "204",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 599,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Vaibhav Khand Indirapuram",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Net Banking",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz2713",
+      "userId": "204",
+      "products": [
+        {
+          "id": "112",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1530,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "I-301 ADITYA MEGA CITY INDIRAPURAM",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "paymentMethod": "Debit/Credit Card",
       "Id": ""
     }
   ],
