@@ -16,39 +16,41 @@ export class Orders {
   CustomersList!: any[]
   OrdersList!: any[]
   ProductsList!: any[]
-  getOrdersfromService() {
-    this.productObj.getData("/OrdersList").subscribe({
-      next: (data) => { this.OrdersList = data },
-      error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log("Data from backend recieved")
-    })
-  }
+
+  getProductsfromService(): Promise<void> {
+  return this.productObj.getData("/ProductsList").toPromise().then(products => {
+    this.ProductsList = products;
+  });
+}
+
+getOrdersfromService(): Promise<void> {
+  return this.productObj.getData("/OrdersList").toPromise().then(orders => {
+    this.OrdersList = orders;
+  });
+}
+
+getCustomersfromService(): Promise<void> {
+  return this.productObj.getData("/users").toPromise().then(customers => {
+    this.CustomersList = customers;
+  });
+}
 
   
-  getProductsfromService() {
-    this.productObj.getData("/ProductsList").subscribe({
-      next: (data) => { this.ProductsList = data },
-      error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log("Data from backend recieved")
-    })
-  }
-  getCustomersfromService() {
-    this.productObj.getData("/users").subscribe({
-      next: (data) => { console.log("Userss received:", data); this.CustomersList = data },
-      error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log("Data from backend recieved")
-    })
-  }
-  ngOnInit() {
-    this.getOrdersfromService();
-    this.getProductsfromService();
-    this.getCustomersfromService();
-  }
+ 
+  async ngOnInit() {
+  await this.getProductsfromService();
+  await this.getCustomersfromService();
+  await this.getOrdersfromService();
+}
+
   selectedOrderId: number | null = null;
 
   searchTerm: string = '';
 
   getFilteredOrders() {
+    if(this.searchTerm==""){
+      return this.OrdersList;
+    }
     return this.OrdersList.filter(order =>
       order.id.toString().includes(this.searchTerm) ||
       this.getCustomerName(order.userId).toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -77,7 +79,6 @@ export class Orders {
   }
 
   getProductDetails(productId: string) {
-    return this.ProductsList.find(p => p.id === productId);
+    return this.ProductsList.find(p => p.id === (productId));
   }
-
-}
+  }

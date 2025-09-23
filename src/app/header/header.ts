@@ -58,6 +58,12 @@ export class Header implements OnInit {
     return !this.router.url.startsWith('/admin');
   }
 
+  isNotAdminRoute(): boolean {
+  return this.router.url !== '/admin' && this.router.url!=='/admin-login' 
+  && this.router.url !== '/admin/orders' && this.router.url !== '/admin/customers'
+  && this.router.url !== '/admin/products';
+}
+
   // API call to get products for suggestions
   getProductsfromService(): void {
     this.someObj.getData('/ProductsList').subscribe({

@@ -1,28 +1,89 @@
-<!-- Fixed Header -->
-<div class="container-fluid bg-light py-2 shadow-sm sticky-top">
-  <div class="d-flex justify-content-between align-items-center px-3">
-    <button *ngIf="currentScreen === 2" class="btn btn-secondary" (click)="goBack()">
-      ← Back to Dashboard
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center px-4 py-2 bg-white shadow-sm rounded mb-3">
+  <div *ngIf="currentScreen === 1">
+    <h4 class="fw-bold mb-0 text-dark">
+      <i class="bi bi-speedometer2 me-2 text-primary"></i> Admin Dashboard
+    </h4>
+  </div>
+  
+
+  <div class="d-flex align-items-center gap-2">
+    <button *ngIf="currentScreen === 2" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+      ← Back
     </button>
-
-    <h5 class="mb-0">ADMIN PANEL</h5>
-
-    <button class="btn btn-danger" (click)="logout()">
-      <i class="bi bi-box-arrow-right"></i> Logout
+    <ng-container *ngIf="currentScreen === 2">
+      <div style="width:1040px;"></div> <!-- Invisible spacer to preserve layout -->
+    </ng-container>
+    <button class="btn btn-sm btn-danger"(click)="logout()">
+      <i class="bi bi-box-arrow-right me-1"></i> Logout
     </button>
   </div>
 </div>
-<div *ngIf="currentScreen === 1">
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">Welcome, Admin!</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-4 mb-4" *ngFor="let card of cards">
-        <div class="card shadow-sm h-100">
-          <img [src]="card.image" [alt]="card.title" class="card-img-top uniform-img">
-          <div class="card-body text-center">
-            <button class="btn btn-primary" (click)="navigateTo(card.route)">
-            {{ card.title }}
-            </button>
+
+<!-- Dashboard Content -->
+<div class="container-fluid" *ngIf="currentScreen === 1">
+  <div class="row row-cols-4 g-3 mb-3">
+    <div class="col" *ngFor="let card of summaryCards">
+      <div class="card text-center border-0 shadow-sm h-100 bg-gradient bg-light">
+        <div class="card-body py-3">
+          <h6 class="text-muted mb-1">{{ card.title }}</h6>
+          <h5 class="fw-bold text-primary mb-0">{{ card.value }}</h5>
+          <small class="text-success">{{ card.trend }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-3 g-3 mb-3">
+    <!-- Products -->
+    <div class="col">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white fw-bold text-center">🛍️ Products</div>
+        <div class="card-body p-2">
+          <button class="btn btn-sm btn-outline-primary w-100" (click)="navigateTo('/products')">Manage Products</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="col">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white fw-bold text-center">📦 Orders</div>
+        <div class="card-body p-2">
+          <button class="btn btn-sm btn-outline-warning w-100" (click)="navigateTo('/orders')">View Orders</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customers -->
+    <div class="col">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white fw-bold text-center">👥 Customers</div>
+        <div class="card-body p-2">
+          <button class="btn btn-sm btn-outline-info w-100" (click)="navigateTo('/customers')">View Profiles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-2 g-3">
+    <!-- Sales Chart -->
+    <div class="col">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white fw-bold text-center">📈 Sales</div>
+        <div class="card-body p-2">
+          <canvas id="salesTrendChart" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Chart -->
+    <div class="col">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white fw-bold text-center">📊 Categories</div>
+        <div class="card-body d-flex justify-content-center align-items-center p-2" style="height:100%; width:100%;">
+            <div style="width:250px; height:250px; display:flex; justify-content:center; align-items:center;">
+          <canvas id="categoryChart" style="height:50%; width:50%;"></canvas>
           </div>
         </div>
       </div>
@@ -30,6 +91,7 @@
   </div>
 </div>
 
+<!-- Routed Content -->
 <div *ngIf="currentScreen === 2">
   <router-outlet></router-outlet>
 </div>

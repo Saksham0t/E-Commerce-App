@@ -111,6 +111,10 @@
 }
 }
 
-<div style="padding-top: 100px">
+<div style="padding-top: 100px" *ngIf ="isNotAdminRoute()">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf ="!isNotAdminRoute()">
   <router-outlet></router-outlet>
 </div>
