@@ -2,42 +2,44 @@
 
 <div class="row g-4 m-3 mx-4 bg-light">
   @for (p of getFilteredProducts(); track p.id) {
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card h-100 shadow-sm border-0">
-        <img [src]="p.ImageURL"
-             class="card-img-top"
-             [alt]="p.name"
-             style="height: 200px; object-fit: cover" />
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card h-100 shadow-sm border-0">
+      <img
+        [src]="p.ImageURL"
+        class="card-img-top"
+        [alt]="p.name"
+        style="height: 200px; object-fit: cover"
+      />
 
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ p.name }}</h5>
-          <p class="card-text text-muted small">{{ p.Description }}</p>
-          <p class="card-text fw-bold text-success">₹{{ p.Price }}</p>
-          <p class="card-text text-secondary small">
-            <i class="bi bi-tag-fill me-1"></i>{{ p.Category }}
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ p.name }}</h5>
+        <p class="card-text text-muted small">{{ p.Description }}</p>
+        <p class="card-text fw-bold text-success">₹{{ p.Price }}</p>
+        <p class="card-text text-secondary small">
+          <i class="bi bi-tag-fill me-1"></i>{{ p.Category }}
+        </p>
+
+        @if (addedToCart.has(p.id)) {
+        <!-- Confirmation + View Cart -->
+        <div class="mt-auto text-center">
+          <p class="text-success fw-semibold mb-2">
+            <i class="bi bi-check-circle-fill me-1"></i>
+            Item added to cart
           </p>
-
-          @if (addedToCart.has(p.id)) {
-            <!-- Confirmation + View Cart -->
-            <div class="mt-auto text-center">
-              <p class="text-success fw-semibold mb-2">
-                <i class="bi bi-check-circle-fill me-1"></i>
-                Item added to cart
-              </p>
-              <a routerLink="/cart" class="btn btn-viewcart btn-sm rounded-pill px-3">
-                <i class="bi bi-cart-fill me-1"></i>
-                View Cart
-              </a>
-            </div>
-          } @else {
-            <!-- Add to Cart button -->
-            <button class="btn btn-addcart mt-auto rounded-pill px-3" (click)="addToCart(p)">
-              <i class="bi bi-cart-plus"></i>
-              Add to Cart
-            </button>
-          }
+          <a class="btn btn-viewcart btn-sm rounded-pill px-3" (click)="goToCart()">
+            <i class="bi bi-cart-fill me-1"></i>
+            View Cart
+          </a>
         </div>
+        } @else {
+        <!-- Add to Cart button -->
+        <button class="btn btn-addcart mt-auto rounded-pill px-3" (click)="addToCart(p)">
+          <i class="bi bi-cart-plus"></i>
+          Add to Cart
+        </button>
+        }
       </div>
     </div>
+  </div>
   }
 </div>
