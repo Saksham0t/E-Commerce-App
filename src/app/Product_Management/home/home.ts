@@ -48,7 +48,7 @@ scrollToTop(): void {
     this.productService.getData('/ProductsList').subscribe({
       next: (data) => {
         this.products = data;
-        const categories = ['Electronics', 'T-shirts', 'Footwear', 'Beauty', 'Sports', 'Toys', 'Fashion Wear (Male)', 'Fashion Wear (Ladies)', 'Books', 'Kitchen','Grocery'];
+        const categories = ['Electronics','Accessories', 'T-shirts', 'Footwear', 'Beauty', 'Watches', 'Sports', 'Toys', 'Fashion Wear (Male)', 'Fashion Wear (Ladies)', 'Books', 'Kitchen','Grocery'];
         categories.forEach((cat) => {
           this.productsByCategory[cat] = this.getProductsByCategory(cat);
         });
