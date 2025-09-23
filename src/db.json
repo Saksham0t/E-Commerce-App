@@ -641,7 +641,26 @@
       "ImageURL": "https://tse4.mm.bing.net/th/id/OIP.9iS3T-cYmtWt4uZgTBZbGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "95a4",
+      "Productid": "240",
+      "Quantity": 1,
+      "TotalPrice": 899
+    },
+    {
+      "id": "1091",
+      "Productid": "239",
+      "Quantity": 1,
+      "TotalPrice": 500
+    },
+    {
+      "id": "ad8b",
+      "Productid": "241",
+      "Quantity": 1,
+      "TotalPrice": 700
+    }
+  ],
   "OrdersList": [
     {
       "id": "5004",
@@ -1532,6 +1551,35 @@
       "totalPrice": 499,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz921",
+      "userId": "251",
+      "products": [
+        {
+          "id": "239",
+          "quantity": 2
+        },
+        {
+          "id": "240",
+          "quantity": 2
+        },
+        {
+          "id": "241",
+          "quantity": 1
+        },
+        {
+          "id": "233",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3908,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "HOUSE NO 5",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",

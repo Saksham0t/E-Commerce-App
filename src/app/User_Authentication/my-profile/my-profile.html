@@ -1,21 +1,32 @@
+<!-- Custom styles (can be moved to component CSS or global styles) -->
+<style>
+  .bg-brown {
+    background-color: #8A6240 !important;
+    color: #fff !important;
+  }
+
+  .text-brown {
+    color: #8A6240 !important;
+  }
+</style>
+
 <div class="container my-5" *ngIf="!isLoading">
   <div class="row g-4">
-    
     <!-- Sidebar -->
     <div class="col-md-3">
       <div class="list-group shadow-sm rounded-3 overflow-hidden">
         <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [class.active]="activeTab==='profile'" 
+           [ngClass]="{'bg-brown': activeTab === 'profile', 'text-brown': activeTab !== 'profile'}"
            (click)="setTab('profile')">
           <i class="bi bi-person-circle me-2"></i> Profile Info
         </a>
         <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [class.active]="activeTab==='orders'" 
+           [ngClass]="{'bg-brown': activeTab === 'orders', 'text-brown': activeTab !== 'orders'}"
            (click)="setTab('orders')">
           <i class="bi bi-bag-check me-2"></i> My Orders
         </a>
         <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [class.active]="activeTab==='settings'" 
+           [ngClass]="{'bg-brown': activeTab === 'settings', 'text-brown': activeTab !== 'settings'}"
            (click)="setTab('settings')">
           <i class="bi bi-gear me-2"></i> Settings
         </a>
@@ -24,10 +35,9 @@
 
     <!-- Main Content -->
     <div class="col-md-9">
-      
       <!-- Profile Info -->
-      <div *ngIf="activeTab==='profile'" class="card border-0 shadow-sm rounded-3 mb-4">
-        <div class="card-header bg-primary text-white fw-bold">
+      <div *ngIf="activeTab === 'profile'" class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header  fw-bold" style="background-color: #CABA9C;">
           <i class="bi bi-person-lines-fill me-2"></i> Profile Information
         </div>
         <div class="card-body">
@@ -39,13 +49,13 @@
       </div>
 
       <!-- Orders -->
-      <div *ngIf="activeTab==='orders'" class="card border-0 shadow-sm rounded-3 mb-4">
-        <div class="card-header bg-secondary text-white fw-bold">
+      <div *ngIf="activeTab === 'orders'" class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header  fw-bold" style="background-color: #CABA9C;">
           <i class="bi bi-bag-check-fill me-2"></i> My Orders
         </div>
         <div class="card-body">
           <table class="table table-hover align-middle text-center" *ngIf="orders.length; else noOrders">
-            <thead class="table-primary">
+            <thead class="table-light">
               <tr>
                 <th>#</th>
                 <th>Products</th>
@@ -68,14 +78,14 @@
                   <span class="badge bg-info text-dark">{{ o.orderStatus }}</span>
                 </td>
                 <td>
-                  <span class="badge" 
+                  <span class="badge"
                         [ngClass]="o.paymentStatus === 'Paid' ? 'bg-success' : 'bg-warning text-dark'">
                     {{ o.paymentStatus }}
                   </span>
                 </td>
                 <td>
                   <button class="btn btn-sm btn-outline-primary" (click)="viewOrderDetails(o)">
-                    {{ selectedOrder?.id===o.id ? 'Hide' : 'Details' }}
+                    {{ selectedOrder?.id === o.id ? 'Hide' : 'Details' }}
                   </button>
                 </td>
               </tr>
@@ -87,7 +97,7 @@
 
           <!-- Order Details -->
           <div *ngIf="selectedOrder" class="card mt-3 border-0 shadow-sm rounded-3">
-            <div class="card-header bg-dark text-white fw-bold">
+            <div class="card-header bg-brown fw-bold">
               Order #{{ selectedOrder.id }} Details
             </div>
             <div class="card-body">
@@ -107,8 +117,8 @@
       </div>
 
       <!-- Settings -->
-      <div *ngIf="activeTab==='settings'" class="card border-0 shadow-sm rounded-3">
-        <div class="card-header bg-dark text-white fw-bold">
+      <div *ngIf="activeTab === 'settings'" class="card border-0 shadow-sm rounded-3">
+        <div class="card-header  fw-bold" style="background-color: #CABA9C;">
           <i class="bi bi-gear-fill me-2"></i> Account Settings
         </div>
         <div class="card-body">
@@ -126,16 +136,15 @@
           </button>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
 <!-- Update Field Modal -->
 <div class="modal fade" id="updateFieldModal" tabindex="-1" aria-labelledby="updateFieldModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="margin-top: 80px;"> <!-- ✅ slightly above center -->
+  <div class="modal-dialog" style="margin-top: 80px;">
     <div class="modal-content border-0 shadow-lg rounded-3">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-brown">
         <h5 class="modal-title fw-bold" id="updateFieldModalLabel">
           <i class="bi bi-pencil-square me-2"></i> Update {{ modalLabel }}
         </h5>
@@ -148,12 +157,8 @@
         </div>
       </div>
       <div class="modal-footer bg-light">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="saveField()">
-          Save Changes
-        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="saveField()">Save Changes</button>
       </div>
     </div>
   </div>
