@@ -111,9 +111,10 @@
 }
 }
 
-<div style="padding-top: 180px" *ngIf routerLink!="/admin">
+<div style="padding-top: 105px" *ngIf ="isNotAdminRoute()">
   <router-outlet></router-outlet>
 </div>
-<div *ngIf routerLink="/admin">
+
+<div *ngIf ="!isNotAdminRoute()">
   <router-outlet></router-outlet>
 </div>
