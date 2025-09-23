@@ -68,7 +68,7 @@
 
         <!-- Proceed to Payment Button -->
 <button type="button"
-        class="btn btn-success btn-sm px-3 py-2 rounded-pill d-block mx-auto"
+        class="btn btn-success px-4 py-3 rounded-pill d-block mx-auto mt-5"
         (click)="proceedToPayment()"
         *ngIf="!showPaymentOptions">
   <i class="bi bi-cash-stack me-2"></i> Proceed to Payment
@@ -86,7 +86,7 @@
           </div>
 
         <button type="button"
-          class="btn btn-primary btn-sm px-3 py-2 mt-3 rounded-pill d-block mx-auto"
+          class="btn btn-primary btn px-4 py-3 rounded-pill d-block mx-auto mt-5"
           (click)="submitOrder()"
           [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
         <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
