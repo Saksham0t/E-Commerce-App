@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, switchMap, tap, forkJoin, of } from 'rxjs';
 import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-
   // API endpoints
   private cartUrl = 'http://localhost:3000/cartItems';
   private productsUrl = 'http://localhost:3000/ProductsList';
@@ -19,6 +18,7 @@ export class CartService {
   constructor(private http: HttpClient) {
     this.updateCartCount();
   }
+
   private discountAmount = 0;
 
   setDiscount(amount: number): void {
@@ -31,7 +31,7 @@ export class CartService {
 
   /** Get the latest cart count and update the observable */
   private updateCartCount(): void {
-    this.http.get<any[]>(this.cartUrl).subscribe(items => {
+    this.http.get<any[]>(this.cartUrl).subscribe((items) => {
       const totalQuantity = items.reduce((sum, item) => sum + Number(item?.Quantity || 0), 0);
       this.cartCountSubject.next(totalQuantity);
     });
@@ -46,7 +46,7 @@ export class CartService {
 
     // Check if product already exists in cart
     return this.http.get<any[]>(`${this.cartUrl}?Productid=${product.id}`).pipe(
-      switchMap(existingItems => {
+      switchMap((existingItems) => {
         if (existingItems.length > 0) {
           // Product exists → update quantity
           const existingItem = existingItems[0];
@@ -55,7 +55,7 @@ export class CartService {
 
           return this.updateCartItem(existingItem.id, {
             Quantity: updatedQty,
-            TotalPrice: updatedTotal
+            TotalPrice: updatedTotal,
           });
         } else {
           // Product not in cart → add new
@@ -63,7 +63,7 @@ export class CartService {
           const newCartItem = {
             Productid: product.id,
             Quantity: qtyToAdd,
-            TotalPrice: totalPrice
+            TotalPrice: totalPrice,
           };
 
           return this.http.post(this.cartUrl, newCartItem);
@@ -78,11 +78,11 @@ export class CartService {
    */
   getCartItemsWithDetails(): Observable<any[]> {
     return this.http.get<any[]>(this.cartUrl).pipe(
-      switchMap(cartItems =>
+      switchMap((cartItems) =>
         this.http.get<ProductsList[]>(this.productsUrl).pipe(
-          map(products =>
-            cartItems.map(cartItem => {
-              const product = products.find(p => p.id === cartItem.Productid);
+          map((products) =>
+            cartItems.map((cartItem) => {
+              const product = products.find((p) => p.id === cartItem.Productid);
               // Merge product details with cart item data
               return { ...(product || {}), ...cartItem };
             })
@@ -96,9 +96,9 @@ export class CartService {
    * Update a cart item by ID.
    */
   updateCartItem(id: number | string, changes: any): Observable<any> {
-    return this.http.patch(`${this.cartUrl}/${id}`, changes).pipe(
-      tap(() => this.updateCartCount())
-    );
+    return this.http
+      .patch(`${this.cartUrl}/${id}`, changes)
+      .pipe(tap(() => this.updateCartCount()));
   }
 
   /**
@@ -107,6 +107,25 @@ export class CartService {
   removeFromCart(id: number | string): Observable<void> {
     return this.http.delete<void>(`${this.cartUrl}/${id}`).pipe(
       tap(() => this.updateCartCount())
+    );
+  }
+
+  /**
+   * Clear all items from the cart.
+   */
+  clearCart(): Observable<void> {
+    return this.http.get<any[]>(this.cartUrl).pipe(
+      switchMap((items) => {
+        const deleteRequests = items.map((item) =>
+          this.http.delete<void>(`${this.cartUrl}/${item.id}`)
+        );
+        return deleteRequests.length
+          ? forkJoin(deleteRequests).pipe(
+              tap(() => this.updateCartCount()),
+              map(() => void 0) // ✅ convert void[] to void
+            )
+          : of(void 0);
+      })
     );
   }
 }
