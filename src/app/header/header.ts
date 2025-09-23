@@ -29,7 +29,7 @@ export class Header implements OnInit {
 
   // Categories toggle + list
   showCategories = true; // open by default
-  categories: string[] = ['Grocery', 'Beauty', 'Electronics', 'Footwear', 'T-Shirts', 'Watches', 'Accessories', 'Sports', 'Kitchen', 'Furniture'];
+  categories: string[] = ['Electronics', 'Grocery', 'Beauty', 'Footwear', 'T-Shirts', 'Watches', 'Accessories', 'Sports', 'Kitchen', 'Furniture'];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
 
