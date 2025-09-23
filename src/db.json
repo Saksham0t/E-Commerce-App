@@ -1552,52 +1552,6 @@
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
       "Id": ""
-    },
-    {
-      "id": "zz2561",
-      "userId": "201",
-      "products": [
-        {
-          "id": "105",
-          "quantity": 1
-        },
-        {
-          "id": "122",
-          "quantity": 1
-        },
-        {
-          "id": "118",
-          "quantity": 1
-        },
-        {
-          "id": "124",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 1329,
-      "orderDate": "2025-09-22",
-      "ShippingAddress": "118/26 CHIL SEZ IT PARK",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Cash on Delivery",
-      "Id": ""
-    },
-    {
-      "id": "zz5037",
-      "userId": "204",
-      "products": [
-        {
-          "id": "101",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 900,
-      "orderDate": "2025-09-23",
-      "ShippingAddress": "Vaibhav Khand Indirapuram",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Cash on Delivery",
-      "Id": ""
     }
   ],
   "users": [
