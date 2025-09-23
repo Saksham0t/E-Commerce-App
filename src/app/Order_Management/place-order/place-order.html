@@ -67,12 +67,13 @@
         </ul>
 
         <!-- Proceed to Payment Button -->
-        <button type="button"
-                class="btn btn-success w-100 btn-lg rounded-pill"
-                (click)="proceedToPayment()"
-                *ngIf="!showPaymentOptions">
-          <i class="bi bi-cash-stack me-2"></i> Proceed to Payment
-        </button>
+<button type="button"
+        class="btn btn-success btn-sm px-3 py-2 rounded-pill d-block mx-auto"
+        (click)="proceedToPayment()"
+        *ngIf="!showPaymentOptions">
+  <i class="bi bi-cash-stack me-2"></i> Proceed to Payment
+</button>
+
 
         <!-- Payment Options -->
         <div *ngIf="showPaymentOptions" class="mt-4">
@@ -84,12 +85,12 @@
             <label class="form-check-label">{{ method }}</label>
           </div>
 
-          <button type="button"
-                  class="btn btn-primary w-100 btn-lg mt-3 rounded-pill"
-                  (click)="submitOrder()"
-                  [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
-            <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
-          </button>
+        <button type="button"
+          class="btn btn-primary btn-sm px-3 py-2 mt-3 rounded-pill d-block mx-auto"
+          (click)="submitOrder()"
+          [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
+        <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
+        </button>
         </div>
       </form>
     </div>
