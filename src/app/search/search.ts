@@ -31,7 +31,7 @@ export class Search {
   ngOnInit() {
     this.getProductsfromService();
     this.Route.queryParams.subscribe(params => {
-    this.searchTerm = params['name'] || '';
+    this.searchTerm = params['name'] || params['category']||'';
   });
   }
 

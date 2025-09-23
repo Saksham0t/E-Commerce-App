@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, NgModule, signal } from '@angular/core';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import {  RouterModule, RouterOutlet } from '@angular/router';
@@ -13,4 +13,9 @@ import { HttpClientModule } from '@angular/common/http'; //s
 })
 export class App {
 
+  // @NgModule({
+  //   declarations:[
+  //     OrderList
+  //   ]
+  // })
 }

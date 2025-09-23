@@ -1,7 +1,7 @@
 @if (showHeader) {
 <nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
   <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-    <img src="/logo.png" alt="Logo" class="me-2"
+    <img src="logo.png" alt="Logo" class="me-2"
          style="height: 75px; width: 75px; margin-top: -13px; margin-bottom: -13px" />
     <span class="fw-bold fs-4">Matrix</span>
   </a>
@@ -111,6 +111,10 @@
 }
 }
 
-<div style="padding-top: 100px">
+<div style="padding-top: 100px" *ngIf ="isNotAdminRoute()">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf ="!isNotAdminRoute()">
   <router-outlet></router-outlet>
 </div>
