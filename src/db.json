@@ -679,9 +679,38 @@
       "Category": "Electronics",
       "Description": "Amazing Headphone",
       "ImageURL": "https://media.littlewoods.com/i/littlewoods/V8BLG_SQ1_0000000088_NO_COLOR_SLf?$pdp_1650x2199_hi_res$&fmt=webp"
+    },
+    {
+      "id": "257",
+      "name": "Wooden Bookshelf",
+      "Price": 6500,
+      "Category": "Furniture",
+      "Description": "Sturdy wooden bookshelf with 5 spacious shelves",
+      "ImageURL": "https://m.media-amazon.com/images/I/71DSTEQrMIL._SL1210_.jpg"
+    },
+    {
+      "id": "203",
+      "name": "Modern Sofa",
+      "Price": 45000,
+      "Category": "Furniture",
+      "Description": "Comfortable 3-seater fabric sofa with modern design",
+      "ImageURL": "https://tse3.mm.bing.net/th/id/OIP.VYNr6HpneenEWC0nAwvszwHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "215e",
+      "Productid": "108",
+      "Quantity": 1,
+      "TotalPrice": 890
+    },
+    {
+      "id": "dea4",
+      "Productid": "222",
+      "Quantity": 1,
+      "TotalPrice": 250
+    }
+  ],
   "OrdersList": [
     {
       "id": "6869",
@@ -1604,23 +1633,23 @@
         {
           "id": "209",
           "quantity": 1
+        },
+        {
+          "id": "211",
+          "quantity": 1
+        },
+        {
+          "id": "226",
+          "quantity": 1
+        },
+        {
+          "id": "218",
+          "quantity": 1
         }
       ],
-      "totalPrice": 599,
+      "totalPrice": 4079,
       "orderDate": "2025-09-23",
-      "ShippingAddress": "Maruti lane",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Debit/Credit Card",
-      "Id": ""
-    },
-    {
-      "id": "zz5546",
-      "userId": "777",
-      "products": [],
-      "totalPrice": 0,
-      "orderDate": "2025-09-23",
-      "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
+      "ShippingAddress": "pune, maharashtra",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
