@@ -3,7 +3,7 @@
     {
       "id": "101",
       "name": "Nike T-shirt",
-      "Price": 500,
+      "Price": 1000,
       "Category": "T-shirts",
       "Description": "Very beautiful T-shirt",
       "ImageURL": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQzUT7Y_DUcvjUhbncSdKB9IpLaO_M_kswYBqojdD91QBCjwhQ9TJ9cOtbr7QT4Tuv2ytc85DG1WiBp8Vg5s7r56O73Vq2aXCRFqZ17gYqcMcuYoRQzKeOK"
@@ -671,105 +671,27 @@
   "Category": "T-shirts",
   "Description": "Soft cotton round-neck T-shirt with Levi’s signature branding, ideal for everyday wear",
   "ImageURL": "https://lsco.scene7.com/is/image/lsco/Levis/clothing/224890111-front-pdp.jpg?fmt=jpeg&qlt=70&resMode=bisharp&fit=crop,0&op_usm=1.25,0.6,8&wid=2000&hei=1800"
-}
-
+},
+    {
+      "id": "256",
+      "name": "Westmire A56 Headset",
+      "Price": 9999,
+      "Category": "Electronics",
+      "Description": "Amazing Headphone",
+      "ImageURL": "https://media.littlewoods.com/i/littlewoods/V8BLG_SQ1_0000000088_NO_COLOR_SLf?$pdp_1650x2199_hi_res$&fmt=webp"
+    }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "2796",
+      "Productid": "209",
+      "Quantity": 1,
+      "TotalPrice": 599
+    }
+  ],
   "OrdersList": [
     {
-      "id": "5004",
-      "userId": "204",
-      "products": [
-        {
-          "productId": "106",
-          "quantity": 3
-        }
-      ],
-      "totalPrice": 135,
-      "orderDate": "2025-09-14",
-      "ShippingAddress": "22 Nehru Street, Coimbatore",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Pending",
-      "paymentId": "zz11"
-    },
-    {
-      "id": "5005",
-      "userId": "205",
-      "products": [
-        {
-          "productId": "101",
-          "quantity": 1
-        },
-        {
-          "productId": "102",
-          "quantity": 2
-        }
-      ],
-      "totalPrice": 600,
-      "orderDate": "2025-09-15",
-      "ShippingAddress": "88 Brigade Road, Bengaluru",
-      "orderStatus": "Confirmed",
-      "paymentStatus": "Paid",
-      "paymentId": "yy22"
-    },
-    {
-      "id": "5006",
-      "userId": "206",
-      "products": [
-        {
-          "productId": "103",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 399,
-      "orderDate": "2025-09-15",
-      "ShippingAddress": "12 Residency Road, Mumbai",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Paid",
-      "paymentId": "xx33"
-    },
-    {
-      "id": "5007",
-      "userId": "201",
-      "products": [
-        {
-          "productId": "105",
-          "quantity": 2
-        },
-        {
-          "productId": "104",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 473,
-      "orderDate": "2025-09-16",
-      "ShippingAddress": "5 Park Street, Kolkata",
-      "orderStatus": "Shipped",
-      "paymentStatus": "Paid",
-      "paymentId": "ww44"
-    },
-    {
-      "id": "5008",
-      "userId": "205",
-      "products": [
-        {
-          "productId": "102",
-          "quantity": 1
-        },
-        {
-          "productId": "106",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 295,
-      "orderDate": "2025-09-16",
-      "ShippingAddress": "9 Anna Nagar, Chennai",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentId": "vv55"
-    },
-    {
-      "id": "zz6869",
+      "id": "6869",
       "Id": "zz9757",
       "userId": "204",
       "products": [
@@ -1379,8 +1301,75 @@
       "products": [
         {
           "id": "103",
+          "quantity": 2
+        },
+        {
+          "id": "105",
+          "quantity": 2
+        }
+      ],
+      "totalPrice": 1076,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz8844",
+      "userId": "205",
+      "products": [
+        {
+          "id": "107",
+          "quantity": 8
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 5602,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz6157",
+      "userId": "205",
+      "products": [
+        {
+          "id": "103",
           "quantity": 1
         },
+        {
+          "id": "126",
+          "quantity": 1
+        },
+        {
+          "id": "129",
+          "quantity": 1
+        },
+        {
+          "id": "116",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1392,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz4850",
+      "userId": "777",
+      "products": [
         {
           "id": "122",
           "quantity": 1
@@ -1493,6 +1482,26 @@
         {
           "id": "105",
           "quantity": 1
+        },
+        {
+          "id": "107",
+          "quantity": 1
+        },
+        {
+          "id": "113",
+          "quantity": 1
+        },
+        {
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "116",
+          "quantity": 1
+        },
+        {
+          "id": "120",
+          "quantity": 1
         }
       ],
       "totalPrice": 5602,
@@ -1552,6 +1561,93 @@
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
       "Id": ""
+    },
+    {
+      "id": "zz4559",
+      "userId": "201",
+      "products": [
+        {
+          "id": "101",
+          "quantity": 1
+        },
+        {
+          "id": "105",
+          "quantity": 1
+        },
+        {
+          "id": "107",
+          "quantity": 1
+        },
+        {
+          "id": "113",
+          "quantity": 1
+        },
+        {
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "116",
+          "quantity": 1
+        },
+        {
+          "id": "120",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2737,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "e2de",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz2561",
+      "userId": "201",
+      "products": [
+        {
+          "id": "105",
+          "quantity": 1
+        },
+        {
+          "id": "122",
+          "quantity": 1
+        },
+        {
+          "id": "118",
+          "quantity": 1
+        },
+        {
+          "id": "124",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1329,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "118/26 CHIL SEZ IT PARK",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz5037",
+      "userId": "204",
+      "products": [
+        {
+          "id": "101",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 900,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Vaibhav Khand Indirapuram",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
     }
   ],
   "users": [
@@ -1605,7 +1701,7 @@
       "PaymentDetails": "Net Banking"
     },
     {
-      "id": 251,
+      "id": "251",
       "Name": "lomesh",
       "Email": "lomesh@test.com",
       "Password": "lomesh123",
@@ -1627,13 +1723,12 @@
       "userId": "USR-2122"
     },
     {
-      "id": 1009,
+      "id": "1009",
       "Name": "jayesh",
       "Email": "jay@test.com",
       "Password": "12341234",
       "ShippingAddress": "",
       "PaymentDetails": ""
-
     }
   ]
 }
