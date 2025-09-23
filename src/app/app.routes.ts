@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 import { PlaceOrder } from './Order_Management/place-order/place-order';
 import { ViewOrders } from './Order_Management/view-orders/view-orders';
 import { MyProfileComponent } from './User_Authentication/my-profile/my-profile';
-import { Search } from './search/search';
+import { Search } from './Product_Management/search/search';
 
 NgModule({
     imports: [
