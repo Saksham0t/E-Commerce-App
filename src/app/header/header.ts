@@ -59,7 +59,9 @@ export class Header implements OnInit {
   }
 
   isNotAdminRoute(): boolean {
-  return this.router.url !== '/admin' && this.router.url!=='/admin-login';
+  return this.router.url !== '/admin' && this.router.url!=='/admin-login' 
+  && this.router.url !== '/admin/orders' && this.router.url !== '/admin/customers'
+  && this.router.url !== '/admin/products';
 }
 
   // API call to get products for suggestions
