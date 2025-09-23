@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -21,6 +21,22 @@ export class Home {
 
   // Track added products by string ID
   addedToCart = new Set<string>();
+
+  
+  // --- Back to Top Button Logic ---
+    showScrollTopButton = false;
+
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  this.showScrollTopButton = scrollY > 300;
+}
+
+scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+  // --- End Back to Top Button Logic ---
+
 
   constructor(private productService: Rest1, private cartService: CartService) {}
 
