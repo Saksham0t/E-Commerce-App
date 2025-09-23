@@ -9,14 +9,13 @@ import { UserLoginComponent } from '../User_Authentication/user-login/user-login
 import { UserSignupComponent } from '../User_Authentication/user-signup/user-signup';
 import { Rest1 } from '../Admin_Dashboard/Interfaces/rest1';
 import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
-// import { RouterLinkActive } from "../../../node_modules/@angular/router/router_module.d";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule],
   templateUrl: './header.html',
-  styleUrls: ['./header.css']
+  styleUrls: ['./header.css'],
 })
 export class Header implements OnInit {
   userName: string = 'Guest';
@@ -29,7 +28,20 @@ export class Header implements OnInit {
 
   // Categories toggle + list
   showCategories = true; // open by default
-  categories: string[] = ['Grocery', 'Beauty', 'Electronics', 'Footwear', 'T-Shirts', 'Watches', 'Accessories', 'Sports', 'Kitchen', 'Furniture'];
+  activeCategory: string | null = null;
+
+  categories: string[] = [
+    'Grocery',
+    'Beauty',
+    'Electronics',
+    'Footwear',
+    'T-Shirts',
+    'Watches',
+    'Accessories',
+    'Sports',
+    'Kitchen',
+    'Furniture',
+  ];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
 
@@ -43,9 +55,9 @@ export class Header implements OnInit {
 
   ngOnInit(): void {
     // reactive UI state
-    this.cartService.cartCount$.subscribe(count => (this.cartCount = count));
-    this.authService.userName$.subscribe(name => (this.userName = name));
-    this.authService.isLoggedIn$.subscribe(status => (this.isLoggedIn = status));
+    this.cartService.cartCount$.subscribe((count) => (this.cartCount = count));
+    this.authService.userName$.subscribe((name) => (this.userName = name));
+    this.authService.isLoggedIn$.subscribe((status) => (this.isLoggedIn = status));
 
     // load products for suggestions
     this.getProductsfromService();
@@ -60,19 +72,23 @@ export class Header implements OnInit {
   }
 
   isNotAdminRoute(): boolean {
-  return this.router.url !== '/admin' && this.router.url!=='/admin-login' 
-  && this.router.url !== '/admin/orders' && this.router.url !== '/admin/customers'
-  && this.router.url !== '/admin/products';
-}
+    return (
+      this.router.url !== '/admin' &&
+      this.router.url !== '/admin-login' &&
+      this.router.url !== '/admin/orders' &&
+      this.router.url !== '/admin/customers' &&
+      this.router.url !== '/admin/products'
+    );
+  }
 
   // API call to get products for suggestions
   getProductsfromService(): void {
     this.someObj.getData('/ProductsList').subscribe({
-      next: data => {
+      next: (data) => {
         this.productList = data;
       },
-      error: err => alert(JSON.stringify(err)),
-      complete: () => console.log('Getting data from backend..')
+      error: (err) => alert(JSON.stringify(err)),
+      complete: () => console.log('Getting data from backend..'),
     });
   }
 
@@ -84,12 +100,12 @@ export class Header implements OnInit {
       return;
     }
 
-    const allOptions = this.productList.map(p => p.name).concat(this.productList.map(p => p.Category));
+    const allOptions = this.productList
+      .map((p) => p.name)
+      .concat(this.productList.map((p) => p.Category));
     const uniqueOptions = Array.from(new Set(allOptions));
 
-    this.suggestions = uniqueOptions
-      .filter(opt => opt?.toLowerCase().includes(term))
-      .slice(0, 5);
+    this.suggestions = uniqueOptions.filter((opt) => opt?.toLowerCase().includes(term)).slice(0, 5);
   }
 
   searchNow(): void {
@@ -111,9 +127,8 @@ export class Header implements OnInit {
   }
 
   filterByCategory(category: string): void {
+    this.activeCategory = category;
     this.router.navigate(['/search'], { queryParams: { category } });
-    // keep it open or close after click — your choice
-    // this.showCategories = false;
   }
 
   // Auth
@@ -126,7 +141,7 @@ export class Header implements OnInit {
 
     this.loginDialogRef = this.dialog.open(UserLoginComponent, {
       width: '400px',
-      panelClass: 'custom-dialog-container'
+      panelClass: 'custom-dialog-container',
     });
 
     this.loginDialogRef.afterClosed().subscribe((result: any) => {
@@ -140,7 +155,7 @@ export class Header implements OnInit {
   openSignup(): void {
     const signupDialogRef = this.dialog.open(UserSignupComponent, {
       width: '400px',
-      panelClass: 'custom-dialog-container'
+      panelClass: 'custom-dialog-container',
     });
 
     signupDialogRef.afterClosed().subscribe((result: any) => {

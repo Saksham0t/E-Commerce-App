@@ -8,20 +8,6 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.category-pill {
-  color: #fff !important;
-  font-weight: 500;
-  padding: 0.4rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.category-pill:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #fff !important;
-  transform: translateY(-2px);
-}
-
 /* Ensure dropdown menus appear above category bar */
 .dropdown-menu {
   z-index: 1055 !important;
@@ -33,3 +19,22 @@
   border-radius: 0.375rem;
 }
 
+/* Make category links look clickable */
+.category-pill {
+  color: #fff !important;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer; /* pointer cursor on hover */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.category-pill:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Active (clicked) category stays highlighted */
+.active-category {
+  background-color: rgba(255, 255, 255, 0.3);
+}

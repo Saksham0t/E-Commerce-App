@@ -1,5 +1,5 @@
-<div style="padding-top: 28.5px">
-</div>
+<div style="padding-top: 28.5px"></div>
+
 <div class="row g-4 m-3 mx-4 bg-light">
   @for (p of getFilteredProducts(); track p.id) {
     <div class="col-sm-6 col-md-4 col-lg-3">
@@ -17,26 +17,25 @@
             <i class="bi bi-tag-fill me-1"></i>{{ p.Category }}
           </p>
 
-          <!-- Modify Product Placeholder -->
           @if (addedToCart.has(p.id)) {
-                  <!-- Confirmation + View Cart -->
-                  <div class="mt-auto text-center">
-                    <p class="text-success fw-semibold mb-2">
-                      <i class="bi bi-check-circle-fill me-1"></i>
-                      Item added to cart
-                    </p>
-                    <a routerLink="/cart" class="btn btn-primary btn-sm">
-                      <i class="bi bi-cart-fill me-1"></i>
-                      View Cart
-                    </a>
-                  </div>
-                } @else {
-                  <!-- Add to Cart button -->
-                  <button class="btn btn-outline-primary mt-auto" (click)="addToCart(p)">
-                    <i class="bi bi-cart-plus"></i>
-                    Add to Cart
-                  </button>
-                }
+            <!-- Confirmation + View Cart -->
+            <div class="mt-auto text-center">
+              <p class="text-success fw-semibold mb-2">
+                <i class="bi bi-check-circle-fill me-1"></i>
+                Item added to cart
+              </p>
+              <a routerLink="/cart" class="btn btn-viewcart btn-sm rounded-pill px-3">
+                <i class="bi bi-cart-fill me-1"></i>
+                View Cart
+              </a>
+            </div>
+          } @else {
+            <!-- Add to Cart button -->
+            <button class="btn btn-addcart mt-auto rounded-pill px-3" (click)="addToCart(p)">
+              <i class="bi bi-cart-plus"></i>
+              Add to Cart
+            </button>
+          }
         </div>
       </div>
     </div>
