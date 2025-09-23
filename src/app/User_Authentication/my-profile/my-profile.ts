@@ -4,7 +4,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-// ✅ Use the global bootstrap object from angular.json scripts
 declare const bootstrap: any;
 
 @Component({

@@ -1,8 +1,8 @@
-<div class="container my-5" *ngIf="!isLoading">
-  <div class="row g-4">
+<div class="container-fluid my-4">
+  <div class="row mt-5">
     
     <!-- Sidebar -->
-    <div class="col-md-3">
+    <div class="col-md-3 col-lg-2">
       <div class="list-group shadow-sm rounded-3 overflow-hidden">
         <a class="list-group-item list-group-item-action py-3 fw-semibold"
            [class.active]="activeTab==='profile'" 
@@ -23,109 +23,133 @@
     </div>
 
     <!-- Main Content -->
-    <div class="col-md-9">
+    <div class="col-md-9 col-lg-10">
       
       <!-- Profile Info -->
-      <div *ngIf="activeTab==='profile'" class="card border-0 shadow-sm rounded-3 mb-4">
-        <div class="card-header bg-dark text-white fw-bold">
-          <i class="bi bi-person-lines-fill me-2"></i> Profile Information
-        </div>
-        <div class="card-body">
-          <p class="mb-2"><strong>Name:</strong> {{ user.Name }}</p>
-          <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
-          <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
-          <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
-        </div>
-      </div>
-
-      <!-- Orders -->
-      <div *ngIf="activeTab==='orders'" class="card border-0 shadow-sm rounded-3 mb-4">
-      <div class="card-header bg-dark text-white fw-bold">
-        <i class="bi bi-bag-check-fill me-2"></i> My Orders
-      </div>
-        <div class="card-body">
-          <table class="table table-hover align-middle text-center" *ngIf="orders.length; else noOrders">
-            <thead class="table-primary">
-              <tr>
-                <th>#</th>
-                <th>Products</th>
-                <th>Total</th>
-                <th>Date</th>
-                <th>Address</th>
-                <th>Status</th>
-                <th>Payment</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let o of orders">
-                <td class="fw-semibold">#{{ o.id }}</td>
-                <td>{{ o.products.length }}</td>
-                <td class="text-success fw-bold">₹{{ o.totalPrice }}</td>
-                <td>{{ o.orderDate }}</td>
-                <td>{{ o.ShippingAddress }}</td>
-                <td>
-                  <span class="badge bg-info text-dark">{{ o.orderStatus }}</span>
-                </td>
-                <td>
-                  <span class="badge" 
-                        [ngClass]="o.paymentStatus === 'Paid' ? 'bg-success' : 'bg-warning text-dark'">
-                    {{ o.paymentStatus }}
-                  </span>
-                </td>
-                <td>
-                  <button class="btn btn-sm btn-outline-primary" (click)="viewOrderDetails(o)">
-                    {{ selectedOrder?.id===o.id ? 'Hide' : 'Details' }}
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <ng-template #noOrders>
-            <div class="alert alert-info mb-0">No orders found.</div>
-          </ng-template>
-
-          <!-- Order Details -->
-          <div *ngIf="selectedOrder" class="card mt-3 border-0 shadow-sm rounded-3">
-            <div class="card-header bg-dark text-white fw-bold">
-              Order #{{ selectedOrder.id }} Details
-            </div>
-            <div class="card-body">
-              <p><strong>Address:</strong> {{ selectedOrder.ShippingAddress }}</p>
-              <p><strong>Date:</strong> {{ selectedOrder.orderDate }}</p>
-              <p><strong>Status:</strong> {{ selectedOrder.orderStatus }}</p>
-              <p><strong>Payment:</strong> {{ selectedOrder.paymentStatus }}</p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let p of selectedOrder.products">
-                  {{ getProductDetails(p.id)?.name }} × {{ p.quantity }}
-                  <span class="text-muted">(₹{{ getProductDetails(p.id)?.Price }})</span>
-                </li>
-              </ul>
-            </div>
+      @if (activeTab==='profile') {
+        <div class="card border-0 shadow-sm rounded-3 mb-4">
+          <div class="card-header bg-dark text-white fw-bold">
+            <i class="bi bi-person-lines-fill me-2"></i> Profile Information
+          </div>
+          <div class="card-body">
+            <p class="mb-2"><strong>Name:</strong> {{ user.Name }}</p>
+            <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
+            <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
+            <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
           </div>
         </div>
-      </div>
+      }
+
+      <!-- Orders -->
+      @if (activeTab==='orders') {
+        <div class="card border-0 shadow-sm rounded-3 mb-4">
+          <div class="card-header bg-dark text-white fw-bold">
+            <i class="bi bi-bag-check-fill me-2"></i> My Orders
+          </div>
+          <div class="card-body">
+            @if (orders.length > 0) {
+              <div class="table-responsive shadow-sm rounded">
+                <table class="table table-hover align-middle mb-0">
+                  <thead class="table-light">
+                    <tr class="text-secondary">
+                      <th>Order #</th>
+                      <th>Products</th>
+                      <th>Total</th>
+                      <th>Date</th>
+                      <th>Address</th>
+                      <th>Status</th>
+                      <th>Payment</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (o of orders; track o.id) {
+                      <!-- Order Row -->
+                      <tr>
+                        <td class="fw-semibold">#{{ o.id }}</td>
+                        <td>{{ o.products.length }}</td>
+                        <td class="text-success">₹{{ o.totalPrice }}</td>
+                        <td>{{ o.orderDate }}</td>
+                        <td>{{ o.ShippingAddress }}</td>
+                        <td><span class="badge bg-warning text-dark">{{ o.orderStatus }}</span></td>
+                        <td><span class="badge bg-danger">{{ o.paymentStatus }}</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2 mx-auto"
+                                  (click)="viewOrderDetails(o)">
+                            <i class="bi"
+                               [ngClass]="selectedOrder?.id === o.id ? 'bi-x-circle-fill text-danger' : 'bi-eye-fill text-primary'"></i>
+                            <span>
+                              {{ selectedOrder?.id === o.id ? 'Hide Details' : 'View Details' }}
+                            </span>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <!-- Inline Details Row -->
+                      @if (selectedOrder?.id === o.id) {
+                        <tr>
+                          <td colspan="8" class="bg-light">
+                            <div class="p-3 border rounded shadow-sm">
+                              <h6 class="mb-3 text-primary">🛒 Products in Order #{{ o.id }}</h6>
+                              <div class="row g-3">
+                                @for (p of o.products; track p.id) {
+                                  <div class="col-md-6">
+                                    <div class="d-flex align-items-center border rounded p-2 bg-white shadow-sm">
+                                      <img
+                                        [src]="getProductDetails(p.id)?.ImageURL"
+                                        alt="Product Image"
+                                        width="60"
+                                        class="me-3 rounded border"
+                                      />
+                                      <div>
+                                        <h6 class="mb-1">{{ getProductDetails(p.id)?.name }}</h6>
+                                        <small class="text-muted">Quantity: {{ p.quantity }}</small><br>
+                                        <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
+                                      </div>
+                                    </div>
+                                  </div>
+                                }
+                              </div>
+                              <hr class="my-3">
+                              <p class="mb-0"><strong>💳 Payment Status:</strong> {{ o.paymentStatus }}</p>
+                              <p class="text-end fw-bold mt-2">🧾 Total Price: ₹{{ o.totalPrice }}</p>
+                            </div>
+                          </td>
+                        </tr>
+                      }
+                    }
+                  </tbody>
+                </table>
+              </div>
+            } @else {
+              <div class="alert alert-info mb-0">No orders found.</div>
+            }
+          </div>
+        </div>
+      }
 
       <!-- Settings -->
-      <div *ngIf="activeTab==='settings'" class="card border-0 shadow-sm rounded-3">
-        <div class="card-header bg-dark text-white fw-bold">
-          <i class="bi bi-gear-fill me-2"></i> Account Settings
+      @if (activeTab==='settings') {
+        <div class="card border-0 shadow-sm rounded-3">
+          <div class="card-header bg-dark text-white fw-bold">
+            <i class="bi bi-gear-fill me-2"></i> Account Settings
+          </div>
+          <div class="card-body">
+            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Name','Name')">
+              <i class="bi bi-person me-1"></i> Edit Name
+            </button>
+            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Password','Password')">
+              <i class="bi bi-key me-1"></i> Change Password
+            </button>
+            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('ShippingAddress','Shipping Address')">
+              <i class="bi bi-geo-alt me-1"></i> Update Address
+            </button>
+            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('PaymentDetails','Payment Details')">
+              <i class="bi bi-credit-card me-1"></i> Update Payment
+            </button>
+          </div>
         </div>
-        <div class="card-body">
-          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Name','Name')">
-            <i class="bi bi-person me-1"></i> Edit Name
-          </button>
-          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Password','Password')">
-            <i class="bi bi-key me-1"></i> Change Password
-          </button>
-          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('ShippingAddress','Shipping Address')">
-            <i class="bi bi-geo-alt me-1"></i> Update Address
-          </button>
-          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('PaymentDetails','Payment Details')">
-            <i class="bi bi-credit-card me-1"></i> Update Payment
-          </button>
-        </div>
-      </div>
+      }
 
     </div>
   </div>
@@ -133,7 +157,7 @@
 
 <!-- Update Field Modal -->
 <div class="modal fade" id="updateFieldModal" tabindex="-1" aria-labelledby="updateFieldModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="margin-top: 80px;"> <!-- ✅ slightly above center -->
+  <div class="modal-dialog" style="margin-top: 80px;">
     <div class="modal-content border-0 shadow-lg rounded-3">
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title fw-bold" id="updateFieldModalLabel">
