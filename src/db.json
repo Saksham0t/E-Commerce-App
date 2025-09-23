@@ -641,20 +641,7 @@
       "ImageURL": "https://tse4.mm.bing.net/th/id/OIP.9iS3T-cYmtWt4uZgTBZbGgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [
-    {
-      "id": "43e2",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
-    },
-    {
-      "id": "a34b",
-      "Productid": "217",
-      "Quantity": 1,
-      "TotalPrice": 850
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "5004",
@@ -1379,32 +1366,28 @@
       "Id": ""
     },
     {
-      "id": "zz6492",
-      "userId": "777",
+      "id": "zz8662",
+      "userId": "201",
       "products": [
         {
-          "id": "103",
+          "id": "101",
           "quantity": 1
         },
         {
-          "id": "122",
-          "quantity": 1
-        },
-        {
-          "id": "124",
-          "quantity": 1
+          "id": "107",
+          "quantity": 3
         }
       ],
-      "totalPrice": 1285,
+      "totalPrice": 2247,
       "orderDate": "2025-09-22",
-      "ShippingAddress": "Basant Colony, Saili Road",
+      "ShippingAddress": "near maruti mandir, maka, ahmednagar, maharashtra",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
       "Id": ""
     },
     {
-      "id": "zz4850",
+      "id": "zz8909",
       "userId": "777",
       "products": [
         {
@@ -1488,15 +1471,48 @@
       "Id": ""
     },
     {
-      "id": "zz497",
-      "userId": "204",
+      "id": "zz6157",
+      "userId": "205",
       "products": [
         {
-          "id": "105",
-          "quantity": 2
+          "id": "103",
+          "quantity": 1
+        },
+        {
+          "id": "126",
+          "quantity": 1
+        },
+        {
+          "id": "129",
+          "quantity": 1
+        },
+        {
+          "id": "116",
+          "quantity": 1
         }
       ],
-      "totalPrice": 398,
+      "totalPrice": 1392,
+      "orderDate": "2025-09-22",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz4850",
+      "userId": "777",
+      "products": [
+        {
+          "id": "122",
+          "quantity": 1
+        },
+        {
+          "id": "124",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": -2310,
       "orderDate": "2025-09-22",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
       "orderStatus": "Processing",
@@ -1540,6 +1556,39 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz6776",
+      "userId": "204",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        },
+        {
+          "id": "217",
+          "quantity": 1
+        },
+        {
+          "id": "212",
+          "quantity": 1
+        },
+        {
+          "id": "206",
+          "quantity": 1
+        },
+        {
+          "id": "236",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 2803,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
       "Id": ""
     }
   ],
@@ -1592,6 +1641,36 @@
       "Password": "saksham12",
       "ShippingAddress": "nagpur maharashtra",
       "PaymentDetails": "Net Banking"
+    },
+    {
+      "id": 251,
+      "Name": "lomesh",
+      "Email": "lomesh@test.com",
+      "Password": "lomesh123",
+      "ShippingAddress": "",
+      "PaymentDetails": ""
+    },
+    {
+      "id": "44a6",
+      "username": "divij123",
+      "email": "divij@gmail.com",
+      "password": "divijpass",
+      "userId": "USR-8323"
+    },
+    {
+      "id": "1e83",
+      "username": "saksham",
+      "email": "saksham@test.com",
+      "password": "saksham12",
+      "userId": "USR-2122"
+    },
+    {
+      "id": 1009,
+      "Name": "jayesh",
+      "Email": "jay@test.com",
+      "Password": "12341234",
+      "ShippingAddress": "",
+      "PaymentDetails": ""
     }
   ]
 }

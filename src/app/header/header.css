@@ -1,13 +1,15 @@
 .categories-bar {
   top: 75px; /* height of navbar */
   left: 0;
-  z-index: 1051;
+  position: fixed;
+  width: 100%;
+  z-index: 1020; /* below dropdowns */
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .category-pill {
-  color: #fff !important;       /* plain white text */
+  color: #fff !important;
   font-weight: 500;
   padding: 0.4rem 1rem;
   border-radius: 0.5rem;
@@ -15,7 +17,13 @@
 }
 
 .category-pill:hover {
-  background-color: rgba(255, 255, 255, 0.15); /* subtle translucent hover */
+  background-color: rgba(255, 255, 255, 0.15);
   color: #fff !important;
   transform: translateY(-2px);
+}
+
+/* Ensure dropdown menus appear above category bar */
+.dropdown-menu {
+  z-index: 1055 !important;
+  position: absolute;
 }

@@ -27,7 +27,7 @@ export class Header implements OnInit {
   productList: ProductsList[] = [];
 
   // Categories toggle + list
-  showCategories = false;
+  showCategories = true; // open by default
   categories: string[] = ['Electronics', 'Footwear', 'T-Shirts', 'Watches', 'Accessories'];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
@@ -54,7 +54,7 @@ export class Header implements OnInit {
   }
 
   get showHeader(): boolean {
-    // keep header hidden on admin routes, router-outlet remains outside in template
+    // keep header hidden on admin routes
     return !this.router.url.startsWith('/admin');
   }
 
@@ -105,7 +105,8 @@ export class Header implements OnInit {
 
   filterByCategory(category: string): void {
     this.router.navigate(['/search'], { queryParams: { category } });
-    this.showCategories = false; // close after choosing
+    // keep it open or close after click — your choice
+    // this.showCategories = false;
   }
 
   // Auth
