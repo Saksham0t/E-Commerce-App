@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CartService } from '../Shopping_Cart/cart-service';
-import { Rest1 } from '../Admin_Dashboard/Interfaces/rest1';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../Shopping_Cart/cart-service';
+import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
+import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 
 @Component({
   selector: 'app-search',
