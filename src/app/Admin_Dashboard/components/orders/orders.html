@@ -136,7 +136,7 @@
          [(ngModel)]="searchTerm">
 
   <!-- Orders Table -->
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered text-center table-hover">
     <thead class="table-light">
       <tr>
         <th>Order ID</th>
@@ -159,7 +159,7 @@
                   class="form-select form-select-sm"
                   [(ngModel)]="order.status"
                   (change)="updateOrderStatus(order.id, order.orderStatus)">
-            <option disabled value="">-- Change Status --</option>
+            <option disabled value="-- Change Status --">-- Change Status --</option>
             <option value="Processing">Processing</option>
             <option value="Shipped">Shipped</option>
             <option value="Delivered">Delivered</option>

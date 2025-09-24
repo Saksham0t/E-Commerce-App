@@ -20,7 +20,7 @@
 <table class="table table-bordered table-hover text-center align-middle">
   <thead class="table-light">
     <tr>
-      <th>Product ID</th>
+      <th>ID</th>
       <th>Image</th>
       <th>Name</th>
       <th>Price</th>
@@ -38,7 +38,7 @@
       <td>{{ p.name }}</td>
       <td class="text-success fw-bold">₹{{ p.Price }}</td>
       <td><span class="badge bg-secondary">{{ p.Category }}</span></td>
-      <td class="text-muted small text-start px-2">{{ p.Description }}</td>
+      <td class="text-muted small text-center px-2">{{ p.Description }}</td>
       <td>
         <button class="btn btn-outline-primary btn-sm" (click)="openManageModal(p)">
           <i class="bi bi-pencil-fill me-1"></i> Manage

@@ -697,20 +697,7 @@
       "ImageURL": "https://tse3.mm.bing.net/th/id/OIP.VYNr6HpneenEWC0nAwvszwHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [
-    {
-      "id": "c558",
-      "Productid": "108",
-      "Quantity": 1,
-      "TotalPrice": 890
-    },
-    {
-      "id": "76be",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -1847,6 +1834,31 @@
       "paymentMethod": "Debit/Credit Card",
       "Id": "",
       "status": "Cancelled"
+    },
+    {
+      "id": "zz276746372",
+      "userId": "777",
+      "products": [
+        {
+          "id": "108",
+          "quantity": 1
+        },
+        {
+          "id": "209",
+          "quantity": 1
+        },
+        {
+          "id": "205",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 3136,
+      "orderDate": "2025-09-24",
+      "ShippingAddress": "I-301 ADITYA MEGA CITY INDIRAPURAM",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
     }
   ],
   "users": [
