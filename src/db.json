@@ -699,19 +699,18 @@
   ],
   "cartItems": [
     {
-      "id": "c558",
+      "id": "5fee",
+      "Productid": "104",
+      "Quantity": 1,
+      "TotalPrice": 399
+    },
+    {
+      "id": "bfbf",
       "Productid": "108",
       "Quantity": 1,
       "TotalPrice": 890
-    },
-    {
-      "id": "76be",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
     }
   ],
-  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
