@@ -3,9 +3,9 @@
     <div class="row g-4">
       <!-- Sidebar -->
       <div class="col-md-3 col-lg-2" style="padding-left:0;">
-        <div class="list-group shadow-sm rounded-3 overflow-hidden">
+        <div class="list-group shadow-sm rounded-3 overflow-hidden cursor-pointer">
           <a
-            class="list-group-item list-group-item-action py-3 fw-semibold"
+            class="list-group-item list-group-item-action py-3 fw-semibold "
             [ngClass]="{ 'bg-brown': activeTab === 'profile', 'text-brown': activeTab !== 'profile' }"
             (click)="setTab('profile')"
           >

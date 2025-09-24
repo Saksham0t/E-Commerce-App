@@ -58,7 +58,6 @@
       >
         Search
       </button>
-      
 
       <!-- Toggle Categories Arrow -->
       <button
@@ -146,10 +145,13 @@
             >
           </li>
           <li><hr class="dropdown-divider" /></li>
-          <li>
-            <a class="dropdown-item py-2 text-danger fw-semibold" (click)="logout()"
-              ><i class="bi bi-box-arrow-right me-2"></i> Logout</a
+          <li class="text-center">
+            <a
+              class="dropdown-item logout-item py-1 text-danger fw-bold cursor-pointer"
+              (click)="logout()"
             >
+              <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
           </li>
         </ul>
       </li>
@@ -181,12 +183,12 @@
   </div>
 </div>
 
-} }
-
-<div style="padding-top: 100px" *ngIf="isNotAdminRoute()">
+} } @if (isNotAdminRoute()) {
+<div style="padding-top: 100px">
   <router-outlet></router-outlet>
 </div>
-
-<div *ngIf="!isNotAdminRoute()">
+} @else {
+<div>
   <router-outlet></router-outlet>
 </div>
+}

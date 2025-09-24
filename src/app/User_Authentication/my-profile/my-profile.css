@@ -10,3 +10,7 @@
   background-color: #CABA9C !important;
   color: #000; /* dark text for contrast */
 }
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

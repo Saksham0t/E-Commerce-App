@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 1020; /* below dropdowns */
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Ensure dropdown menus appear above category bar */
@@ -14,7 +14,7 @@
   position: absolute;
 }
 .active-brown {
-  background-color: #8A6240 !important;
+  background-color: #8a6240 !important;
   color: #fff !important;
   border-radius: 0.375rem;
 }
@@ -37,4 +37,20 @@
 /* Active (clicked) category stays highlighted */
 .active-category {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Hover effect: no background, just bold + size increase */
+.logout-item:hover {
+  background-color: transparent !important; /* no background */
+  font-weight: 700 !important; /* bold */
+  font-size: 1.05rem; /* slightly larger */
+  color: #dc3545 !important; /* keep Bootstrap danger red */
+}
+
+.dropdown-item:hover {
+  background-color: lightgray;
 }

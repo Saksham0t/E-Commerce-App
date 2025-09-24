@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 import { CartService } from '../../Shopping_Cart/cart-service';
 
-// Let TypeScript know Bootstrap's JS API exists
 declare const bootstrap: any;
 
 @Component({
@@ -51,7 +50,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private startTime = 0;
   private durationMs = 4000;
 
-  // Default durations (ms) — overridden by data-bs-interval if present
   private durations: number[] = [6000, 4000, 4000, 4000, 4000, 4000, 4000];
 
   constructor(private productService: Rest1, private cartService: CartService) {}
@@ -61,37 +59,22 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const carouselEl = document.getElementById('carouselExample');
-    if (!carouselEl) return;
-
-    // Read per-slide data-bs-interval values
     this.syncDurationsFromDom();
-
-    // Start progress for initial active slide
-    this.startProgressFor(this.getActiveIndexFromDom());
-
-    // Restart progress when a slide finishes changing
-    carouselEl.addEventListener('slid.bs.carousel', (event: any) => {
-      const newIndex = typeof event.to === 'number' ? event.to : this.getActiveIndexFromDom();
-      this.startProgressFor(newIndex);
-    });
+    this.startProgressFor(0); // always start from first slide
   }
 
   ngOnDestroy(): void {
     this.stopProgress();
   }
 
-  // Click a bar to navigate to that slide and start its progress
   goToSlide(index: number): void {
     const carouselEl = document.getElementById('carouselExample');
     if (!carouselEl || typeof bootstrap === 'undefined') return;
 
     const instance =
-      bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl);
+      bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl, { interval: false });
 
-    // Navigate to chosen slide
     instance.to(index);
-    // Immediately start progress for that slide
     this.startProgressFor(index);
   }
 
@@ -114,6 +97,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
     if (pct >= 100) {
       this.stopProgress();
+      this.advanceToNextSlide();
       return;
     }
     this.rafId = requestAnimationFrame(this.tick);
@@ -126,12 +110,24 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  private advanceToNextSlide(): void {
+    const carouselEl = document.getElementById('carouselExample');
+    if (!carouselEl || typeof bootstrap === 'undefined') return;
+
+    const instance =
+      bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl, { interval: false });
+
+    // compute next index ourselves
+    const nextIndex = (this.activeIndex + 1) % this.carouselItems.length;
+    instance.to(nextIndex);
+    this.startProgressFor(nextIndex);
+  }
+
   private getDuration(index: number): number {
     const domInterval = this.getDurationFromDom(index);
     return domInterval ?? this.durations[index] ?? 4000;
   }
 
-  // ----- Helpers to sync with DOM -----
   private syncDurationsFromDom(): void {
     const carouselEl = document.getElementById('carouselExample');
     if (!carouselEl) return;
@@ -155,14 +151,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     if (!attr) return null;
     const parsed = parseInt(attr, 10);
     return isNaN(parsed) ? null : parsed;
-  }
-
-  private getActiveIndexFromDom(): number {
-    const carouselEl = document.getElementById('carouselExample');
-    if (!carouselEl) return this.activeIndex;
-    const items = Array.from(carouselEl.querySelectorAll('.carousel-item'));
-    const idx = items.findIndex(i => i.classList.contains('active'));
-    return idx >= 0 ? idx : this.activeIndex;
   }
 
   // ----- Existing data/cart logic -----
