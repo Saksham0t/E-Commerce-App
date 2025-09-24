@@ -1,33 +1,30 @@
-<!-- Custom styles (can be moved to component CSS or global styles) -->
-<style>
-  .bg-brown {
-    background-color: #8A6240 !important;
-    color: #fff !important;
-  }
-
-  .text-brown {
-    color: #8A6240 !important;
-  }
-</style>
-
 <div class="container my-5" *ngIf="!isLoading">
   <div class="row g-4">
     <!-- Sidebar -->
-    <div class="col-md-3 col-lg-2">
+    <div class="col-md-3 col-lg-2" style="padding-left:0;">
       <div class="list-group shadow-sm rounded-3 overflow-hidden">
-        <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [ngClass]="{'bg-brown': activeTab === 'profile', 'text-brown': activeTab !== 'profile'}"
-           (click)="setTab('profile')">
+        <a
+          class="list-group-item list-group-item-action py-3 fw-semibold"
+          [ngClass]="{ 'bg-brown': activeTab === 'profile', 'text-brown': activeTab !== 'profile' }"
+          (click)="setTab('profile')"
+        >
           <i class="bi bi-person-circle me-2"></i> Profile Info
         </a>
-        <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [ngClass]="{'bg-brown': activeTab === 'orders', 'text-brown': activeTab !== 'orders'}"
-           (click)="setTab('orders')">
+        <a
+          class="list-group-item list-group-item-action py-3 fw-semibold"
+          [ngClass]="{ 'bg-brown': activeTab === 'orders', 'text-brown': activeTab !== 'orders' }"
+          (click)="setTab('orders')"
+        >
           <i class="bi bi-bag-check me-2"></i> My Orders
         </a>
-        <a class="list-group-item list-group-item-action py-3 fw-semibold"
-           [ngClass]="{'bg-brown': activeTab === 'settings', 'text-brown': activeTab !== 'settings'}"
-           (click)="setTab('settings')">
+        <a
+          class="list-group-item list-group-item-action py-3 fw-semibold"
+          [ngClass]="{
+            'bg-brown': activeTab === 'settings',
+            'text-brown': activeTab !== 'settings'
+          }"
+          (click)="setTab('settings')"
+        >
           <i class="bi bi-gear me-2"></i> Settings
         </a>
       </div>
@@ -35,151 +32,159 @@
 
     <!-- Main Content -->
     <div class="col-md-9 col-lg-10">
-      
       <!-- Profile Info -->
       @if (activeTab==='profile') {
-        <div class="card border-0 shadow-sm rounded-3 mb-4">
-          <div class="card-header text-white fw-bold" style="background-color: #CABA9C;">
-            <i class="bi bi-person-lines-fill me-2"></i> Profile Information
-          </div>
-          <div class="card-body">
-            <p class="mb-2"><strong>Name:</strong> {{ user.Name }}</p>
-            <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
-            <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
-            <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
-          </div>
+      <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header text-white fw-bold" style="background-color: #caba9c">
+          <i class="bi bi-person-lines-fill me-2"></i> Profile Information
         </div>
+        <div class="card-body">
+          <p class="mb-2"><strong>Name:</strong> {{ user.Name }}</p>
+          <p class="mb-2"><strong>Email:</strong> {{ user.Email }}</p>
+          <p class="mb-2"><strong>Shipping Address:</strong> {{ user.ShippingAddress }}</p>
+          <p class="mb-0"><strong>Payment Details:</strong> {{ user.PaymentDetails }}</p>
+        </div>
+      </div>
       }
 
       <!-- Orders -->
       @if (activeTab==='orders') {
-        <div class="card border-0 shadow-sm rounded-3 mb-4">
-          <div class="card-header text-white fw-bold" style="background-color: #CABA9C;">
-            <i class="bi bi-bag-check-fill me-2"></i> My Orders
-          </div>
-          <div class="card-body">
-            @if (orders.length > 0) {
-              <div class="table-responsive shadow-sm rounded">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light">
-                    <tr class="text-secondary">
-                      <th>Order #</th>
-                      <th>Products</th>
-                      <th>Total</th>
-                      <th>Date</th>
-                      <th>Address</th>
-                      <th>Status</th>
-                      <th>Payment</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @for (o of orders; track o.id) {
-                      <!-- Order Row -->
-                      <tr>
-                        <td class="fw-semibold">#{{ o.id }}</td>
-                        <td>{{ o.products.length }}</td>
-                        <td class="text-success">₹{{ o.totalPrice }}</td>
-                        <td>{{ o.orderDate }}</td>
-                        <td>{{ o.ShippingAddress }}</td>
-                        <td><span class="badge bg-warning text-dark">{{ o.orderStatus }}</span></td>
-                        <td><span class="badge bg-danger">{{ o.paymentStatus }}</span></td>
-                        <td>
-                          <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2 mx-auto"
-                                  (click)="viewOrderDetails(o)">
-                            <i class="bi"
-                               [ngClass]="selectedOrder?.id === o.id ? 'bi-x-circle-fill text-danger' : 'bi-eye-fill text-primary'"></i>
-                            <span>
-                              {{ selectedOrder?.id === o.id ? 'Hide Details' : 'View Details' }}
-                            </span>
-                          </button>
-                        </td>
-                      </tr>
+      <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-body">
+          @if (orders.length > 0) {
+          <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle mb-0 w-100">
+              <thead>
+                <tr class="text-center custom-header" style="background-color:#caba9c; color:#000">
+                  <th style="width:50px;">Order #</th>
+                  <th style="width:40px;">Products</th>
+                  <th style="width:90px;">Total</th>
+                  <th style="width:110px; white-space:nowrap;">Date</th>
+                  <th style="width:220px;">Address</th>
+                  <th style="width:90px;">Status</th>
+                  <th style="width:80px;">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (o of orders; track o.id) {
+                <!-- Order Row -->
+                <tr class="text-center">
+                  <td class="fw-semibold">#{{ o.id }}</td>
+                  <td>{{ o.products.length }}</td>
+                  <td class="text-success">₹{{ o.totalPrice }}</td>
+                  <td style="white-space: nowrap">{{ o.orderDate }}</td>
+                  <td>{{ o.ShippingAddress }}</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">{{ o.orderStatus }}</span>
+                  </td>
+                  <td>
+                    <span
+                      style="cursor: pointer; font-size: 1.2rem"
+                      (click)="viewOrderDetails(o)"
+                      title="{{ selectedOrder?.id === o.id ? 'Hide Details' : 'View Details' }}"
+                    >
+                      {{ selectedOrder?.id === o.id ? '✖' : '👁️' }}
+                    </span>
+                  </td>
+                </tr>
 
-                      <!-- Inline Details Row -->
-                      @if (selectedOrder?.id === o.id) {
-                        <tr>
-                          <td colspan="8" class="bg-light">
-                            <div class="p-3 border rounded shadow-sm">
-                              <h6 class="mb-3 text-primary">🛒 Products in Order #{{ o.id }}</h6>
-                              <div class="row g-3">
-                                @for (p of o.products; track p.id) {
-                                  <div class="col-md-6">
-                                    <div class="d-flex align-items-center border rounded p-2 bg-white shadow-sm">
-                                      <img
-                                        [src]="getProductDetails(p.id)?.ImageURL"
-                                        alt="Product Image"
-                                        width="60"
-                                        class="me-3 rounded border"
-                                      />
-                                      <div>
-                                        <h6 class="mb-1">{{ getProductDetails(p.id)?.name }}</h6>
-                                        <small class="text-muted">Quantity: {{ p.quantity }}</small><br>
-                                        <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
-                                      </div>
-                                    </div>
-                                  </div>
-                                }
-                              </div>
-                              <hr class="my-3">
-                              <p class="mb-0"><strong>💳 Payment Status:</strong> {{ o.paymentStatus }}</p>
-                              <p class="text-end fw-bold mt-2">🧾 Total Price: ₹{{ o.totalPrice }}</p>
+                <!-- Inline Details Row -->
+                @if (selectedOrder?.id === o.id) {
+                <tr>
+                  <td colspan="7" class="bg-light">
+                    <div class="p-3 border rounded shadow-sm">
+                      <h6 class="mb-3 text-primary">🛒 Products in Order #{{ o.id }}</h6>
+                      <div class="row g-3">
+                        @for (p of o.products; track p.id) {
+                        <div class="col-md-6">
+                          <div class="d-flex align-items-center border rounded p-2 bg-white shadow-sm">
+                            <img
+                              [src]="getProductDetails(p.id)?.ImageURL"
+                              alt="Product Image"
+                              width="60"
+                              class="me-3 rounded border"
+                            />
+                            <div>
+                              <h6 class="mb-1">{{ getProductDetails(p.id)?.name }}</h6>
+                              <small class="text-muted">Quantity: {{ p.quantity }}</small><br />
+                              <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
                             </div>
-                          </td>
-                        </tr>
-                      }
-                    }
-                  </tbody>
-                </table>
-              </div>
-            } @else {
-              <div class="alert alert-info mb-0">No orders found.</div>
-            }
+                          </div>
+                        </div>
+                        }
+                      </div>
+                      <hr class="my-3" />
+                      <p class="text-end fw-bold mt-2">🧾 Total Price: ₹{{ o.totalPrice }}</p>
+                    </div>
+                  </td>
+                </tr>
+                } }
+              </tbody>
+            </table>
           </div>
+          } @else {
+          <div class="alert alert-info mb-0">No orders found.</div>
+          }
         </div>
+      </div>
       }
 
       <!-- Settings -->
       @if (activeTab==='settings') {
-        <div class="card border-0 shadow-sm rounded-3">
-          <div class="card-header text-white fw-bold" style="background-color: #CABA9C;">
-            <i class="bi bi-gear-fill me-2"></i> Account Settings
-          </div>
-          <div class="card-body">
-            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Name','Name')">
-              <i class="bi bi-person me-1"></i> Edit Name
-            </button>
-            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Password','Password')">
-              <i class="bi bi-key me-1"></i> Change Password
-            </button>
-            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('ShippingAddress','Shipping Address')">
-              <i class="bi bi-geo-alt me-1"></i> Update Address
-            </button>
-            <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('PaymentDetails','Payment Details')">
-              <i class="bi bi-credit-card me-1"></i> Update Payment
-            </button>
-          </div>
+      <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-header text-white fw-bold" style="background-color: #caba9c">
+          <i class="bi bi-gear-fill me-2"></i> Account Settings
         </div>
+        <div class="card-body">
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Name', 'Name')">
+            <i class="bi bi-person me-1"></i> Edit Name
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('Password', 'Password')">
+            <i class="bi bi-key me-1"></i> Change Password
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('ShippingAddress', 'Shipping Address')">
+            <i class="bi bi-geo-alt me-1"></i> Update Address
+          </button>
+          <button class="btn btn-outline-secondary me-2 mb-2" (click)="openUpdateModal('PaymentDetails', 'Payment Details')">
+            <i class="bi bi-credit-card me-1"></i> Update Payment
+          </button>
+        </div>
+      </div>
       }
-
     </div>
   </div>
 </div>
 
 <!-- Update Field Modal -->
-<div class="modal fade" id="updateFieldModal" tabindex="-1" aria-labelledby="updateFieldModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="margin-top: 80px;">
+<div
+  class="modal fade"
+  id="updateFieldModal"
+  tabindex="-1"
+  aria-labelledby="updateFieldModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" style="margin-top: 80px">
     <div class="modal-content border-0 shadow-lg rounded-3">
       <div class="modal-header bg-brown">
         <h5 class="modal-title fw-bold" id="updateFieldModalLabel">
           <i class="bi bi-pencil-square me-2"></i> Update {{ modalLabel }}
         </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body bg-light">
         <div class="mb-3">
           <label class="form-label fw-semibold">{{ modalLabel }}</label>
-          <input type="text" class="form-control" [(ngModel)]="modalValue" placeholder="Enter new {{ modalLabel }}">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="modalValue"
+            placeholder="Enter new {{ modalLabel }}"
+          />
         </div>
       </div>
       <div class="modal-footer bg-light">

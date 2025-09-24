@@ -6,3 +6,7 @@
 .text-brown {
   color: #8A6240 !important;
 }
+.custom-header th {
+  background-color: #CABA9C !important;
+  color: #000; /* dark text for contrast */
+}

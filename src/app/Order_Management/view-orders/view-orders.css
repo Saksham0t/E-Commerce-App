@@ -12,3 +12,8 @@
   font-size: 0.9rem;
   vertical-align: middle;
 }
+
+.custom-header th {
+  background-color: #CABA9C !important;
+  color: #000; /* dark text for contrast */
+}
