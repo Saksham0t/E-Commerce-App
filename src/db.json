@@ -700,8 +700,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Pending"
+      "orderStatus": "Done: Paid by Debit/Credit Card",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "status": "Shipped"
     },
     {
       "id": "zz7866",
@@ -720,7 +721,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending"
     },
     {
@@ -820,7 +821,7 @@
       "totalPrice": 1752,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending"
     },
     {
@@ -1070,7 +1071,7 @@
       "totalPrice": 3793,
       "orderDate": "2025-09-20",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
       "Id": ""
