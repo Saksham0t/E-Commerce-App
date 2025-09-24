@@ -711,6 +711,7 @@
       "TotalPrice": 599
     }
   ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -1633,23 +1634,23 @@
         {
           "id": "209",
           "quantity": 1
-        },
-        {
-          "id": "211",
-          "quantity": 1
-        },
-        {
-          "id": "226",
-          "quantity": 1
-        },
-        {
-          "id": "218",
-          "quantity": 1
         }
       ],
-      "totalPrice": 4079,
+      "totalPrice": 599,
       "orderDate": "2025-09-23",
-      "ShippingAddress": "pune, maharashtra",
+      "ShippingAddress": "Maruti lane",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz5546",
+      "userId": "777",
+      "products": [],
+      "totalPrice": 0,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
@@ -1780,25 +1781,21 @@
       "Id": ""
     },
     {
-      "id": "zz9853794783",
+      "id": "zz5462872957",
       "userId": "777",
       "products": [
         {
-          "id": "108",
+          "id": "104",
           "quantity": 1
         },
         {
-          "id": "222",
-          "quantity": 1
-        },
-        {
-          "id": "209",
+          "id": "127",
           "quantity": 1
         }
       ],
-      "totalPrice": 1565,
+      "totalPrice": 799,
       "orderDate": "2025-09-23",
-      "ShippingAddress": "pune, maharashtra",
+      "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",

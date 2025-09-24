@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
@@ -13,10 +12,10 @@ declare const bootstrap: any;
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, HttpClientModule, FormsModule, CommonModule],
+  imports: [RouterModule, FormsModule, CommonModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
-  providers: [Rest1, HttpClientModule],
+  providers: [Rest1],
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
   productsByCategory: { [key: string]: ProductsList[] } = {};
