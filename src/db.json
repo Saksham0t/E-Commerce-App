@@ -735,7 +735,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending"
     },
     {
@@ -755,7 +755,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending"
     },
     {
@@ -815,7 +815,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Cancelled",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending"
     },
     {
@@ -831,7 +831,7 @@
       "totalPrice": 1598,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending"
     },
     {
@@ -879,7 +879,7 @@
       "totalPrice": 1752,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending"
     },
     {
