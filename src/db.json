@@ -681,20 +681,7 @@
       "ImageURL": "https://media.littlewoods.com/i/littlewoods/V8BLG_SQ1_0000000088_NO_COLOR_SLf?$pdp_1650x2199_hi_res$&fmt=webp"
     }
   ],
-  "cartItems": [
-    {
-      "id": "2796",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
-    },
-    {
-      "id": "18de",
-      "Productid": "211",
-      "Quantity": 1,
-      "TotalPrice": 1500
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -713,7 +700,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending"
     },
     {
@@ -733,7 +720,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending"
     },
     {
@@ -753,7 +740,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending"
     },
     {
@@ -773,7 +760,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending"
     },
     {
@@ -793,7 +780,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending"
     },
     {
@@ -1323,35 +1310,6 @@
       "Id": ""
     },
     {
-      "id": "zz6157",
-      "userId": "205",
-      "products": [
-        {
-          "id": "103",
-          "quantity": 1
-        },
-        {
-          "id": "126",
-          "quantity": 1
-        },
-        {
-          "id": "129",
-          "quantity": 1
-        },
-        {
-          "id": "116",
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 1392,
-      "orderDate": "2025-09-22",
-      "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "UPI",
-      "Id": ""
-    },
-    {
       "id": "zz4850",
       "userId": "777",
       "products": [
@@ -1428,27 +1386,6 @@
         }
       ],
       "totalPrice": 1029,
-      "orderDate": "2025-09-22",
-      "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "UPI",
-      "Id": ""
-    },
-    {
-      "id": "zz5938",
-      "userId": "205",
-      "products": [
-        {
-          "id": "103",
-          "quantity": 2
-        },
-        {
-          "id": "105",
-          "quantity": 2
-        }
-      ],
-      "totalPrice": 1076,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
@@ -1584,6 +1521,251 @@
       "totalPrice": 2737,
       "orderDate": "2025-09-22",
       "ShippingAddress": "e2de",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz7486283511",
+      "userId": "205",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        },
+        {
+          "id": "127",
+          "quantity": 1
+        },
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "115",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1708,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "UPI",
+      "Id": ""
+    },
+    {
+      "id": "zz2852961459",
+      "userId": "205",
+      "products": [
+        {
+          "id": "127",
+          "quantity": 6
+        },
+        {
+          "id": "240",
+          "quantity": 4
+        },
+        {
+          "id": "239",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 5522,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz5102",
+      "userId": "201",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 599,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "rgrhteh",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz2632",
+      "userId": "777",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 599,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Maruti lane",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz5546",
+      "userId": "777",
+      "products": [],
+      "totalPrice": 0,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz454",
+      "userId": "777",
+      "products": [],
+      "totalPrice": 0,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Maruti lane",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz3068",
+      "userId": "777",
+      "products": [],
+      "totalPrice": 0,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "HOUSE NO 5",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz7374",
+      "userId": "777",
+      "products": [
+        {
+          "id": "111",
+          "quantity": 1
+        },
+        {
+          "id": "209",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": -662,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "rgrhteh",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz9146",
+      "userId": "777",
+      "products": [
+        {
+          "id": "217",
+          "quantity": 1
+        },
+        {
+          "id": "209",
+          "quantity": 1
+        },
+        {
+          "id": "111",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 61,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "HOUSE NO 5",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz3913604198",
+      "userId": "205",
+      "products": [
+        {
+          "id": "209",
+          "quantity": 2
+        },
+        {
+          "id": "111",
+          "quantity": 1
+        },
+        {
+          "id": "217",
+          "quantity": 1
+        },
+        {
+          "id": "225",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 952,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz2120436390",
+      "userId": "777",
+      "products": [
+        {
+          "id": "115",
+          "quantity": 1
+        },
+        {
+          "id": "108",
+          "quantity": 1
+        },
+        {
+          "id": "104",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1610,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz5462872957",
+      "userId": "777",
+      "products": [
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "127",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 799,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",

@@ -1,8 +1,45 @@
+/* Card styling */
+.card {
+  border-radius: 20px;
+  border: 1px solid #CABA9C;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .card:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(77, 45, 24, 0.3);
 }
 
-.carousel-caption {
-  bottom: 20%;
+/* Text colors */
+.card-text.text-muted { color: #CABA9C; }
+.card-text.fw-bold.text-success { color: #976b44; }
+
+/* Add to Cart button */
+.btn-addcart {
+  background-color: #fff;
+  color: #976b44;
+  border: 2px solid #8A6240;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-addcart:hover {
+  background-color: #976b44;
+  color: #fff;
+  border-color: #976b44;
+}
+
+/* View Cart button */
+.btn-viewcart {
+  background-color: #976b44;
+  border-color: #8A6240;
+  color: #fff;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+.btn-viewcart:hover {
+  background-color: #976b44;
+  border-color: #976b44;
 }
