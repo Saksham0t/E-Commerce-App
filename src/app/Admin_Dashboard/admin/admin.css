@@ -3,3 +3,82 @@
   object-fit: cover;
   width: 100%;
 }
+.badge {
+  background-color: #976b44;
+  border-color: #8A6240;
+  color: #fff;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+.btn {
+  background-color: #fff;
+  color: #976b44;
+  border: 2px solid #8A6240;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.txt {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6e4b2e;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #976b44;
+  padding-bottom: 4px;
+}
+/* Chart Card Container */
+.card {
+  background-color: #fffaf7;
+  border: 1px solid #e8dcd2;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Card Header */
+.card-header {
+  background-color: #fdf8f4;
+  color: #6e4b2e;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #e8dcd2;
+  padding: 12px;
+}
+
+/* Chart Canvas */
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffaf7;
+  border-radius: 50%;
+  box-shadow: inset 0 0 8px rgba(151, 107, 68, 0.1);
+}
+
+/* Accent Colors for Chart Elements */
+.chart-accent-primary {
+  background-color: #976b44 !important;
+}
+
+.chart-accent-secondary {
+  background-color: #cbb2a0 !important;
+}
+
+.chart-accent-muted {
+  background-color: #f5eae1 !important;
+}

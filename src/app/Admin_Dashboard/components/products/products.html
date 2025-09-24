@@ -17,6 +17,12 @@
   </div>
 </div>
 
+<div class="text-end mt-3">
+  <button class="btn btn-success" (click)="openAddModal()">➕ Add New Product</button>
+</div>
+
+<br>
+
 <table class="table table-bordered table-hover text-center align-middle">
   <thead class="table-light">
     <tr>
@@ -37,11 +43,11 @@
       </td>
       <td>{{ p.name }}</td>
       <td class="text-success fw-bold">₹{{ p.Price }}</td>
-      <td><span class="badge bg-secondary">{{ p.Category }}</span></td>
-      <td class="text-muted small text-center px-2">{{ p.Description }}</td>
+      <td><span class="badge">{{ p.Category }}</span></td>
+      <td class="text-muted small text-center px-3">{{ p.Description }}</td>
       <td>
-        <button class="btn btn-outline-primary btn-sm" (click)="openManageModal(p)">
-          <i class="bi bi-pencil-fill me-1"></i> Manage
+        <button class="btn" (click)="openManageModal(p)">
+          <i class="bi bi-pencil-fill me-2"></i> Manage
         </button>
       </td>
     </tr>
@@ -51,9 +57,6 @@
 
 
 <!-- Add Product Button -->
-<div class="text-end mt-3">
-  <button class="btn btn-success" (click)="openAddModal()">➕ Add New Product</button>
-</div>
 
 <!-- Manage Product Modal -->
 <div class="modal" tabindex="-1" [ngClass]="{ 'show d-block': selectedProduct }" *ngIf="selectedProduct">

@@ -153,7 +153,7 @@
       <tr>
         <td>{{ order.id }}</td>
         <td>{{ getCustomerName(order.userId) }}</td>
-        <td><span class="badge bg-info text-dark">{{ order.orderStatus }}</span></td>
+        <td><span class="badge">{{ order.orderStatus }}</span></td>
         <td>
           <select id="statusSelect-{{ order.id }}"
                   class="form-select form-select-sm"
@@ -166,10 +166,10 @@
             <option value="Cancelled">Cancelled</option>
           </select>
         </td>
-        <td><span class="badge bg-info text-dark">{{ order.paymentStatus }}</span></td>
+        <td><span class="badge">{{ order.paymentStatus }}</span></td>
         <td>₹{{ order.totalPrice }}</td>
         <td>
-          <button class="btn btn-outline-primary btn-sm"
+          <button class=".btn"
                   (click)="toggleDetails(order.id)">
             {{ selectedOrderId === order.id ? 'Hide Details' : 'View Details' }}
           </button>
