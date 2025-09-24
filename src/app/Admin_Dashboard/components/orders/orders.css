@@ -1,0 +1,17 @@
+.badge {
+  background-color: #976b44;
+  border-color: #8A6240;
+  color: #fff;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+.btn {
+  background-color: #fff;
+  color: #976b44;
+  border: 2px solid #8A6240;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}

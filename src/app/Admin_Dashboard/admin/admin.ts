@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import Chart from 'chart.js/auto';
 @Component({
@@ -10,6 +10,11 @@ import Chart from 'chart.js/auto';
 })
 export class admin {
   constructor(private router:Router){}
+
+    @HostListener('window:popstate', ['$event'])
+  onPopState(event: PopStateEvent) {
+    this.goBack(); // Your custom logic
+  }
     logout() {
       // Remove login flag
       localStorage.removeItem('isAdminLoggedIn');
@@ -26,7 +31,9 @@ export class admin {
   
     goBack() {
       this.currentScreen = 1;
-      this.router.navigate(['/admin']);
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['/admin']);
+      })
     }
     cards = [
     { title: 'Browse Products', route: '/products', image: 'https://plus.unsplash.com/premium_photo-1683887064106-531532ecdf20?q=80&w=1043&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },

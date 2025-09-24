@@ -44,15 +44,7 @@ export class Customers {
   toggleDetails(id: number): void {
     this.selectedCustomerId = this.selectedCustomerId === id ? null : id;
   }
-  selectedUser: any = null;
-
-  newUser = {
-      Name: '',
-      Email: 0,
-      Password: '',
-      ShippingAddress: '',
-      PaymentDetails: ''
-    };
+  selectedUser:any;
 
     
   // openUserModal(){
@@ -65,10 +57,18 @@ export class Customers {
   //     PaymentDetails: ''
   //   };
   // }
-  openUserModal(customer: any): void {
-  this.selectedUser = { ...customer }; // Clone to avoid direct mutation
+  openUserModal(customer: Users): void {
+  this.selectedUser = {
+    id:customer.id,
+    Name:customer.Name,
+    Email:customer.Email,
+    Password:customer.Password,
+    ShippingAddress:customer.ShippingAddress,
+    PaymentDetails:customer.PaymentDetails
+  }; // Clone to avoid direct mutation
+  this.showAddModal = true;
 }
-selectedCustomer: any = null;
+selectedCustomer!: Users;
 selectedCustomerOrders: any[] | null = null;
 
 openOrdersModal(customer: any): void {
@@ -77,14 +77,21 @@ openOrdersModal(customer: any): void {
 }
 
 closeOrdersModal(): void {
-  this.selectedCustomer = null;
   this.selectedCustomerOrders = null;
 }
 
 
-closeModal(): void {
-  this.selectedUser = null;
+closeModal(): void {this.selectedUser = null;
+  this.showAddModal = false;
 }
+deleteUser(customer:any) {
+    this.jsonservice.deleteUserRecord(customer).subscribe({
+      next: (data) => { this.getCustomersfromService() },
+      error: (err) => alert(JSON.stringify(err)),
+      complete: () => console.log('Delete Operation')
+    })
+    this.closeModal();
+  }
   // closeUserModal() {
   //   this.selectedUser = null;
   //   this.showAddModal = false;
@@ -98,7 +105,7 @@ closeModal(): void {
     if (index !== -1) {
       this.customersLst[index] = { ...this.selectedUser };
     }
-    this.jsonservice.updateRecord(this.selectedUser).subscribe({
+    this.jsonservice.updateCustomerRecord(this.selectedUser).subscribe({
       next:(data)=>{this.getCustomersfromService();},
       error:(err)=>alert(JSON.stringify(err)),
       complete:()=>console.log("Update operation is complete")

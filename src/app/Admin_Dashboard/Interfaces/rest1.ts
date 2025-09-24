@@ -35,6 +35,10 @@ export class Rest1 {
     let strUpdateUrl=this.strUrl+"/users/"+UserRec.id;
     return this.rest.put(strUpdateUrl,UserRec);
   }
+  deleteUserRecord(UserRec:Users):Observable<any>{
+    let deleteRecordURL=this.strUrl+"/users/"+UserRec.id;
+    return this.rest.delete(deleteRecordURL);
+  }
   
   insertOrderRecord(OrderRec:Orders):Observable<any>{
     let strUpdateUrl=this.strUrl+"/OrdersList/";

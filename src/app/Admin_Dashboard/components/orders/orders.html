@@ -6,12 +6,13 @@
          [(ngModel)]="searchTerm">
 
   <!-- Orders Table -->
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered text-center table-hover">
     <thead class="table-light">
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
-        <th>Current Status</th>
+        <th>Current Order Status</th>
+        <th>Current Payment Status</th>
         <th>Change Status</th>
         <th>Total Price</th>
         <th>Actions</th>
@@ -22,21 +23,23 @@
       <tr>
         <td>{{ order.id }}</td>
         <td>{{ getCustomerName(order.userId) }}</td>
-        <td><span class="badge bg-info text-dark">{{ order.orderStatus }}</span></td>
+        <td><span class="badge">{{ order.orderStatus }}</span></td>
         <td>
           <select id="statusSelect-{{ order.id }}"
                   class="form-select form-select-sm"
-                  (change)="updateOrderStatus(order.id, $event)">
-            <option disabled selected>-- Change Status --</option>
-            <option>Processing</option>
-            <option>Shipped</option>
-            <option>Delivered</option>
-            <option>Cancelled</option>
+                  [(ngModel)]="order.status"
+                  (change)="updateOrderStatus(order.id, order.orderStatus)">
+            <option disabled value="-- Change Status --">-- Change Status --</option>
+            <option value="Processing">Processing</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
         </td>
+        <td><span class="badge">{{ order.paymentStatus }}</span></td>
         <td>₹{{ order.totalPrice }}</td>
         <td>
-          <button class="btn btn-outline-primary btn-sm"
+          <button class=".btn"
                   (click)="toggleDetails(order.id)">
             {{ selectedOrderId === order.id ? 'Hide Details' : 'View Details' }}
           </button>
@@ -45,30 +48,54 @@
 
       <!-- Product Details Row -->
       <tr *ngIf="selectedOrderId === order.id">
-  <td colspan="6" class="bg-light">
-    <div class="p-3 border rounded shadow-sm">
-      <h6 class="mb-3 text-primary">🛒 Products in Order #{{ order.id }}</h6>
+  <td colspan="7" class="bg-light">
+  <div class="p-3 border rounded shadow-sm">
+    <h6 class="mb-3 text-primary">🛒 Products in Order #{{ order.id }}</h6>
 
-      <div class="row g-3">
-        <div *ngFor="let p of order.products" class="col-md-6">
-          <div class="d-flex align-items-center border rounded p-2 bg-white">
-            <img [src]="getProductDetails(p.id).ImageURL"
-                 alt="Product Image"
-                 width="60"
-                 class="me-3 rounded border">
-            <div>
-              <h6 class="mb-1">{{ getProductDetails(p.id).name }}</h6>
-              <small class="text-muted">Quantity: {{ p.quantity }}</small><br>
-              <small class="text-muted">Price: ₹{{ getProductDetails(p.id)?.Price }}</small>
-            </div>
+    <div class="row g-3">
+      <div *ngFor="let p of order.products" class="col-md-6">
+        <div class="d-flex align-items-center border rounded p-2 bg-white">
+          <img [src]="getProductDetails(p.id).ImageURL"
+               alt="Product Image"
+               width="60"
+               class="me-3 rounded border">
+          <div>
+            <h6 class="mb-1">{{ getProductDetails(p.id).name }}</h6>
+            <small class="text-muted d-block">Quantity: {{ p.quantity }}</small>
+            <small class="text-muted d-block">Price: ₹{{ (getProductDetails(p.id)?.Price || 0) * p.quantity }}</small>
           </div>
         </div>
       </div>
-
-      <hr class="my-3">
-      <p class="mb-0"><strong>💳 Payment Status:</strong> {{ order.paymentStatus }}</p>
     </div>
-  </td>
+
+    <hr class="my-3">
+
+    <!-- Payment Status Section -->
+    <div class="d-flex align-items-center justify-content-between flex-wrap">
+      <p class="mb-2 mb-md-0">
+        <strong class="text-dark">💳 Payment Status:</strong>
+        <span class="badge bg-secondary ms-2">{{ order.paymentStatus }}</span>
+      </p>
+
+      <div class="d-flex align-items-center gap-2">
+        <label for="statusSelect-{{ order.id }}" class="form-label mb-0 fw-semibold text-muted">
+          Change Payment Status:
+        </label>
+        <select id="statusSelect-{{ order.id }}"
+                class="form-select form-select-sm w-auto"
+                [(ngModel)]="order.paymentStatus"
+                (change)="updateOrderPaymentStatus(order.id, order.paymentStatus)">
+          <option disabled value="">-- Select Method --</option>
+          <option value="Done: Paid by UPI">UPI</option>
+          <option value="Done: Paid by Debit/Credit Card">Debit/Credit Card</option>
+          <option value="Done: Paid by Cash on Delivery">Cash on Delivery</option>
+          <option value="Done: Paid by Net Banking">Net Banking</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</td>
+
 </tr>
 
     </ng-container>
