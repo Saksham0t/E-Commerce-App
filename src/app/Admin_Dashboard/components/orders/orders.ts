@@ -72,6 +72,17 @@ getCustomersfromService(): Promise<void> {
     })
 
   }
+  updateOrderPaymentStatus(orderId: number, event: Event): void {
+    const newStatus = (event.target as HTMLSelectElement).value;
+    const order = this.OrdersList.find(o => o.id === orderId);
+    if (order) order.paymentStatus = newStatus;
+    this.productObj.updateOrderRecord(order).subscribe({
+      next: (data) => { this.getOrdersfromService(); },
+      error: (err) => alert(JSON.stringify(err)),
+      complete: () => console.log("Update operation is complete")
+    })
+
+  }
 
   getCustomerName(userId: string): string {
     const customer = this.CustomersList.find(c => c.id === userId);

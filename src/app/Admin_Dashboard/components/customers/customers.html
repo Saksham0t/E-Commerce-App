@@ -1,54 +1,37 @@
-<div class="row">
-  <div class="col-md-4 mb-4" *ngFor="let customer of customersLst">
-    <div class="card border-0 shadow-sm h-100">
-      <div class="card-body">
-        <div class="d-flex align-items-center mb-3">
-          <div class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
-            {{ customer.Name.charAt(0) }}
+<!-- Page Wrapper with Padding -->
+<div class="container-fluid px-4 py-4">
+  <!-- Section Heading -->
+  <h3 class="mb-4 fw-bold text-primary">
+    <i class="bi bi-person-lines-fill me-2"></i> Manage Customers
+  </h3>
+
+  <!-- Customer Cards Grid -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let customer of customersLst">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="rounded-circle bg-secondary text-white fw-bold d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+              {{ customer.Name.charAt(0) }}
+            </div>
+            <div class="ms-3">
+              <h5 class="mb-0">{{ customer.Name }}</h5>
+              <small class="text-muted">{{ customer.Email }}</small>
+            </div>
           </div>
-          <div class="ms-3">
-            <h5 class="mb-0">{{ customer.Name }}</h5>
-            <small class="text-muted">{{ customer.Email }}</small>
+          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-muted"></i>{{ customer.ShippingAddress }}</p>
+          <p class="mb-1"><i class="bi bi-credit-card-fill me-2 text-muted"></i>{{ customer.PaymentDetails }}</p>
+          <div class="mt-3 d-flex justify-content-between">
+            <button class="btn btn-sm btn-outline-primary" (click)="openOrdersModal(customer)">View Orders</button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="openUserModal(customer)">Edit</button>
+            <button class="btn btn-sm btn-outline-warning" (click)="deleteUser(customer)">Delete</button>
           </div>
-        </div>
-        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>{{ customer.ShippingAddress }}</p>
-        <p class="mb-1"><i class="bi bi-credit-card-fill me-2"></i>{{ customer.PaymentDetails }}</p>
-        <div class="mt-3 d-flex justify-content-between">
-          <button class="btn btn-sm btn-outline-primary" (click)="openOrdersModal(customer)">View Orders</button>
-          <button class="btn btn-sm btn-outline-secondary" (click)="openUserModal(customer)">Edit</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- View Orders Modal -->
-<div class="modal fade show d-block" tabindex="-1" *ngIf="selectedCustomerOrders" [ngClass]="{ 'd-block': selectedCustomerOrders }" style="background-color: rgba(0,0,0,0.5);">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Orders for {{ selectedCustomer.Name }}</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeOrdersModal()"></button>
-      </div>
-      <div class="modal-body">
-        <div *ngIf="selectedCustomerOrders.length > 0; else noOrders">
-          <div *ngFor="let order of selectedCustomerOrders" class="border-bottom pb-3 mb-3">
-            <h6>Order #{{ order.id }}</h6>
-            <p>Status: <span class="badge bg-info text-dark">{{ order.orderStatus }}</span></p>
-            <p>Total: ₹{{ order.totalPrice }}</p>
-            <p>Payment: {{ order.paymentStatus }}</p>
-          </div>
-        </div>
-        <ng-template #noOrders>
-          <p class="text-muted">No orders found for this customer.</p>
-        </ng-template>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" (click)="closeOrdersModal()">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

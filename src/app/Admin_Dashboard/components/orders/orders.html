@@ -141,7 +141,8 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
-        <th>Current Status</th>
+        <th>Current Order Status</th>
+        <th>Current Payment Status</th>
         <th>Change Status</th>
         <th>Total Price</th>
         <th>Actions</th>
@@ -157,7 +158,7 @@
           <select id="statusSelect-{{ order.id }}"
                   class="form-select form-select-sm"
                   [(ngModel)]="order.status"
-                  (change)="updateOrderStatus(order.id, $event)">
+                  (change)="updateOrderStatus(order.id, order.orderStatus)">
             <option disabled value="">-- Change Status --</option>
             <option value="Processing">Processing</option>
             <option value="Shipped">Shipped</option>
@@ -165,6 +166,7 @@
             <option value="Cancelled">Cancelled</option>
           </select>
         </td>
+        <td><span class="badge bg-info text-dark">{{ order.paymentStatus }}</span></td>
         <td>₹{{ order.totalPrice }}</td>
         <td>
           <button class="btn btn-outline-primary btn-sm"
@@ -176,7 +178,7 @@
 
       <!-- Product Details Row -->
       <tr *ngIf="selectedOrderId === order.id">
-  <td colspan="6" class="bg-light">
+  <td colspan="7" class="bg-light">
   <div class="p-3 border rounded shadow-sm">
     <h6 class="mb-3 text-primary">🛒 Products in Order #{{ order.id }}</h6>
 
@@ -212,7 +214,7 @@
         <select id="statusSelect-{{ order.id }}"
                 class="form-select form-select-sm w-auto"
                 [(ngModel)]="order.paymentStatus"
-                (change)="updateOrderStatus(order.id, $event)">
+                (change)="updateOrderPaymentStatus(order.id, order.paymentStatus)">
           <option disabled value="">-- Select Method --</option>
           <option value="Done: Paid by UPI">UPI</option>
           <option value="Done: Paid by Debit/Credit Card">Debit/Credit Card</option>

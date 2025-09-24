@@ -109,7 +109,7 @@
       "name": "Canon DSLR Camera",
       "Price": 150000,
       "Category": "Electronics",
-      "Description": "Professional camera for photography enthusiasts",
+      "Description": "Professional camera for photography enthusiast",
       "ImageURL": "https://cdn.mos.cms.futurecdn.net/BjXYd79xgMYFvVFUU5xj2n.png"
     },
     {
@@ -700,9 +700,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Done: Paid by Debit/Credit Card",
-      "paymentStatus": "Done: Paid by Debit/Credit Card",
-      "status": "Shipped"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Delivered"
     },
     {
       "id": "zz7866",
@@ -721,8 +721,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Shipped",
-      "paymentStatus": "Pending"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by UPI",
+      "status": "Delivered"
     },
     {
       "id": "zz6117",
@@ -741,8 +742,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Cancelled",
-      "paymentStatus": "Pending"
+      "orderStatus": "Shipped",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Shipped"
     },
     {
       "id": "zz595",
@@ -761,8 +763,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
-      "paymentStatus": "Pending"
+      "orderStatus": "Cancelled",
+      "paymentStatus": "Done: Paid by Net Banking",
+      "status": "Cancelled"
     },
     {
       "id": "zz9261",
@@ -781,8 +784,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Cancelled",
-      "paymentStatus": "Pending"
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by UPI",
+      "status": "Processing"
     },
     {
       "id": "zz7605",
@@ -797,8 +801,9 @@
       "totalPrice": 1598,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Delivered"
     },
     {
       "id": "zz462",
@@ -822,7 +827,8 @@
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
       "orderStatus": "Shipped",
-      "paymentStatus": "Pending"
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Shipped"
     },
     {
       "id": "zz7082",
@@ -845,8 +851,9 @@
       "totalPrice": 1752,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by Net Banking",
+      "status": "Delivered"
     },
     {
       "id": "zz8419",
@@ -870,7 +877,8 @@
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending"
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "status": "Processing"
     },
     {
       "id": "zz4331",
@@ -889,8 +897,9 @@
       "totalPrice": 6623,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "status": "Delivered"
     },
     {
       "id": "zz813",
@@ -906,7 +915,8 @@
       "orderDate": "2025-09-20",
       "ShippingAddress": "hjkjh",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending"
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Processing"
     },
     {
       "id": "zz2191",
@@ -926,8 +936,9 @@
       "orderDate": "2025-09-20",
       "ShippingAddress": "jhgjgjg",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Cash on Delivery"
+      "paymentStatus": "Done: Paid by UPI",
+      "paymentMethod": "Cash on Delivery",
+      "status": "Processing"
     },
     {
       "id": "zz764",
@@ -947,8 +958,9 @@
       "orderDate": "2025-09-20",
       "ShippingAddress": "",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Cash on Delivery"
+      "paymentStatus": "Done: Paid by Net Banking",
+      "paymentMethod": "Cash on Delivery",
+      "status": "Processing"
     },
     {
       "id": "zz498",
@@ -967,9 +979,10 @@
       "totalPrice": 1617,
       "orderDate": "2025-09-20",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
-      "paymentMethod": "Cash on Delivery"
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by Net Banking",
+      "paymentMethod": "Cash on Delivery",
+      "status": "Delivered"
     },
     {
       "id": "zz2794",
@@ -987,10 +1000,11 @@
       "totalPrice": 1617,
       "orderDate": "2025-09-20",
       "ShippingAddress": "defrgthyujytrtyu tyyf",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Shipped",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz2187",
@@ -1008,10 +1022,11 @@
       "totalPrice": 1617,
       "orderDate": "2025-09-20",
       "ShippingAddress": "gghshsgsgsg",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Cancelled",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz9090",
@@ -1030,9 +1045,10 @@
       "orderDate": "2025-09-20",
       "ShippingAddress": "tyuyttyuytgthyjui",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz6156",
@@ -1050,10 +1066,11 @@
       "totalPrice": 3224,
       "orderDate": "2025-09-20",
       "ShippingAddress": "tyuyttyuytgthyjui",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz4686",
@@ -1071,10 +1088,11 @@
       "totalPrice": 3793,
       "orderDate": "2025-09-20",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Delivered",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz2695",
@@ -1092,10 +1110,11 @@
       "totalPrice": 3224,
       "orderDate": "2025-09-20",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz6042",
@@ -1113,10 +1132,11 @@
       "totalPrice": 3224,
       "orderDate": "2025-09-20",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz9830",
@@ -1134,10 +1154,11 @@
       "totalPrice": 3793,
       "orderDate": "2025-09-20",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz5514",
@@ -1159,10 +1180,11 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz6237",
@@ -1184,10 +1206,11 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz9043",
@@ -1209,10 +1232,11 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz4318",
@@ -1234,10 +1258,11 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Net Banking",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz4455",
@@ -1259,10 +1284,11 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz9200",
@@ -1284,10 +1310,11 @@
       "totalPrice": 1285,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz2582",
@@ -1305,10 +1332,11 @@
       "totalPrice": 1076,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz4850",
@@ -1326,10 +1354,11 @@
       "totalPrice": 1285,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz8662",
@@ -1350,7 +1379,8 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz8909",
@@ -1368,10 +1398,11 @@
       "totalPrice": 926,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz6227",
@@ -1389,10 +1420,11 @@
       "totalPrice": 1029,
       "orderDate": "2025-09-22",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz4850",
@@ -1427,10 +1459,11 @@
       "totalPrice": 199,
       "orderDate": "2025-09-22",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "Net Banking",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz205",
@@ -1451,7 +1484,8 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz6776",
@@ -1481,10 +1515,11 @@
       "totalPrice": 2803,
       "orderDate": "2025-09-23",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz4559",
@@ -1525,7 +1560,8 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz7486283511",
@@ -1552,9 +1588,10 @@
       "orderDate": "2025-09-23",
       "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "UPI",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz2852961459",
@@ -1576,10 +1613,11 @@
       "totalPrice": 5522,
       "orderDate": "2025-09-23",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz5102",
@@ -1593,10 +1631,11 @@
       "totalPrice": 599,
       "orderDate": "2025-09-23",
       "ShippingAddress": "rgrhteh",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Delivered",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     },
     {
       "id": "zz2632",
@@ -1611,9 +1650,10 @@
       "orderDate": "2025-09-23",
       "ShippingAddress": "Maruti lane",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "paymentStatus": "Done: Paid by UPI",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz5546",
@@ -1622,10 +1662,11 @@
       "totalPrice": 0,
       "orderDate": "2025-09-23",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz454",
@@ -1634,10 +1675,11 @@
       "totalPrice": 0,
       "orderDate": "2025-09-23",
       "ShippingAddress": "Maruti lane",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz3068",
@@ -1646,10 +1688,11 @@
       "totalPrice": 0,
       "orderDate": "2025-09-23",
       "ShippingAddress": "HOUSE NO 5",
-      "orderStatus": "Processing",
+      "orderStatus": "Cancelled",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     },
     {
       "id": "zz7374",
@@ -1667,10 +1710,11 @@
       "totalPrice": -662,
       "orderDate": "2025-09-23",
       "ShippingAddress": "rgrhteh",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Shipped",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz9146",
@@ -1692,10 +1736,11 @@
       "totalPrice": 61,
       "orderDate": "2025-09-23",
       "ShippingAddress": "HOUSE NO 5",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Shipped",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Shipped"
     },
     {
       "id": "zz3913604198",
@@ -1722,9 +1767,10 @@
       "orderDate": "2025-09-23",
       "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz2120436390",
@@ -1747,9 +1793,10 @@
       "orderDate": "2025-09-23",
       "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
       "paymentMethod": "Cash on Delivery",
-      "Id": ""
+      "Id": "",
+      "status": "Processing"
     },
     {
       "id": "zz5462872957",
@@ -1767,10 +1814,11 @@
       "totalPrice": 799,
       "orderDate": "2025-09-23",
       "ShippingAddress": "Basant Colony, Saili Road",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending",
+      "orderStatus": "Cancelled",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Cancelled"
     }
   ],
   "users": [
@@ -1787,7 +1835,7 @@
       "Name": "Isha Reddy",
       "Email": "isha.reddy@example.com",
       "Password": "hashed_password_202",
-      "ShippingAddress": "Hyderabad, Telangana",
+      "ShippingAddress": "Hyderabad, AP",
       "PaymentDetails": "Mastercard **** 4567"
     },
     {
@@ -1830,20 +1878,6 @@
       "Password": "lomesh123",
       "ShippingAddress": "",
       "PaymentDetails": ""
-    },
-    {
-      "id": "44a6",
-      "username": "divij123",
-      "email": "divij@gmail.com",
-      "password": "divijpass",
-      "userId": "USR-8323"
-    },
-    {
-      "id": "1e83",
-      "username": "saksham",
-      "email": "saksham@test.com",
-      "password": "saksham12",
-      "userId": "USR-2122"
     },
     {
       "id": "1009",
