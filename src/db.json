@@ -679,44 +679,9 @@
       "Category": "Electronics",
       "Description": "Amazing Headphone",
       "ImageURL": "https://media.littlewoods.com/i/littlewoods/V8BLG_SQ1_0000000088_NO_COLOR_SLf?$pdp_1650x2199_hi_res$&fmt=webp"
-    },
-    {
-      "id": "257",
-      "name": "Wooden Bookshelf",
-      "Price": 6500,
-      "Category": "Furniture",
-      "Description": "Sturdy wooden bookshelf with 5 spacious shelves",
-      "ImageURL": "https://m.media-amazon.com/images/I/71DSTEQrMIL._SL1210_.jpg"
-    },
-    {
-      "id": "203",
-      "name": "Modern Sofa",
-      "Price": 45000,
-      "Category": "Furniture",
-      "Description": "Comfortable 3-seater fabric sofa with modern design",
-      "ImageURL": "https://tse3.mm.bing.net/th/id/OIP.VYNr6HpneenEWC0nAwvszwHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [
-    {
-      "id": "c558",
-      "Productid": "108",
-      "Quantity": 1,
-      "TotalPrice": 890
-    },
-    {
-      "id": "76be",
-      "Productid": "209",
-      "Quantity": 1,
-      "TotalPrice": 599
-    },
-    {
-      "id": "2cf0",
-      "Productid": "217",
-      "Quantity": 1,
-      "TotalPrice": 850
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -735,8 +700,9 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Shipped",
-      "paymentStatus": "Pending"
+      "orderStatus": "Done: Paid by Debit/Credit Card",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "status": "Shipped"
     },
     {
       "id": "zz7866",
@@ -755,12 +721,8 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
-      "paymentStatus": "Pending"
-    },
-    {
+      "orderStatus": "Shipped",
       "id": "zz6117",
-      "Id": "zz599",
       "userId": "204",
       "products": [
         {
@@ -855,7 +817,7 @@
       "totalPrice": 1752,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending"
     },
     {
@@ -1105,7 +1067,7 @@
       "totalPrice": 3793,
       "orderDate": "2025-09-20",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
       "Id": ""
@@ -1639,23 +1601,23 @@
         {
           "id": "209",
           "quantity": 1
-        },
-        {
-          "id": "211",
-          "quantity": 1
-        },
-        {
-          "id": "226",
-          "quantity": 1
-        },
-        {
-          "id": "218",
-          "quantity": 1
         }
       ],
-      "totalPrice": 4079,
+      "totalPrice": 599,
       "orderDate": "2025-09-23",
-      "ShippingAddress": "pune, maharashtra",
+      "ShippingAddress": "Maruti lane",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz5546",
+      "userId": "777",
+      "products": [],
+      "totalPrice": 0,
+      "orderDate": "2025-09-23",
+      "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Cash on Delivery",
@@ -1786,25 +1748,21 @@
       "Id": ""
     },
     {
-      "id": "zz9853794783",
+      "id": "zz5462872957",
       "userId": "777",
       "products": [
         {
-          "id": "108",
+          "id": "104",
           "quantity": 1
         },
         {
-          "id": "222",
-          "quantity": 1
-        },
-        {
-          "id": "209",
+          "id": "127",
           "quantity": 1
         }
       ],
-      "totalPrice": 1565,
+      "totalPrice": 799,
       "orderDate": "2025-09-23",
-      "ShippingAddress": "pune, maharashtra",
+      "ShippingAddress": "Basant Colony, Saili Road",
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",

@@ -1,6 +1,10 @@
 @if (showHeader) {
 <nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
-  <a class="navbar-brand d-flex align-items-center" routerLink="/home" (click)="activeCategory = null">
+  <a
+    class="navbar-brand d-flex align-items-center"
+    routerLink="/home"
+    (click)="activeCategory = null"
+  >
     <img
       src="logo.png"
       alt="Logo"
@@ -86,7 +90,11 @@
 
       <!-- Cart -->
       <li class="nav-item me-lg-4">
-        <a class="nav-link d-flex align-items-center" routerLink="/cart">
+        <a
+          class="nav-link d-flex align-items-center"
+          (click)="activeCategory = null"
+          routerLink="/cart"
+        >
           <span class="position-relative me-1">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
@@ -152,7 +160,10 @@
 
 <!-- Categories Bar -->
 @if (showCategories) {
-<div class="categories-bar text-white bg-dark shadow-sm fixed-top" style="background-color: rgb(70, 44, 18);">
+<div
+  class="categories-bar text-white bg-dark shadow-sm fixed-top"
+  style="background-color: rgb(70, 44, 18)"
+>
   <div class="container py-2">
     <ul class="nav justify-content-center flex-wrap gap-3">
       @for (cat of categories; track $index) {
