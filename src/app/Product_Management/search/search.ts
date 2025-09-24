@@ -66,4 +66,8 @@ export class Search {
       );
     }
   }
+
+   goToHome(): void {
+    this.router.navigate(['/home']);
+   }
 }
