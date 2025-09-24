@@ -1,6 +1,6 @@
 <div class="bg-light min-vh-100 py-4">
-  <div class="container mb-5 cart-page"><br>
-    <h2 class="text-center mb-4 fw-bold display-6 rounded py-2">
+  <div class="container my-5 cart-page">
+    <h2 class="text-center mb-4 fw-bold display-6 rounded py-2 mt-3">
       <img
         src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
         alt="Cart Icon"
@@ -9,15 +9,6 @@
       />
       Your Shopping Cart
     </h2>
-    <!-- <h1 class="text-center mb-4">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-        alt="Cart Icon"
-        width="40"
-        class="me-2"
-      />
-      Your Shopping Cart
-    </h1> -->
 
     <div class="row">
       <!-- Cart Items -->
@@ -55,7 +46,9 @@
                     >
                       −
                     </button>
-                    <span class="btn btn-light btn-sm disabled px-3">{{ item.Quantity }}</span>
+                    <span class="btn btn-light btn-sm disabled px-3" style="border-radius: 0%">{{
+                      item.Quantity
+                    }}</span>
                     <button
                       class="btn btn-outline-secondary btn-sm"
                       (click)="increaseQuantity(item)"
@@ -83,9 +76,10 @@
       <!-- Summary Section -->
       <div class="col-md-4">
         <div class="card shadow-lg border-0">
-          <div class="card-header text-center bg-primary text-white">
-            <h4>Order Summary</h4>
+          <div class="card-header text-center fw-bold" style="background-color: #8a6240">
+            <h4 class="text-white">Order Summary</h4>
           </div>
+
           <div class="card-body">
             @if (deliveryMessage) {
             <div class="alert" [ngClass]="deliveryCharge > 0 ? 'alert-warning' : 'alert-success'">
@@ -117,7 +111,11 @@
                 <span>₹{{ grandTotal | number : '1.0-0' }}</span>
               </li>
             </ul>
-            <button class="btn btn-success w-100 btn-lg" [disabled]="cartItems.length === 0"(click)="goToSummary()">
+            <button
+              class="btn btn-success w-100 btn-lg"
+              [disabled]="cartItems.length === 0"
+              (click)="goToSummary()"
+            >
               <i class="bi bi-bag-check-fill me-2"></i> Proceed to Checkout
             </button>
           </div>

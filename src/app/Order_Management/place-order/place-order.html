@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-    <div class="card-header bg-primary text-white text-center py-3">
+    <div class="card-header text-white text-center py-3" style="background-color: #8a6240;">
       <h2 class="mb-0 fw-bold">
         <i class="bi bi-clipboard-check me-2"></i> Complete Your Purchase
       </h2>
@@ -85,10 +85,10 @@
             <label class="form-check-label">{{ method }}</label>
           </div>
 
-        <button type="button"
-          class="btn btn-primary btn px-4 py-3 rounded-pill d-block mx-auto mt-5"
+        <button type="button" style="background-color: #8a6240; border-color: #745234;"
+          class="btn btn-primary btn px-4 py-3 rounded-pill d-block mx-auto mt-5" 
           (click)="submitOrder()"
-          [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
+          [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address" >
         <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
         </button>
         </div>

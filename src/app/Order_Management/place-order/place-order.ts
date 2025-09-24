@@ -93,7 +93,7 @@ export class PlaceOrder {
       return;
     }
 
-    const orderId = 'zz' + Math.floor(Math.random() * 10000);
+    const orderId = 'zz' + Math.floor(Math.random() * 1000000) + Math.ceil(Math.random()*10000);
 
     const order: Orders = {
       id: orderId,

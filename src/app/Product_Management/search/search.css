@@ -11,7 +11,6 @@
 }
 
 /* Text colors */
-.text-brown { color: #8A6240; }
 .card-text.text-muted { color: #CABA9C; }
 .card-text.fw-bold.text-success { color: #976b44; }
 
@@ -43,27 +42,4 @@
 .btn-viewcart:hover {
   background-color: #976b44;
   border-color: #976b44;
-}
-
-/* Scroll to top button */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  cursor: pointer;
-}
-
-.progress {
-  border-radius: 2px;
-  overflow: hidden;
-}
-.progress-bar {
-  transition: width 0.1s linear;
 }
