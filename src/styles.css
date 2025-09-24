@@ -50,3 +50,14 @@ app-footer {
   align-items: center;
   border-radius: 1rem;
 }
+
+
+
+.logo-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  text-decoration: none;
+}
