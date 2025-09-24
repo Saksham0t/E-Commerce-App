@@ -51,6 +51,15 @@ app-footer {
   border-radius: 1rem;
 }
 
+
+
+.logo-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  text-decoration: none;
 #profileDropdown:focus,
 #profileDropdown:active,
 #profileDropdown.show {
@@ -65,4 +74,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .btn btn-primary{
   background-color: #8A6240;
   border-color:#7b5838 ; 
+}
 }
