@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   imports: [],
   templateUrl: './footer.html',
-  styleUrl: './footer.css'
+  styleUrl: './footer.css',
 })
 export class Footer {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public router: Router) {}
+  
+  get showFooter(): boolean {
+    return !this.router.url.startsWith('/admin-login');
   }
 }

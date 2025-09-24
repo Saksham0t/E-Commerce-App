@@ -697,20 +697,7 @@
       "ImageURL": "https://tse3.mm.bing.net/th/id/OIP.VYNr6HpneenEWC0nAwvszwHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [
-    {
-      "id": "5fee",
-      "Productid": "104",
-      "Quantity": 1,
-      "TotalPrice": 399
-    },
-    {
-      "id": "bfbf",
-      "Productid": "108",
-      "Quantity": 1,
-      "TotalPrice": 890
-    }
-  ],
+  "cartItems": [],
   "OrdersList": [
     {
       "id": "6869",
@@ -729,7 +716,7 @@
       "totalPrice": 2395,
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
-      "orderStatus": "Delivered",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending"
     },
     {
@@ -1798,6 +1785,31 @@
       "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
+      "Id": ""
+    },
+    {
+      "id": "zz9732614596",
+      "userId": "205",
+      "products": [
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "108",
+          "quantity": 1
+        },
+        {
+          "id": "115",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1610,
+      "orderDate": "2025-09-24",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
       "Id": ""
     }
   ],

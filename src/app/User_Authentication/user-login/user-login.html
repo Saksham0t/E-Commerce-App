@@ -1,7 +1,5 @@
 <div class="modal-body p-4 bg-light rounded shadow-sm">
-  <h4 class="text-center mb-4 fw-bold">
-    <i class="bi bi-box-arrow-in-right me-2"></i> User Login
-  </h4>
+  <h4 class="text-center mb-4 fw-bold"><i class="bi bi-box-arrow-in-right me-2"></i> User Login</h4>
 
   <!-- Email -->
   <div class="mb-3">
@@ -28,9 +26,9 @@
   </div>
 
   <!-- Error message -->
-  <div *ngIf="loginError" class="alert alert-danger py-2">
-    Invalid email or password. Please try again.
-  </div>
+  @if(loginError){
+  <div class="alert alert-danger py-2">Invalid email or password. Please try again.</div>
+  }
 
   <!-- Login button -->
   <button class="btn btn-primary w-100 mb-3" (click)="onLogin()">
@@ -45,6 +43,6 @@
   <!-- Switch to signup -->
   <div class="text-center">
     <span>Don't have an account?</span>
-    <a (click)="goToSignup()" class="fw-semibold" style="cursor: pointer;">Sign up</a>
+    <a (click)="goToSignup()" class="fw-semibold" style="cursor: pointer">Sign up</a>
   </div>
 </div>
