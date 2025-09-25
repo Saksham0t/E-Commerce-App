@@ -732,8 +732,8 @@
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
       "orderStatus": "Delivered",
-      "paymentStatus": "Done: Paid by UPI",
-      "status": "Cancelled"
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "status": "Delivered"
     },
     {
       "id": "zz7866",
@@ -856,7 +856,7 @@
       "totalPrice": 1752,
       "orderDate": "2025-09-19",
       "ShippingAddress": "",
-      "orderStatus": "Shipped",
+      "orderStatus": "Processing",
       "paymentStatus": "Done: Paid by Cash on Delivery",
       "status": "Shipped"
     },
@@ -1288,7 +1288,7 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Pending",
       "paymentMethod": "Net Banking",
       "Id": "",
@@ -1340,8 +1340,8 @@
       "totalPrice": 1285,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Processing",
-      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "orderStatus": "Shipped",
+      "paymentStatus": "Pending",
       "paymentMethod": "Debit/Credit Card",
       "Id": "",
       "status": "Shipped"
@@ -1545,11 +1545,11 @@
       "totalPrice": 2803,
       "orderDate": "2025-09-23",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
-      "orderStatus": "Processing",
+      "orderStatus": "Delivered",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
       "Id": "",
-      "status": "Processing"
+      "status": "Delivered"
     },
     {
       "id": "zz4559",
@@ -1870,11 +1870,106 @@
       "totalPrice": 3136,
       "orderDate": "2025-09-24",
       "ShippingAddress": "I-301 ADITYA MEGA CITY INDIRAPURAM",
-      "orderStatus": "Shipped",
+      "orderStatus": "Processing",
       "paymentStatus": "Done: Paid by Debit/Credit Card",
       "paymentMethod": "Debit/Credit Card",
-      "Id": "",
-      "status": "Delivered"
+      "Id": ""
+    },
+    {
+      "id": "zz9732614596",
+      "userId": "205",
+      "products": [
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "108",
+          "quantity": 1
+        },
+        {
+          "id": "115",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1610,
+      "orderDate": "2025-09-24",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Pending",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz9979873385",
+      "userId": "777",
+      "products": [
+        {
+          "id": "115",
+          "quantity": 2
+        },
+        {
+          "id": "108",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1701,
+      "orderDate": "2025-09-24",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Net Banking",
+      "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz6668051451",
+      "userId": "205",
+      "products": [
+        {
+          "id": "115",
+          "quantity": 2
+        },
+        {
+          "id": "240",
+          "quantity": 1
+        },
+        {
+          "id": "233",
+          "quantity": 2
+        }
+      ],
+      "totalPrice": 3484,
+      "orderDate": "2025-09-25",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz586714540",
+      "userId": "205",
+      "products": [
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "127",
+          "quantity": 1
+        },
+        {
+          "id": "123",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1258,
+      "orderDate": "2025-09-25",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "paymentMethod": "Debit/Credit Card",
+      "Id": ""
     }
   ],
   "users": [
