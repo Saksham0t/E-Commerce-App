@@ -697,7 +697,22 @@
       "ImageURL": "https://tse3.mm.bing.net/th/id/OIP.VYNr6HpneenEWC0nAwvszwHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "ef3c",
+      "Productid": "108",
+      "Quantity": 2,
+      "Price": 890,
+      "TotalPrice": 1780
+    },
+    {
+      "id": "2674",
+      "Productid": "104",
+      "Quantity": 1,
+      "Price": 399,
+      "TotalPrice": 399
+    }
+  ],
   "OrdersList": [
     {
       "id": "6869",
@@ -1904,6 +1919,56 @@
       "orderStatus": "Processing",
       "paymentStatus": "Done: Paid by Net Banking",
       "paymentMethod": "Net Banking",
+      "Id": ""
+    },
+    {
+      "id": "zz6668051451",
+      "userId": "205",
+      "products": [
+        {
+          "id": "115",
+          "quantity": 2
+        },
+        {
+          "id": "240",
+          "quantity": 1
+        },
+        {
+          "id": "233",
+          "quantity": 2
+        }
+      ],
+      "totalPrice": 3484,
+      "orderDate": "2025-09-25",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
+      "paymentMethod": "Cash on Delivery",
+      "Id": ""
+    },
+    {
+      "id": "zz586714540",
+      "userId": "205",
+      "products": [
+        {
+          "id": "104",
+          "quantity": 1
+        },
+        {
+          "id": "127",
+          "quantity": 1
+        },
+        {
+          "id": "123",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 1258,
+      "orderDate": "2025-09-25",
+      "ShippingAddress": "Basant Colony, Saili Road",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Debit/Credit Card",
+      "paymentMethod": "Debit/Credit Card",
       "Id": ""
     }
   ],

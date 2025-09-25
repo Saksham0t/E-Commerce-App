@@ -33,6 +33,6 @@ footer {
   transition: color 0.2s ease-in-out;
 }
 .footer-link:hover {
-  color: rgb(62, 62, 203);
   text-decoration: underline;
+  cursor: pointer;
 }

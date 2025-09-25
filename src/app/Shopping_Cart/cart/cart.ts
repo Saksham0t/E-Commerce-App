@@ -33,13 +33,16 @@ export class Cart implements OnInit {
     this.loadCartItems();
   }
 
+  // Load items from the service
   loadCartItems(): void {
     this.cartService.getCartItemsWithDetails().subscribe({
       next: (items) => {
         this.cartItems = items.map(item => ({
-          ...item,
-          Quantity: Number(item?.Quantity || 0),
-          Price: Number(item?.Price || 0)
+          id: item.id,
+          name: item.name,
+          ImageURL: item.ImageURL,
+          Quantity: +item.Quantity || 0,
+          Price: +item.Price || 0
         }));
         this.updateSummary();
       },
@@ -47,44 +50,50 @@ export class Cart implements OnInit {
     });
   }
 
+  // Update totals, delivery, and discount
   updateSummary(): void {
     this.totalAmount = this.cartItems.reduce(
-      (sum, item) => sum + (item.Price * item.Quantity),
+      (sum, item) => sum + item.Price * item.Quantity,
       0
     );
 
-    this.deliveryCharge = 0;
-    this.discountAmount = 0;
-    this.deliveryMessage = '';
-    this.discountMessage = '';
+    // Delivery charge
+    if (this.totalAmount === 0) {
+      this.deliveryCharge = 0;
+      this.deliveryMessage = '';
+    } else if (this.totalAmount < 500) {
+      this.deliveryCharge = 50;
+      this.deliveryMessage = '🚚 Orders below ₹500 incur a ₹50 delivery charge.';
+    } else {
+      this.deliveryCharge = 0;
+      this.deliveryMessage = '🎉 Free delivery on your order!';
+    }
 
-    if (this.cartItems.length > 0) {
-      if (this.totalAmount < 500) {
-        this.deliveryCharge = 50;
-        this.deliveryMessage = '🚚 Orders below ₹500 incur a ₹50 delivery charge.';
-      } else {
-        this.deliveryMessage = '🎉 Free delivery on your order!';
-      }
-
-      if (this.totalAmount >= 3000) {
-        this.discountAmount = this.totalAmount * 0.15;
-        this.discountMessage = '🔥 You unlocked 15% OFF for spending over ₹3000!';
-      } else if (this.totalAmount >= 1000) {
-        this.discountAmount = this.totalAmount * 0.10;
-        this.discountMessage = '💰 You unlocked 10% OFF for spending over ₹1000!';
-      } else {
-        const needed = 1000 - this.totalAmount;
-        this.discountMessage = `🛍 Spend ₹${needed} more to unlock 10% OFF!`;
-      }
+    // Discount
+    if (this.totalAmount >= 3000) {
+      this.discountAmount = this.totalAmount * 0.15;
+      this.discountMessage = '🔥 You unlocked 15% OFF for spending over ₹3000!';
+    } else if (this.totalAmount >= 1000) {
+      this.discountAmount = this.totalAmount * 0.10;
+      this.discountMessage = '💰 You unlocked 10% OFF for spending over ₹1000!';
+    } else if (this.totalAmount > 0) {
+      const needed = 1000 - this.totalAmount;
+      this.discountAmount = 0;
+      this.discountMessage = `🛍 Spend ₹${needed} more to unlock 10% OFF!`;
+    } else {
+      this.discountAmount = 0;
+      this.discountMessage = '';
     }
 
     this.cartService.setDiscount(this.discountAmount);
-    this.grandTotal = this.totalAmount + this.deliveryCharge - this.discountAmount;
-    if (this.grandTotal < 0) this.grandTotal = 0;
+    this.grandTotal = Math.max(0, this.totalAmount + this.deliveryCharge - this.discountAmount);
   }
 
-  increaseQuantity(item: any): void {
-    const newQty = item.Quantity + 1;
+  // Change quantity (positive or negative)
+  changeQuantity(item: any, change: number): void {
+    const newQty = item.Quantity + change;
+    if (newQty < 1) return;
+
     const newTotal = item.Price * newQty;
 
     this.cartService.updateCartItem(item.id, { Quantity: newQty, TotalPrice: newTotal })
@@ -95,20 +104,7 @@ export class Cart implements OnInit {
       });
   }
 
-  decreaseQuantity(item: any): void {
-    if (item.Quantity <= 1) return;
-
-    const newQty = item.Quantity - 1;
-    const newTotal = item.Price * newQty;
-
-    this.cartService.updateCartItem(item.id, { Quantity: newQty, TotalPrice: newTotal })
-      .subscribe(() => {
-        item.Quantity = newQty;
-        item.TotalPrice = newTotal;
-        this.updateSummary();
-      });
-  }
-
+  // Remove item from cart
   removeItem(id: number | string): void {
     this.cartService.removeFromCart(id).subscribe(() => {
       this.cartItems = this.cartItems.filter(item => item.id !== id);
@@ -116,19 +112,20 @@ export class Cart implements OnInit {
     });
   }
 
+  // Navigate to home
   goToHome(): void {
     this.router.navigate(['/home']);
   }
 
+  // Navigate to summary or show login
   goToSummary(): void {
-    if (!this.authService.isAuthenticated()) {
-      // Open login popup instead of navigating
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/summary']);
+    } else {
       this.dialog.open(UserLoginComponent, {
         width: '400px',
         panelClass: 'custom-dialog-container'
       });
-      return;
     }
-    this.router.navigate(['/summary']);
   }
 }
