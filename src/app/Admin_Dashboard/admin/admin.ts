@@ -11,6 +11,16 @@ import Chart from 'chart.js/auto';
 export class admin {
   constructor(private router:Router){}
 
+  ngOnInit() {
+  const currentPath = this.router.url;
+
+  if (currentPath === '/admin') {
+    this.currentScreen = 1;
+  } else {
+    this.currentScreen = 2;
+  }
+}
+
     @HostListener('window:popstate', ['$event'])
   onPopState(event: PopStateEvent) {
     this.goBack(); // Your custom logic

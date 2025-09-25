@@ -149,17 +149,17 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let order of getFilteredOrders()">
+      <ng-container *ngFor="let order of getFilteredOrders(); trackBy: trackByOrderId" >
       <tr>
         <td>{{ order.id }}</td>
         <td>{{ getCustomerName(order.userId) }}</td>
         <td><span class="badge">{{ order.orderStatus }}</span></td>
         <td>
           <select id="statusSelect-{{ order.id }}"
-                  class="form-select form-select-sm"
-                  [(ngModel)]="order.status"
+                  class="form-select form-select-sm-w-auto"
+                  [(ngModel)]="order.orderStatus"
                   (change)="updateOrderStatus(order.id, order.orderStatus)">
-            <option disabled value="-- Change Status --">-- Change Status --</option>
+            <option disabled selected>-- Change Status --</option>
             <option value="Processing">Processing</option>
             <option value="Shipped">Shipped</option>
             <option value="Delivered">Delivered</option>

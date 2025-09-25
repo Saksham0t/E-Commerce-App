@@ -61,10 +61,10 @@ getCustomersfromService(): Promise<void> {
     this.selectedOrderId = this.selectedOrderId === orderId ? null : orderId;
   }
 
-  updateOrderStatus(orderId: number, event: Event): void {
-    const newStatus = (event.target as HTMLSelectElement).value;
+  updateOrderStatus(orderId: number, newStatus:string): void {
     const order = this.OrdersList.find(o => o.id === orderId);
-    if (order) order.orderStatus = newStatus;
+    if (!order) return;
+    order.orderStatus = newStatus;
     this.productObj.updateOrderRecord(order).subscribe({
       next: (data) => { this.getOrdersfromService(); },
       error: (err) => alert(JSON.stringify(err)),
@@ -72,10 +72,14 @@ getCustomersfromService(): Promise<void> {
     })
 
   }
-  updateOrderPaymentStatus(orderId: number, event: Event): void {
-    const newStatus = (event.target as HTMLSelectElement).value;
+  trackByOrderId(index: number, order:any): number {
+  return order.id;
+}
+
+  updateOrderPaymentStatus(orderId: number, newStatus:string): void {
     const order = this.OrdersList.find(o => o.id === orderId);
-    if (order) order.paymentStatus = newStatus;
+    if (!order) return;
+    order.paymentStatus = newStatus;
     this.productObj.updateOrderRecord(order).subscribe({
       next: (data) => { this.getOrdersfromService(); },
       error: (err) => alert(JSON.stringify(err)),

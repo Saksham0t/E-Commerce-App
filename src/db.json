@@ -717,8 +717,8 @@
       "orderDate": "2025-09-18",
       "ShippingAddress": "",
       "orderStatus": "Delivered",
-      "paymentStatus": "Done: Paid by Cash on Delivery",
-      "status": "Delivered"
+      "paymentStatus": "Done: Paid by UPI",
+      "status": "Cancelled"
     },
     {
       "id": "zz7866",
@@ -1273,7 +1273,7 @@
       "totalPrice": 3267,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Shipped",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "Net Banking",
       "Id": "",
@@ -1325,8 +1325,8 @@
       "totalPrice": 1285,
       "orderDate": "2025-09-22",
       "ShippingAddress": "pune, maharashtra",
-      "orderStatus": "Shipped",
-      "paymentStatus": "Pending",
+      "orderStatus": "Processing",
+      "paymentStatus": "Done: Paid by Cash on Delivery",
       "paymentMethod": "Debit/Credit Card",
       "Id": "",
       "status": "Shipped"
@@ -1530,11 +1530,11 @@
       "totalPrice": 2803,
       "orderDate": "2025-09-23",
       "ShippingAddress": "CBE CHIL - SEZ -FO,Special Economic Zone, Saravanampatti VIA, Coimbatore North Tal, Keeranatham Village",
-      "orderStatus": "Delivered",
+      "orderStatus": "Processing",
       "paymentStatus": "Pending",
       "paymentMethod": "UPI",
       "Id": "",
-      "status": "Delivered"
+      "status": "Processing"
     },
     {
       "id": "zz4559",
@@ -1855,10 +1855,11 @@
       "totalPrice": 3136,
       "orderDate": "2025-09-24",
       "ShippingAddress": "I-301 ADITYA MEGA CITY INDIRAPURAM",
-      "orderStatus": "Processing",
+      "orderStatus": "Shipped",
       "paymentStatus": "Done: Paid by Debit/Credit Card",
       "paymentMethod": "Debit/Credit Card",
-      "Id": ""
+      "Id": "",
+      "status": "Delivered"
     }
   ],
   "users": [
