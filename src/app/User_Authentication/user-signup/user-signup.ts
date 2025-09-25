@@ -35,7 +35,7 @@ export class UserSignupComponent {
       const generatedId = Math.floor(100 + Math.random() * 900);
 
       const newUser = {
-        id: generatedId,
+        id: generatedId.toString(),
         Name: this.signupForm.value.username,
         Email: this.signupForm.value.email,
         Password: this.signupForm.value.password,
@@ -44,7 +44,7 @@ export class UserSignupComponent {
       };
 
       this.userService.addUser(newUser).subscribe(() => {
-        this.authService.login(newUser.id.toString(), newUser.Name);
+        // this.authService.login(newUser.id.toString(), newUser.Name);
         this.dialogRef.close();
         this.router.navigate(['/home']);
       });
