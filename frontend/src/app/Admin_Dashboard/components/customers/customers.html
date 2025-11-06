@@ -1,0 +1,70 @@
+<!-- Page Wrapper with Padding -->
+<div class="container-fluid px-4 py-4">
+  <!-- Section Heading -->
+  <h3 class="mb-4 fw-bold text-black">
+    <i class="bi bi-person-lines-fill me-2"></i> Manage Customers
+  </h3>
+
+  <!-- Customer Cards Grid -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let customer of customersLst">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="rounded-circle bg-secondary text-white fw-bold d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+              {{ customer.name.charAt(0) }}
+            </div>
+            <div class="ms-3">
+              <h5 class="mb-0">{{ customer.name }}</h5>
+              <small class="text-muted">{{ customer.email }}</small>
+            </div>
+          </div>
+          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-muted"></i>{{ customer.shippingAddress }}</p>
+          <p class="mb-1"><i class="bi bi-credit-card-fill me-2 text-muted"></i>{{ customer.paymentDetails }}</p>
+          <div class="mt-3 d-flex justify-content-between">
+            <button class="btn btn-sm btn-outline-primary" (click)="openOrdersModal(customer)">View Orders</button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="openUserModal(customer)">Edit</button>
+            <button class="btn btn-sm btn-outline-warning" (click)="deleteUser(customer)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal Section -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="selectedUser" [ngClass]="{ 'd-block': selectedUser }" style="background-color: rgba(0,0,0,0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Customer: {{ selectedUser.Name }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input class="form-control" [(ngModel)]="selectedUser.Name" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input class="form-control" [(ngModel)]="selectedUser.Email" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Shipping Address</label>
+          <input class="form-control" [(ngModel)]="selectedUser.ShippingAddress" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Payment Details</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="selectedUser.PaymentDetails"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="saveProduct()">Save</button>
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="container my-5">
+  <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+    <!-- Header -->
+    <div class="card-header text-white text-center py-3" style="background-color: #8a6240;">
+      <h2 class="mb-0 fw-bold">
+        <i class="bi bi-clipboard-check me-2"></i> Complete Your Purchase
+      </h2>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body p-4">
+      <form #orderForm="ngForm">
+        
+        <!-- Shipping Details -->
+        <div class="mb-4">
+          <h4 class="text-secondary mb-3">
+            <i class="bi bi-truck me-2"></i> Shipping Information
+          </h4>
+          <div class="row g-3">
+            
+            <!-- Name -->
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Full Name</label>
+              <input type="text" class="form-control" [(ngModel)]="shipping.name" name="name" required>
+              @if (formSubmitted && !shipping.name) {
+                <div class="text-danger small mt-1">Name is required.</div>
+              }
+            </div>
+
+            <!-- Phone -->
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Phone Number</label>
+              <input type="tel" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
+              @if (formSubmitted && !shipping.phone) {
+                <div class="text-danger small mt-1">Phone is required.</div>
+              }
+            </div>
+
+            <!-- Address -->
+            <div class="col-12">
+              <label class="form-label fw-semibold">Full Address</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="shipping.address" name="address" required></textarea>
+              @if (formSubmitted && !shipping.address) {
+                <div class="text-danger small mt-1">Address is required.</div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <h4 class="mt-4 text-secondary mb-3">
+          <i class="bi bi-bag-check me-2"></i> Your Cart
+        </h4>
+        <ul class="list-group mb-3 shadow-sm rounded">
+          @for (item of enrichedCart; track item) {
+            <li class="list-group-item d-flex align-items-center">
+              <img [src]="item.image" alt="{{ item.name }}" width="60" class="me-3 rounded shadow-sm">
+              <div class="flex-grow-1">
+                <h6 class="mb-1 fw-semibold">{{ item.name }}</h6>
+                <small class="text-muted">{{ item.description }}</small><br>
+                <span class="badge bg-light text-dark mt-1">Qty: {{ item.quantity }}</span>
+              </div>
+              <strong class="ms-3 text-success">₹{{ item.totalPrice }}</strong>
+            </li>
+          }
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span class="text-danger fw-bold">
+                <i class="bi bi-tag-fill me-1"></i> Discount
+              </span>
+              <span class="text-danger fw-bold">− ₹{{ getDiscountfromcartService() }}</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 border-top pt-2">
+              <span class="fw-bold fs-5">Total</span>
+              <span class="fw-bold fs-5 text-success">₹{{ getTotal() }}</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Proceed to Payment Button -->
+        @if (!showPaymentOptions) {
+          <button type="button"
+                  class="btn btn-success px-4 py-3 rounded-pill d-block mx-auto mt-5"
+                  (click)="proceedToPayment()">
+            <i class="bi bi-cash-stack me-2"></i> Proceed to Payment
+          </button>
+        }
+
+        <!-- Payment Options -->
+        @if (showPaymentOptions) {
+          <div class="mt-4">
+            <h4 class="text-secondary mb-3">
+              <i class="bi bi-credit-card me-2"></i> Select Payment Method
+            </h4>
+            
+            @for (method of paymentMethods; track method) {
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="payment" [value]="method" [(ngModel)]="selectedPayment" required>
+                <label class="form-check-label">{{ method }}</label>
+              </div>
+            }
+
+            <button type="button"
+                    style="background-color: #8a6240; border-color: #745234;"
+                    class="btn btn-primary px-4 py-3 rounded-pill d-block mx-auto mt-5" 
+                    (click)="submitOrder()"
+                    [disabled]="!selectedPayment || !shipping.name || !shipping.phone || !shipping.address">
+              <i class="bi bi-check-circle-fill me-2"></i> Confirm & Place Order
+            </button>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>
