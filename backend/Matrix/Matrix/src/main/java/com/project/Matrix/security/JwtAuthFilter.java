@@ -10,9 +10,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+
 import java.io.IOException;
 
 @Component
@@ -25,38 +27,43 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
         try {
-            log.info("incoming request: {}", request.getRequestURI());
+            log.info("Incoming request: {}", request.getRequestURI());
 
-//            String uri = request.getRequestURI();
-//            if (uri.startsWith("/api/v0/auth")) {
-//                filterChain.doFilter(request, response);
-//                return;
-//            }
+            final String authHeader = request.getHeader("Authorization");
 
-
-            final String requestTokenHeader = request.getHeader("Authorization");
-            if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer")) {
+            // If no Authorization header or not Bearer, skip
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                 filterChain.doFilter(request, response);
                 return;
             }
 
-            System.out.println("hello");
-
-            String token = requestTokenHeader.split("Bearer ")[1];
+            // Extract token
+            String token = authHeader.substring(7);
             String username = authUtil.getUsernameFromToken(token);
 
-            System.out.println(token+" "+username);
-
+            // If username is valid and no authentication yet
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                User user = userRepository.findByName(username).orElseThrow();
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                User user = userRepository.findByName(username)
+                        .orElseThrow(() -> new RuntimeException("User not found: " + username));
+                
+                // Validate token against user details
+                if (authUtil.validateToken(token, user)) {
+                    UsernamePasswordAuthenticationToken authToken =
+                            new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                    // Set authentication in context
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                }
             }
+
             filterChain.doFilter(request, response);
-        } catch (Exception ex){
+        } catch (Exception ex) {
+            // Delegate exception handling to your GlobalExceptionHandler
             handlerExceptionResolver.resolveException(request, response, null, ex);
         }
     }

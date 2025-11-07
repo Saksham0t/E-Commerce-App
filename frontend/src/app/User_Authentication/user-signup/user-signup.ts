@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -17,34 +16,37 @@ export class UserSignupComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router,
     public dialogRef: MatDialogRef<UserSignupComponent>
   ) {
     this.signupForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      shippingAddress: ['', Validators.required],
+      paymentDetails: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
     if (this.signupForm.valid) {
-      const generatedId = Math.floor(100 + Math.random() * 900);
-
-      const newUser = {
-        id: generatedId.toString(),
-        name: this.signupForm.value.username,
+      const signupData = {
+        username: this.signupForm.value.username,
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
-        shippingAddress: '',
-        paymentDetails: ''
+        shippingAddress: this.signupForm.value.shippingAddress,
+        paymentDetails: this.signupForm.value.paymentDetails
       };
 
-      this.userService.addUser(newUser).subscribe(() => {
-        // this.authService.login(newUser.id.toString(), newUser.Name);
-        this.dialogRef.close();
-        this.router.navigate(['/home']);
+      this.authService.signup(signupData).subscribe({
+        next: () => {
+          this.dialogRef.close();
+          this.router.navigate(['/home']);
+        },
+        error: () => {
+          this.signupForm.setErrors({ signupFailed: true });
+        }
       });
     } else {
       this.signupForm.markAllAsTouched();

@@ -15,9 +15,7 @@
         placeholder="Enter your username"
       />
       @if (signupForm.get('username')?.touched && signupForm.get('username')?.invalid) {
-        <div class="text-danger small mt-1">
-          Username is required.
-        </div>
+        <div class="text-danger small mt-1">Username is required.</div>
       }
     </div>
 
@@ -32,9 +30,7 @@
         placeholder="Enter your email"
       />
       @if (signupForm.get('email')?.touched && signupForm.get('email')?.invalid) {
-        <div class="text-danger small mt-1">
-          Please enter a valid email.
-        </div>
+        <div class="text-danger small mt-1">Please enter a valid email.</div>
       }
     </div>
 
@@ -49,9 +45,37 @@
         placeholder="Enter your password"
       />
       @if (signupForm.get('password')?.touched && signupForm.get('password')?.invalid) {
-        <div class="text-danger small mt-1">
-          Password must be at least 8 characters.
-        </div>
+        <div class="text-danger small mt-1">Password must be at least 8 characters.</div>
+      }
+    </div>
+
+    <!-- Shipping Address -->
+    <div class="mb-3">
+      <label for="shippingAddress" class="form-label fw-semibold">Shipping Address</label>
+      <input
+        type="text"
+        id="shippingAddress"
+        formControlName="shippingAddress"
+        class="form-control"
+        placeholder="Enter your shipping address"
+      />
+      @if (signupForm.get('shippingAddress')?.touched && signupForm.get('shippingAddress')?.invalid) {
+        <div class="text-danger small mt-1">Shipping address is required.</div>
+      }
+    </div>
+
+    <!-- Payment Details -->
+    <div class="mb-3">
+      <label for="paymentDetails" class="form-label fw-semibold">Payment Details</label>
+      <input
+        type="text"
+        id="paymentDetails"
+        formControlName="paymentDetails"
+        class="form-control"
+        placeholder="Enter your payment details"
+      />
+      @if (signupForm.get('paymentDetails')?.touched && signupForm.get('paymentDetails')?.invalid) {
+        <div class="text-danger small mt-1">Payment details are required.</div>
       }
     </div>
 

@@ -37,7 +37,7 @@ public class OrderService {
 
     // POST: Create a new order
     public Order createOrder(Order order) {
-        User user = userRepository.findById(order.getUser().getId()).orElseThrow();
+        User user = userRepository.findById(order.getUser().getId().toString()).orElseThrow();
         order.setUser(user);
         return orderRepository.save(order);
     }
@@ -61,7 +61,7 @@ public class OrderService {
 
     public OrderDto mapOrderEntityToOrderDTO(Order order) {
         OrderDto dto = modelMapper.map(order, OrderDto.class);
-        dto.setUserId(order.getUser().getId());
+        dto.setUserId(order.getUser().getId().toString());
 
         List<OrderProductDto> productDTOs = order.getProducts().stream()
                 .map(product -> modelMapper.map(product, OrderProductDto.class))

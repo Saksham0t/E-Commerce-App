@@ -2,6 +2,7 @@ package com.project.Matrix.security;
 
 import com.project.Matrix.DTO.LoginRequestDto;
 import com.project.Matrix.DTO.LoginResponseDto;
+import com.project.Matrix.DTO.SignupRequestDto;
 import com.project.Matrix.DTO.SignupResponseDto;
 import com.project.Matrix.entity.User;
 import com.project.Matrix.repository.UserRepository;
@@ -23,34 +24,38 @@ public class AuthService {
 
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
 
-        User user2 = new User();
-        user2.setName(loginRequestDto.getUsername());
-        user2.setPassword(passwordEncoder.encode(loginRequestDto.getPassword()));
-        user2.setShippingAddress("fewf");
-        user2.setEmail("as@gmail.com");
-        user2.setPaymentDetails("UPI");
-        user2.setId("3");
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword())
+        );
 
-        String token = authUtil.generateAccessToken(user2);
+        User user = (User) authentication.getPrincipal();
 
-        return new LoginResponseDto(token, user2.getId());
+        String token = authUtil.generateAccessToken(user);
+
+        return new LoginResponseDto(token, user.getId().toString());
     }
 
-    public SignupResponseDto signup(LoginRequestDto signupRequestDto) {
-        User user = userRepository.findByName(signupRequestDto.getUsername()).orElse(null);
+    public SignupResponseDto signup(SignupRequestDto signupRequestDto) {
+        User existingUser = userRepository.findByName(signupRequestDto.getUsername()).orElse(null);
 
-        if(user != null) throw new IllegalArgumentException("User already exists");
+        if (existingUser != null) {
+            throw new IllegalArgumentException("User already exists");
+        }
 
-        User user2 = new User();
-        user2.setName(signupRequestDto.getUsername());
-        user2.setPassword(passwordEncoder.encode(signupRequestDto.getPassword()));
-        user2.setShippingAddress("fewf");
-        user2.setEmail("as@gmail.com");
-        user2.setPaymentDetails("UPI");
-        user2.setId("3");
-        user = userRepository.save(user2);
+        User user = User.builder()
+                .name(signupRequestDto.getUsername())
+                .password(passwordEncoder.encode(signupRequestDto.getPassword()))
+                .email(signupRequestDto.getEmail())
+                .shippingAddress(signupRequestDto.getShippingAddress())
+                .paymentDetails(signupRequestDto.getPaymentDetails())
+                .build();
 
-        return new SignupResponseDto(user.getId(), user.getName());
+        user = userRepository.save(user);
+
+        return new SignupResponseDto(user.getId().toString(), user.getName());
     }
+
+
 }
+
 

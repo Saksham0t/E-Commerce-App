@@ -29,7 +29,7 @@ public class UserService {
 
     // POST: Create a new user
     public User createUser(User user) {
-        if (userRepository.existsById(user.getId())) {
+        if (userRepository.existsById(user.getId().toString())) {
             throw new RuntimeException("User with ID already exists: " + user.getId());
         }
         return userRepository.save(user);

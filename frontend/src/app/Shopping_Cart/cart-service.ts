@@ -5,20 +5,20 @@ import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-  // API endpoints
   private cartUrl = 'http://localhost:9090/api/v0/cart';
   private productsUrl = 'http://localhost:9090/api/v0/products';
 
-  // Observable to keep track of total items in cart
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();
 
-  // Track discount and total amount
   private discountAmount = 0;
   private totalAmountSubject = new BehaviorSubject<number>(0);
   totalAmount$ = this.totalAmountSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+  /** Call this after login to initialize cart state */
+  initCartState(): void {
     this.updateCartCount();
     this.updateTotalAmount();
   }
@@ -33,7 +33,6 @@ export class CartService {
   }
 
   // --- Total amount helpers ---
-  /** Update the total amount based on current cart items */
   private updateTotalAmount(): void {
     this.http.get<any[]>(this.cartUrl).subscribe(items => {
       const total = items.reduce(
@@ -44,7 +43,6 @@ export class CartService {
     });
   }
 
-  /** Get the latest total amount as a number */
   getTotalAmount(): number {
     return this.totalAmountSubject.value;
   }
@@ -57,15 +55,13 @@ export class CartService {
     });
   }
 
-  
   // --- Add to cart ---
   addToCart(product: ProductsList, quantity: number = 1): Observable<any> {
     const qtyToAdd = quantity > 0 ? quantity : 1;
-  
+
     return this.http.get<any[]>(`${this.cartUrl}?productid=${product.id}`).pipe(
-      switchMap((existingItems=[]) => {
+      switchMap((existingItems = []) => {
         if (existingItems && existingItems.length > 0) {
-          // Already in cart → update quantity
           const existingItem = existingItems[0];
           const updatedQty = (+existingItem.quantity || 0) + qtyToAdd;
           const updatedTotal = +product.price * updatedQty;
@@ -75,7 +71,6 @@ export class CartService {
             totalPrice: updatedTotal
           });
         } else {
-          // Not in cart → add new
           const totalPrice = product.price * qtyToAdd;
           const newCartItem = {
             productid: product.id,
@@ -83,8 +78,6 @@ export class CartService {
             price: +product.price,
             totalPrice: totalPrice
           };
-
-          // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
           return this.http.post(this.cartUrl, newCartItem);
         }
       }),

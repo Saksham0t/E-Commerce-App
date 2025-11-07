@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user';
 import { AuthService } from '../services/auth.service';
+import { CartService } from '../../Shopping_Cart/cart-service';
 
 @Component({
   selector: 'app-user-login',
@@ -18,23 +18,22 @@ export class UserLoginComponent {
   loginError = false;
 
   constructor(
-    private userService: UserService,
     private authService: AuthService,
     private router: Router,
+    private cartService: CartService, 
     public dialogRef: MatDialogRef<UserLoginComponent>
   ) {}
 
   onLogin(): void {
-    this.userService.getUsers().subscribe(users => {
-      const foundUser = users.find(
-        u => u.email === this.email && u.password === this.password
-      );
+    this.authService.login(this.email, this.password).subscribe({
+      next: () => {
+        // ✅ Initialize cart state after login succeeds
+        this.cartService.initCartState();
 
-      if (foundUser && foundUser.id) {
-        this.authService.login(foundUser.id.toString(), foundUser.name);
         this.dialogRef.close();
         this.router.navigate(['/home']);
-      } else {
+      },
+      error: () => {
         this.loginError = true;
       }
     });

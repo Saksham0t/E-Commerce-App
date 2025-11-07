@@ -16,16 +16,24 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
-    private String email;
     private String password;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String shippingAddress;
+
+    @Column(nullable = false)
     private String paymentDetails;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Order> orders;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     @Override
     public String getUsername() {
