@@ -16,39 +16,23 @@ public class CartItemController {
 
     private final CartItemService cartItemService;
 
-//    @GetMapping
-//    public ResponseEntity<List<CartItem>> getAllCartItems() {
-//        List<CartItem> items = cartItemService.getAllCartItems();
-//        return ResponseEntity.ok(items);
-//    }
-
     @GetMapping
-    public List<CartItem> getAllCartItems() {
-        return cartItemService.getAllCartItems();
+    public ResponseEntity<List<CartItem>> getAllCartItems() {
+        List<CartItem> cartItems = cartItemService.getAllCartItems();
+        return ResponseEntity.ok(cartItems);
     }
-
-//    // GET /cart/{id} → fetch cart item by its ID
-//    @GetMapping("/{id}")
-//    public ResponseEntity<CartItem> getCartItemById(@PathVariable String id) {
-//        return cartItemService.getCartItemById(id)
-//                .map(ResponseEntity::ok)
-//                .orElse(ResponseEntity.notFound().build());
-//    }
 
     @GetMapping("/{id}")
-    public Optional<CartItem> getCartItemById(@PathVariable String id) {
-        return cartItemService.getCartItemByProductid(id);
+    public ResponseEntity<Optional<CartItem>> getCartItemById(@PathVariable String id) {
+        Optional<CartItem> cartItem = cartItemService.getCartItemByProductid(id);
+        return ResponseEntity.ok(cartItem);
     }
 
-//    @GetMapping(params = "productid")
-//    public Optional<CartItem> getItemById(@RequestParam("productid") String productId) {
-//        return cartItemService.getCartItemByProductid(productId);
-//    }
 
-//    @PostMapping
-//    public CartItem addCartItem(@RequestBody CartItem cartItem) {
-//        return cartItemService.addCartItem(cartItem.getProductid(),1);
-//    }
+    @GetMapping(params = "productid")
+    public ResponseEntity<Optional<CartItem>> getItemById(@RequestParam("productid") String productId) {
+        return ResponseEntity.ok(cartItemService.getCartItemByProductid(productId));
+    }
 
     @PostMapping
     public ResponseEntity<CartItem> addCartItem(@RequestBody CartItem cartItem) {

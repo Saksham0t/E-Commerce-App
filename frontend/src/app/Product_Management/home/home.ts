@@ -56,6 +56,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.getProductsfromService();
+    this.syncCartState();
   }
 
   ngAfterViewInit(): void {
@@ -160,7 +161,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
         this.products = data;
         const categories = [
           'Electronics','Accessories', 'T-shirts', 'Footwear', 'Beauty', 'Watches',
-          'Sports', 'Toys', 'Fashion Wear (Male)', 'Fashion Wear (Ladies)',
+          'Sports','Fashion Wear (Male)', 'Fashion Wear (Ladies)',
           'Books', 'Kitchen','Grocery'
         ];
         categories.forEach((cat) => {
@@ -175,6 +176,19 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   getProductsByCategory(category: string): ProductsList[] {
     return this.products.filter((p) => p.category === category);
   }
+
+  private syncCartState(): void {
+  this.cartService.getCartItemsWithDetails().subscribe({
+    next: (items) => {
+      items.forEach(item => {
+        if (item.productid) {
+          this.addedToCart.add(item.productid);
+        }
+      });
+    },
+    error: (err) => console.error('Error syncing cart state:', err)
+  });
+}
 
   addToCart(product: ProductsList): void {
     this.cartService.addToCart(product, 1).subscribe({
