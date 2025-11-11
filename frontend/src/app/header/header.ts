@@ -9,6 +9,7 @@ import { UserLoginComponent } from '../User_Authentication/user-login/user-login
 import { UserSignupComponent } from '../User_Authentication/user-signup/user-signup';
 import { Rest1 } from '../Admin_Dashboard/Interfaces/rest1';
 import ProductsList from '../Admin_Dashboard/Interfaces/ProductsList';
+import { DialogManagerService } from '../User_Authentication/services/dialog-manager.service';
 
 @Component({
   selector: 'app-header',
@@ -30,8 +31,16 @@ export class Header implements OnInit {
   activeCategory: string | null = null;
 
   categories: string[] = [
-    'Grocery','Beauty','Electronics','Footwear','T-Shirts',
-    'Watches','Accessories','Sports','Kitchen','Furniture',
+    'Grocery',
+    'Beauty',
+    'Electronics',
+    'Footwear',
+    'T-Shirts',
+    'Watches',
+    'Accessories',
+    'Sports',
+    'Kitchen',
+    'Furniture',
   ];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
@@ -42,7 +51,8 @@ export class Header implements OnInit {
     private cartService: CartService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private productService: Rest1
+    private productService: Rest1,
+    private dialogManager: DialogManagerService
   ) {}
 
   ngOnInit(): void {
@@ -63,24 +73,33 @@ export class Header implements OnInit {
 
   isNotAdminRoute(): boolean {
     return ![
-      '/admin','/admin-login','/admin/orders',
-      '/admin/customers','/admin/products'
+      '/admin',
+      '/admin-login',
+      '/admin/orders',
+      '/admin/customers',
+      '/admin/products',
     ].includes(this.router.url);
   }
 
   // --- Product search ---
   getProductsfromService(): void {
     this.productService.getData('/products').subscribe({
-      next: (data) => { this.productList = data; },
+      next: (data) => {
+        this.productList = data;
+      },
       error: (err) => alert(JSON.stringify(err)),
     });
   }
 
   updateSuggestions(): void {
     const term = this.search.trim().toLowerCase();
-    if (!term) { this.suggestions = []; return; }
+    if (!term) {
+      this.suggestions = [];
+      return;
+    }
 
-    const allOptions = this.productList.map((p) => p.name)
+    const allOptions = this.productList
+      .map((p) => p.name)
       .concat(this.productList.map((p) => p.category));
     const uniqueOptions = Array.from(new Set(allOptions));
 
@@ -100,7 +119,9 @@ export class Header implements OnInit {
     this.router.navigate(['/search'], { queryParams: { name: suggestion } });
   }
 
-  toggleCategories(): void { this.showCategories = !this.showCategories; }
+  toggleCategories(): void {
+    this.showCategories = !this.showCategories;
+  }
 
   filterByCategory(category: string): void {
     this.activeCategory = category;
@@ -108,46 +129,15 @@ export class Header implements OnInit {
   }
 
   // --- Auth ---
-  logout(): void { this.authService.logout(); }
+  logout(): void {
+    this.authService.logout();
+  }
 
   openLogin(): void {
-    if (this.loginDialogRef) return; // prevent duplicate login dialogs
-
-    // close signup if open
-    if (this.signupDialogRef) {
-      this.signupDialogRef.close();
-      this.signupDialogRef = null;
-    }
-
-    this.loginDialogRef = this.dialog.open(UserLoginComponent, { width: '350px' });
-
-    this.loginDialogRef.afterClosed().subscribe((result: any) => {
-      this.loginDialogRef = null;
-      if (result === 'open-signup') {
-        this.openSignup();
-      }
-    });
+    this.dialogManager.openLogin();
   }
 
   openSignup(): void {
-    if (this.signupDialogRef) return; // prevent duplicate signup dialogs
-
-    // close login if open
-    if (this.loginDialogRef) {
-      this.loginDialogRef.close();
-      this.loginDialogRef = null;
-    }
-
-    this.signupDialogRef = this.dialog.open(UserSignupComponent, {
-      width: '400px',
-      panelClass: 'custom-dialog-container',
-    });
-
-    this.signupDialogRef.afterClosed().subscribe((result: any) => {
-      this.signupDialogRef = null;
-      if (result === 'open-login') {
-        this.openLogin();
-      }
-    });
+    this.dialogManager.openSignup();
   }
 }
