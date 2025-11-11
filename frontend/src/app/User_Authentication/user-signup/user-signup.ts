@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-user-signup',
   imports: [ReactiveFormsModule, CommonModule, MatDialogModule],
   templateUrl: './user-signup.html',
-  styleUrls: ['./user-signup.css']
+  styleUrls: ['./user-signup.css'],
 })
 export class UserSignupComponent {
   signupForm: FormGroup;
@@ -22,31 +22,44 @@ export class UserSignupComponent {
   ) {
     this.signupForm = this.fb.group({
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
+        ],
+      ],
       password: ['', [Validators.required, Validators.minLength(8)]],
       shippingAddress: ['', Validators.required],
-      paymentDetails: ['', Validators.required]
+      paymentDetails: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
     if (this.signupForm.valid) {
-      const signupData = {
-        username: this.signupForm.value.username,
-        email: this.signupForm.value.email,
-        password: this.signupForm.value.password,
-        shippingAddress: this.signupForm.value.shippingAddress,
-        paymentDetails: this.signupForm.value.paymentDetails
-      };
+      const signupData = this.signupForm.value;
+      // const storedEmail = localStorage.getItem('signedUpEmail');
+
+      // if (storedEmail && storedEmail === signupData.email) {
+      //   this.signupForm.setErrors({ userExists: true });
+      //   return;
+      // }
 
       this.authService.signup(signupData).subscribe({
         next: () => {
-          this.dialogRef.close();
-          this.router.navigate(['/home']);
+          localStorage.setItem('signedUpEmail', signupData.email);
+          this.signupForm.setErrors({ signupSuccess: true });
+
+          setTimeout(() => {
+            this.dialogRef.close();
+            this.router.navigate(['/home']);
+          }, 2000);
         },
         error: () => {
+          //409
           this.signupForm.setErrors({ signupFailed: true });
-        }
+        },
       });
     } else {
       this.signupForm.markAllAsTouched();
@@ -58,6 +71,6 @@ export class UserSignupComponent {
   }
 
   switchToLogin(): void {
-    this.dialogRef.close('open-login'); 
+    this.dialogRef.close('open-login');
   }
 }

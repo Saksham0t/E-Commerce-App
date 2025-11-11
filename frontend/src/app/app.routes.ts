@@ -14,11 +14,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./Shopping_Cart/cart/cart').then(m => m.Cart),
   },
-  {
-    path: 'user-signup',
-    loadComponent: () =>
-      import('./User_Authentication/user-signup/user-signup').then(m => m.UserSignupComponent),
-  },
+  // {
+  //   path: 'user-signup',
+  //   loadComponent: () =>
+  //     import('./User_Authentication/user-signup/user-signup').then(m => m.UserSignupComponent),
+  // },
   {
     path: 'admin-login',
     loadComponent: () =>

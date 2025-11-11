@@ -6,7 +6,6 @@ import com.project.Matrix.repository.CartItemRepository;
 import com.project.Matrix.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +19,6 @@ public class CartItemService {
     private final ProductRepository productRepository;
 
     public CartItem addCartItem(String productid, int quantity) {
-        System.out.println("Inside cartService");
         Product product = productRepository.findById(productid)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 

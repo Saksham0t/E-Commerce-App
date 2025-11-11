@@ -22,19 +22,6 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword())
-        );
-
-        User user = (User) authentication.getPrincipal();
-
-        String token = authUtil.generateAccessToken(user);
-
-        return new LoginResponseDto(token, user.getId().toString());
-    }
-
     public SignupResponseDto signup(SignupRequestDto signupRequestDto) {
         User existingUser = userRepository.findByName(signupRequestDto.getUsername()).orElse(null);
 
@@ -55,6 +42,17 @@ public class AuthService {
         return new SignupResponseDto(user.getId().toString(), user.getName());
     }
 
+    public LoginResponseDto login(LoginRequestDto loginRequestDto) {
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword())
+        );
+
+        User user = (User) authentication.getPrincipal();
+        String token = authUtil.generateAccessToken(user);
+
+        return new LoginResponseDto(token, user.getId().toString());
+    }
 
 }
 

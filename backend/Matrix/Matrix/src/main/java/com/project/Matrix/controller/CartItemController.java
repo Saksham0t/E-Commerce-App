@@ -24,10 +24,9 @@ public class CartItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<CartItem>> getCartItemById(@PathVariable String id) {
-        Optional<CartItem> cartItem = cartItemService.getCartItemByProductid(id);
+        Optional<CartItem> cartItem = cartItemService.getCartItemById(id);
         return ResponseEntity.ok(cartItem);
     }
-
 
     @GetMapping(params = "productid")
     public ResponseEntity<Optional<CartItem>> getItemById(@RequestParam("productid") String productId) {
@@ -46,14 +45,12 @@ public class CartItemController {
         return updatedItem != null ? ResponseEntity.ok(updatedItem) : ResponseEntity.notFound().build();
     }
 
-    // PATCH /cart/{id} → partially update cart item
     @PatchMapping("/{id}")
     public ResponseEntity<CartItem> patchCartItem(@PathVariable String id, @RequestBody Map<String, Object> updates) {
         CartItem patchedItem = cartItemService.patchCartItem(id, updates);
         return patchedItem != null ? ResponseEntity.ok(patchedItem) : ResponseEntity.notFound().build();
     }
 
-    // DELETE /cart/{id} → remove cart item
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCartItem(@PathVariable String id) {
         cartItemService.deleteCartItem(id);

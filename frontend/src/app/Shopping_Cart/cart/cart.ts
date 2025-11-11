@@ -11,7 +11,7 @@ import { UserLoginComponent } from '../../User_Authentication/user-login/user-lo
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cart.html',
-  styleUrls: ['./cart.css']
+  styleUrls: ['./cart.css'],
 })
 export class Cart implements OnInit {
   cartItems: any[] = [];
@@ -34,31 +34,30 @@ export class Cart implements OnInit {
     this.loadCartItems();
   }
 
-  ngOnChanges(){
-    this.cd.detectChanges()
+  ngOnChanges() {
+    this.cd.detectChanges();
   }
 
   // Load items from the service
   loadCartItems(): void {
     this.cartService.getCartItemsWithDetails().subscribe({
       next: (items) => {
-        this.cartItems = items.map(item => ({
+        this.cartItems = items.map((item) => ({
           id: item.id,
           name: item.name,
           imageUrl: item.imageUrl,
           quantity: +item.quantity || 0,
-          price: +item.price || 0
+          price: +item.price || 0,
         }));
         this.updateSummary();
       },
-      error: (err) => console.error('Error loading cart items:', err)
+      error: (err) => console.error('Error loading cart items:', err),
     });
   }
 
   // Update totals, delivery, and discount
   updateSummary(): void {
-    this.totalAmount = this.cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity, 0);
+    this.totalAmount = this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     // Delivery charge
     if (this.totalAmount === 0) {
@@ -77,7 +76,7 @@ export class Cart implements OnInit {
       this.discountAmount = this.totalAmount * 0.15;
       this.discountMessage = '🔥 You unlocked 15% OFF for spending over ₹3000!';
     } else if (this.totalAmount >= 1000) {
-      this.discountAmount = this.totalAmount * 0.10;
+      this.discountAmount = this.totalAmount * 0.1;
       this.discountMessage = '💰 You unlocked 10% OFF for spending over ₹1000!';
     } else if (this.totalAmount > 0) {
       const needed = 1000 - this.totalAmount;
@@ -99,7 +98,8 @@ export class Cart implements OnInit {
 
     const newTotal = item.price * newQty;
 
-    this.cartService.updateCartItem(item.id, { quantity: newQty, totalPrice: newTotal })
+    this.cartService
+      .updateCartItem(item.id, { quantity: newQty, totalPrice: newTotal })
       .subscribe(() => {
         item.quantity = newQty;
         item.totalPrice = newTotal;
@@ -110,7 +110,7 @@ export class Cart implements OnInit {
   // Remove item from cart
   removeItem(id: number | string): void {
     this.cartService.removeFromCart(id).subscribe(() => {
-      this.cartItems = this.cartItems.filter(item => item.id !== id);
+      this.cartItems = this.cartItems.filter((item) => item.id !== id);
       this.updateSummary();
     });
   }
@@ -120,15 +120,10 @@ export class Cart implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  // Navigate to summary or show login
+  // Navigate to summary or show login ssss
   goToSummary(): void {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/summary']);
-    } else {
-      this.dialog.open(UserLoginComponent, {
-        width: '400px',
-        panelClass: 'custom-dialog-container'
-      });
-    }
+    } 
   }
 }

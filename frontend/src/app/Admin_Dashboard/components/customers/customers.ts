@@ -4,9 +4,9 @@ import { Rest1 } from '../../Interfaces/rest1';
 import { Orders } from '../../Interfaces/Orders';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
+ 
 @Component({
   selector: 'app-customers',
   imports: [CommonModule,FormsModule,HttpClientModule,RouterModule],
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   providers:[Rest1,HttpClientModule]
 })
 export class Customers {
-
+ 
   constructor(private jsonservice:Rest1){}
   customersLst:Users[]=[];
   OrdersLst:Orders[]=[];
@@ -38,68 +38,36 @@ export class Customers {
     this.getCustomersfromService();
     this.getOrdersfromService();
   }
-  
+ 
   selectedCustomerId: number | null = null;
-
+ 
   toggleDetails(id: number): void {
     this.selectedCustomerId = this.selectedCustomerId === id ? null : id;
   }
   selectedUser:any;
-
-    
-  // openUserModal(){
-  //   this.showAddModal = true;
-  //   this.newUser = {
-  //     Name: '',
-  //     Email: 0,
-  //     Password: '',
-  //     ShippingAddress: '',
-  //     PaymentDetails: ''
-  //   };
-  // }
+ 
   openUserModal(customer: Users): void {
-  this.selectedUser = {
-    id:customer.id,
-    Name:customer.name,
-    Email:customer.email,
-    Password:customer.password,
-    ShippingAddress:customer.shippingAddress,
-    PaymentDetails:customer.paymentDetails
-  }; // Clone to avoid direct mutation
+  this.selectedUser ={...customer} 
   this.showAddModal = true;
 }
 selectedCustomer!: Users;
 selectedCustomerOrders: any[] | null = null;
-
+ 
 openOrdersModal(customer: any): void {
   this.selectedCustomer = customer;
   this.selectedCustomerOrders = this.OrdersLst.filter(order => order.userId === customer.id);
+  console.log(this.selectedCustomerOrders);
 }
-
+ 
 closeOrdersModal(): void {
   this.selectedCustomerOrders = null;
 }
-
-
+ 
+ 
 closeModal(): void {this.selectedUser = null;
   this.showAddModal = false;
 }
-deleteUser(customer:any) {
-    this.jsonservice.deleteUserRecord(customer).subscribe({
-      next: (data) => { this.getCustomersfromService() },
-      error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log('Delete Operation')
-    })
-    this.closeModal();
-  }
-  // closeUserModal() {
-  //   this.selectedUser = null;
-  //   this.showAddModal = false;
-  // }
-  // closeModal() {
-  //   this.selectedUser = null;
-  //   this.showAddModal = false;
-  // }
+
   saveProduct() {
     const index = this.customersLst.findIndex(p => p.id === this.selectedUser.id);
     if (index !== -1) {
@@ -112,5 +80,5 @@ deleteUser(customer:any) {
     })
     this.closeModal();
   }
-
+ 
 }

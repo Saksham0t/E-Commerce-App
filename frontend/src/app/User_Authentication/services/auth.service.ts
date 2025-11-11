@@ -48,7 +48,6 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  // ✅ New helper
   isTokenExpired(token: string): boolean {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -67,6 +66,10 @@ export class AuthService {
       return false;
     }
     return true;
+  }
+
+  isLoggedIn(): boolean{
+    return  !!localStorage.getItem('jwt');
   }
 
   getUserId(): string | null {

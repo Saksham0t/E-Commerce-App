@@ -1,14 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.cdk-overlay-backdrop {
-  backdrop-filter: blur(6px);
+.custom-dialog-container {
+  margin-top: 120px;
+  transform: scale(0.84);     
 }
-.custom-dialog-container .mat-mdc-dialog-surface {
-  border-radius: 8px;
-} */
 
 
 html, body {

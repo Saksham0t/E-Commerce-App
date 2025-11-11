@@ -6,8 +6,8 @@ import com.project.Matrix.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,18 +16,18 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
-    // GET: Fetch all users
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(this::mapUserEntityToUserDTO)
+                .collect(Collectors.toList());
     }
 
-    // GET: Fetch user by ID
     public User getUserById(String id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
     }
 
-    // POST: Create a new user
     public User createUser(User user) {
         if (userRepository.existsById(user.getId().toString())) {
             throw new RuntimeException("User with ID already exists: " + user.getId());
@@ -35,7 +35,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // PUT: Update an existing user
     public User updateUser(String id, User updatedUser) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
@@ -44,7 +43,6 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    // DELETE: Remove a user by ID
     public void deleteUser(String id) {
         if (!userRepository.existsById(id)) {
             throw new RuntimeException("User not found with ID: " + id);
@@ -52,13 +50,11 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    // Convert entity to DTO
-    public UserDto toDTO(User user) {
+    public UserDto mapUserEntityToUserDTO(User user) {
         return user == null ? null : modelMapper.map(user, UserDto.class);
     }
 
-    // Convert DTO to entity
-    public static User toEntity(UserDto dto) {
+    public static User mapUserDtoToUserEntity(UserDto dto) {
         if (dto == null) return null;
         ModelMapper mapper = new ModelMapper();
         return mapper.map(dto, User.class);

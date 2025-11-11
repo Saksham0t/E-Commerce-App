@@ -27,7 +27,6 @@ export class UserLoginComponent {
   onLogin(): void {
     this.authService.login(this.email, this.password).subscribe({
       next: () => {
-        // ✅ Initialize cart state after login succeeds
         this.cartService.initCartState();
 
         this.dialogRef.close();
@@ -43,8 +42,4 @@ export class UserLoginComponent {
     this.dialogRef.close('open-signup'); 
   }
 
-  goToAdminLogin(): void {
-    this.dialogRef.close();
-    this.router.navigate(['/admin-login']);
-  }
 }

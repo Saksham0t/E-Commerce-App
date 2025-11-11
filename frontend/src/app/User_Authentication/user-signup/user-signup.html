@@ -2,8 +2,22 @@
   <h4 class="text-center mb-4 fw-bold">
     <i class="bi bi-person-plus-fill me-2"></i> User Signup
   </h4>
-
+ 
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Success message -->
+    @if (signupForm.errors?.['signupSuccess']) {
+      <div class="text-success text-center mb-3">
+        Signed up successfully!
+      </div>
+    }
+ 
+    <!-- Error message for existing user -->
+    @if (signupForm.errors?.['userExists']) {
+      <div class="text-danger text-center mb-3">
+        Unable to sign up, user already present.
+      </div>
+    }
+ 
     <!-- Username -->
     <div class="mb-3">
       <label for="username" class="form-label fw-semibold">Username</label>
@@ -18,7 +32,7 @@
         <div class="text-danger small mt-1">Username is required.</div>
       }
     </div>
-
+ 
     <!-- Email -->
     <div class="mb-3">
       <label for="email" class="form-label fw-semibold">Email address</label>
@@ -33,7 +47,7 @@
         <div class="text-danger small mt-1">Please enter a valid email.</div>
       }
     </div>
-
+ 
     <!-- Password -->
     <div class="mb-3">
       <label for="password" class="form-label fw-semibold">Password</label>
@@ -48,7 +62,7 @@
         <div class="text-danger small mt-1">Password must be at least 8 characters.</div>
       }
     </div>
-
+ 
     <!-- Shipping Address -->
     <div class="mb-3">
       <label for="shippingAddress" class="form-label fw-semibold">Shipping Address</label>
@@ -63,7 +77,7 @@
         <div class="text-danger small mt-1">Shipping address is required.</div>
       }
     </div>
-
+ 
     <!-- Payment Details -->
     <div class="mb-3">
       <label for="paymentDetails" class="form-label fw-semibold">Payment Details</label>
@@ -78,12 +92,12 @@
         <div class="text-danger small mt-1">Payment details are required.</div>
       }
     </div>
-
+ 
     <!-- Sign Up button -->
     <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="signupForm.invalid">
       <i class="bi bi-check-circle-fill me-1"></i> Sign Up
     </button>
-
+ 
     <!-- Switch to login -->
     <div class="text-center">
       <span>Already have an account?</span>

@@ -1,10 +1,12 @@
-import { Component, HostListener, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, HostListener, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import ProductsList from '../../Admin_Dashboard/Interfaces/ProductsList';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Rest1 } from '../../Admin_Dashboard/Interfaces/rest1';
 import { CartService } from '../../Shopping_Cart/cart-service';
+import { AuthService } from '../../User_Authentication/services/auth.service';
+import { Header } from '../../header/header';
 
 declare const bootstrap: any;
 
@@ -17,6 +19,8 @@ declare const bootstrap: any;
   providers: [Rest1],
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(Header) header!: Header;   // 👈 reference to Header
+
   productsByCategory: { [key: string]: ProductsList[] } = {};
   products: ProductsList[] = [];
   addedToCart = new Set<string>();
@@ -40,7 +44,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     '../../../assets/Tech.mp4',
     '../../../assets/Makeup.mp4',
     '../../../assets/Mens.png',
-    '../../../assets/Watch.mp4'
+    '../../../assets/Watch.mp4',
   ];
 
   activeIndex = 0;
@@ -49,10 +53,14 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private rafId: number | null = null;
   private startTime = 0;
   private durationMs = 4000;
-
   private durations: number[] = [6000, 4000, 4000, 4000, 4000, 4000, 4000];
 
-  constructor(private productService: Rest1, private cartService: CartService) {}
+  constructor(
+    private productService: Rest1,
+    private cartService: CartService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getProductsfromService();
@@ -73,7 +81,8 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     if (!carouselEl || typeof bootstrap === 'undefined') return;
 
     const instance =
-      bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl, { interval: false });
+      (bootstrap as any).Carousel.getInstance(carouselEl) ||
+      new (bootstrap as any).Carousel(carouselEl, { interval: false });
 
     instance.to(index);
     this.startProgressFor(index);
@@ -116,9 +125,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     if (!carouselEl || typeof bootstrap === 'undefined') return;
 
     const instance =
-      bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl, { interval: false });
+      (bootstrap as any).Carousel.getInstance(carouselEl) ||
+      new (bootstrap as any).Carousel(carouselEl, { interval: false });
 
-    // compute next index ourselves
     const nextIndex = (this.activeIndex + 1) % this.carouselItems.length;
     instance.to(nextIndex);
     this.startProgressFor(nextIndex);
@@ -160,16 +169,24 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       next: (data) => {
         this.products = data;
         const categories = [
-          'Electronics','Accessories', 'T-shirts', 'Footwear', 'Beauty', 'Watches',
-          'Sports','Fashion Wear (Male)', 'Fashion Wear (Ladies)',
-          'Books', 'Kitchen','Grocery'
+          'Electronics',
+          'Accessories',
+          'T-shirts',
+          'Footwear',
+          'Beauty',
+          'Watches',
+          'Sports',
+          'Fashion Wear (Male)',
+          'Fashion Wear (Ladies)',
+          'Books',
+          'Kitchen',
+          'Grocery',
         ];
         categories.forEach((cat) => {
           this.productsByCategory[cat] = this.getProductsByCategory(cat);
         });
       },
       error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log('Getting data from backend..'),
     });
   }
 
@@ -178,19 +195,25 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private syncCartState(): void {
-  this.cartService.getCartItemsWithDetails().subscribe({
-    next: (items) => {
-      items.forEach(item => {
-        if (item.productid) {
-          this.addedToCart.add(item.productid);
-        }
-      });
-    },
-    error: (err) => console.error('Error syncing cart state:', err)
-  });
-}
+    this.cartService.getCartItemsWithDetails().subscribe({
+      next: (items) => {
+        items.forEach((item) => {
+          if (item.productid) {
+            this.addedToCart.add(item.productid);
+          }
+        });
+      },
+      error: (err) => console.error('Error syncing cart state:', err),
+    });
+  }
 
+  // ----- Auth flow delegated to Header -----
   addToCart(product: ProductsList): void {
+    if (!this.authService.isLoggedIn()) {
+      this.header.openLogin();   // 👈 delegate to Header
+      return;
+    }
+
     this.cartService.addToCart(product, 1).subscribe({
       next: () => {
         this.addedToCart.add(product.id);

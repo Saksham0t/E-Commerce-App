@@ -16,39 +16,31 @@ public class UserController {
 
     private final UserService userService;
 
-    // GET /users → fetch all users
     @GetMapping
     public ResponseEntity<List<UserDto>> getAllUsers() {
-        List<UserDto> users = userService.getAllUsers()
-                .stream()
-                .map(userService::toDTO)
-                .collect(Collectors.toList());
+        List<UserDto> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
-    // GET /users/{id} → fetch user by ID
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable String id) {
         User user = userService.getUserById(id);
-        return user != null ? ResponseEntity.ok(userService.toDTO(user)) : ResponseEntity.notFound().build();
+        return user != null ? ResponseEntity.ok(userService.mapUserEntityToUserDTO(user)) : ResponseEntity.notFound().build();
     }
 
-    // POST /users → create a new user
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
-        User user = UserService.toEntity(userDto);
+        User user = UserService.mapUserDtoToUserEntity(userDto);
         User savedUser = userService.createUser(user);
-        return ResponseEntity.ok(userService.toDTO(savedUser));
+        return ResponseEntity.ok(userService.mapUserEntityToUserDTO(savedUser));
     }
 
-    // PUT /users/{id} → update an existing user
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> updateUser(@PathVariable String id, @RequestBody UserDto userDto) {
-        User updatedUser = userService.updateUser(id, UserService.toEntity(userDto));
-        return updatedUser != null ? ResponseEntity.ok(userService.toDTO(updatedUser)) : ResponseEntity.notFound().build();
+        User updatedUser = userService.updateUser(id, UserService.mapUserDtoToUserEntity(userDto));
+        return updatedUser != null ? ResponseEntity.ok(userService.mapUserEntityToUserDTO(updatedUser)) : ResponseEntity.notFound().build();
     }
 
-    // DELETE /users/{id} → delete a user
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);

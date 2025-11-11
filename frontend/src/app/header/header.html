@@ -1,10 +1,6 @@
 @if (showHeader) {
 <nav class="mainheader navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
-  <a
-    class="navbar-brand d-flex align-items-center"
-    routerLink="/home"
-    (click)="activeCategory = null"
-  >
+  <a class="navbar-brand d-flex align-items-center" routerLink="/home" (click)="activeCategory = null">
     <img
       src="logo.png"
       alt="Logo"
@@ -14,12 +10,7 @@
     <span class="fw-bold fs-4">Matrix</span>
   </a>
 
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarContent"
-  >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -38,10 +29,7 @@
           autocomplete="off"
         />
         @if (suggestions.length > 0) {
-        <ul
-          class="list-group position-absolute w-100 mt-2 bg-white shadow rounded"
-          style="z-index: 1050"
-        >
+        <ul class="list-group position-absolute w-100 mt-2 bg-white shadow rounded" style="z-index: 1050">
           @for (suggestion of suggestions; track $index) {
           <li class="list-group-item list-group-item-action" (click)="selectSuggestion(suggestion)">
             {{ suggestion }}
@@ -51,11 +39,7 @@
         }
       </div>
 
-      <button
-        class="btn btn-light rounded-pill px-4 shadow-sm ms-2"
-        type="button"
-        (click)="searchNow()"
-      >
+      <button class="btn btn-light rounded-pill px-4 shadow-sm ms-2" type="button" (click)="searchNow()">
         Search
       </button>
 
@@ -67,33 +51,23 @@
         (click)="toggleCategories()"
         title="Show Categories"
       >
-        <i
-          class="bi"
-          [ngClass]="{ 'bi-chevron-down': !showCategories, 'bi-chevron-up': showCategories }"
-        ></i>
+        <i class="bi" [ngClass]="{ 'bi-chevron-down': !showCategories, 'bi-chevron-up': showCategories }"></i>
       </button>
     </form>
 
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
       @if (!isLoggedIn) {
       <li class="nav-item me-lg-4">
-        <a
-          (click)="openLogin()"
-          class="btn btn-outline-light border-0 fw-semibold shadow-sm"
-          style="cursor: pointer"
-        >
+        <a (click)="openLogin()" class="btn btn-outline-light border-0 fw-semibold shadow-sm" style="cursor: pointer">
           <i class="bi bi-box-arrow-in-right me-1"></i> Login
         </a>
       </li>
       }
 
+      @if (isLoggedIn) {
       <!-- Cart -->
       <li class="nav-item me-lg-4">
-        <a
-          class="nav-link d-flex align-items-center"
-          (click)="activeCategory = null"
-          routerLink="/cart"
-        >
+        <a class="nav-link d-flex align-items-center" (click)="activeCategory = null" routerLink="/cart">
           <span class="position-relative me-1">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
@@ -112,7 +86,6 @@
       </li>
 
       <!-- Profile Dropdown -->
-      @if (isLoggedIn) {
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle d-flex align-items-center"
@@ -125,31 +98,25 @@
           <i class="bi bi-person-circle me-2 fs-5"></i>
           {{ userName }}
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3"
-          aria-labelledby="profileDropdown"
-        >
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3" aria-labelledby="profileDropdown">
           <li>
-            <a class="dropdown-item py-2" routerLink="/my-profile"
-              ><i class="bi bi-person-lines-fill me-2 text-primary"></i> My Profile</a
-            >
+            <a class="dropdown-item py-2" routerLink="/my-profile">
+              <i class="bi bi-person-lines-fill me-2 text-primary"></i> My Profile
+            </a>
           </li>
           <li>
-            <a class="dropdown-item py-2" routerLink="/view-orders"
-              ><i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders</a
-            >
+            <a class="dropdown-item py-2" routerLink="/view-orders">
+              <i class="bi bi-bag-check-fill me-2 text-success"></i> My Orders
+            </a>
           </li>
           <li>
-            <a class="dropdown-item py-2" routerLink="/admin-login"
-              ><i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login</a
-            >
+            <a class="dropdown-item py-2" routerLink="/admin-login">
+              <i class="bi bi-shield-lock-fill me-2 text-warning"></i> Admin Login
+            </a>
           </li>
           <li><hr class="dropdown-divider" /></li>
           <li class="text-center">
-            <a
-              class="dropdown-item logout-item py-1 text-danger fw-bold cursor-pointer"
-              (click)="logout()"
-            >
+            <a class="dropdown-item logout-item py-1 text-danger fw-bold cursor-pointer" (click)="logout()">
               <i class="bi bi-box-arrow-right me-2"></i> Logout
             </a>
           </li>
@@ -162,10 +129,7 @@
 
 <!-- Categories Bar -->
 @if (showCategories) {
-<div
-  class="categories-bar text-white bg-dark shadow-sm fixed-top"
-  style="background-color: rgb(70, 44, 18)"
->
+<div class="categories-bar text-white bg-dark shadow-sm fixed-top" style="background-color: rgb(70, 44, 18)">
   <div class="container py-2">
     <ul class="nav justify-content-center flex-wrap gap-3">
       @for (cat of categories; track $index) {
@@ -182,8 +146,10 @@
     </ul>
   </div>
 </div>
+}
+}
 
-} } @if (isNotAdminRoute()) {
+@if (isNotAdminRoute()) {
 <div style="padding-top: 100px">
   <router-outlet></router-outlet>
 </div>

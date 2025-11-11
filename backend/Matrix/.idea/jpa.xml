@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository" />
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="Matrix" name="Matrix" framework="JPA" ormUnit="Matrix:Matrix" defaultDataSourceId="8c9c6cf9-5909-4a84-8d1d-fdc5dc913bd5" />
+    </persistence-units>
+  </component>
 </project>

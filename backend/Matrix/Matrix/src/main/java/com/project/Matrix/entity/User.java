@@ -22,7 +22,7 @@ public class User implements UserDetails {
     private String name;
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -30,7 +30,6 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String paymentDetails;
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;

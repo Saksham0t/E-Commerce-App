@@ -90,7 +90,7 @@ getCustomersfromService(): Promise<void> {
 
   getCustomerName(userId: string): string {
     const customer = this.CustomersList.find(c => c.id === userId);
-    return customer ? customer.Name : 'Unknown';
+    return customer ? customer.name : 'Unknown';
   }
 
   getProductDetails(productId: string) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -26,40 +26,31 @@ export class Header implements OnInit {
   suggestions: string[] = [];
   productList: ProductsList[] = [];
 
-  // Categories toggle + list
-  showCategories = true; // open by default
+  showCategories = true;
   activeCategory: string | null = null;
 
   categories: string[] = [
-    'Grocery',
-    'Beauty',
-    'Electronics',
-    'Footwear',
-    'T-Shirts',
-    'Watches',
-    'Accessories',
-    'Sports',
-    'Kitchen',
-    'Furniture',
+    'Grocery','Beauty','Electronics','Footwear','T-Shirts',
+    'Watches','Accessories','Sports','Kitchen','Furniture',
   ];
 
   private loginDialogRef: MatDialogRef<UserLoginComponent> | null = null;
+  private signupDialogRef: MatDialogRef<UserSignupComponent> | null = null;
 
   constructor(
     public router: Router,
     private cartService: CartService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private someObj: Rest1
+    private productService: Rest1
   ) {}
 
   ngOnInit(): void {
-    // reactive UI state
+    this.cartService.initCartState(); // restore cart count on refresh
     this.cartService.cartCount$.subscribe((count) => (this.cartCount = count));
     this.authService.userName$.subscribe((name) => (this.userName = name));
     this.authService.isLoggedIn$.subscribe((status) => (this.isLoggedIn = status));
 
-    // load products for suggestions
     this.getProductsfromService();
 
     const storedName = this.authService.getUserName();
@@ -67,41 +58,29 @@ export class Header implements OnInit {
   }
 
   get showHeader(): boolean {
-    // keep header hidden on admin routes
     return !this.router.url.startsWith('/admin');
   }
 
   isNotAdminRoute(): boolean {
-    return (
-      this.router.url !== '/admin' &&
-      this.router.url !== '/admin-login' &&
-      this.router.url !== '/admin/orders' &&
-      this.router.url !== '/admin/customers' &&
-      this.router.url !== '/admin/products'
-    );
+    return ![
+      '/admin','/admin-login','/admin/orders',
+      '/admin/customers','/admin/products'
+    ].includes(this.router.url);
   }
 
-  // API call to get products for suggestions
+  // --- Product search ---
   getProductsfromService(): void {
-    this.someObj.getData('/products').subscribe({
-      next: (data) => {
-        this.productList = data;
-      },
+    this.productService.getData('/products').subscribe({
+      next: (data) => { this.productList = data; },
       error: (err) => alert(JSON.stringify(err)),
-      complete: () => console.log('Getting data from backend..'),
     });
   }
 
-  // Search suggestions logic
   updateSuggestions(): void {
     const term = this.search.trim().toLowerCase();
-    if (!term) {
-      this.suggestions = [];
-      return;
-    }
+    if (!term) { this.suggestions = []; return; }
 
-    const allOptions = this.productList
-      .map((p) => p.name)
+    const allOptions = this.productList.map((p) => p.name)
       .concat(this.productList.map((p) => p.category));
     const uniqueOptions = Array.from(new Set(allOptions));
 
@@ -121,28 +100,26 @@ export class Header implements OnInit {
     this.router.navigate(['/search'], { queryParams: { name: suggestion } });
   }
 
-  // Categories interactions
-  toggleCategories(): void {
-    this.showCategories = !this.showCategories;
-  }
+  toggleCategories(): void { this.showCategories = !this.showCategories; }
 
   filterByCategory(category: string): void {
     this.activeCategory = category;
     this.router.navigate(['/search'], { queryParams: { category } });
   }
 
-  // Auth
-  logout(): void {
-    this.authService.logout();
-  }
+  // --- Auth ---
+  logout(): void { this.authService.logout(); }
 
   openLogin(): void {
-    if (this.loginDialogRef) return; // prevent multiple popups
+    if (this.loginDialogRef) return; // prevent duplicate login dialogs
 
-    this.loginDialogRef = this.dialog.open(UserLoginComponent, {
-      width: '400px',
-      panelClass: 'custom-dialog-container',
-    });
+    // close signup if open
+    if (this.signupDialogRef) {
+      this.signupDialogRef.close();
+      this.signupDialogRef = null;
+    }
+
+    this.loginDialogRef = this.dialog.open(UserLoginComponent, { width: '350px' });
 
     this.loginDialogRef.afterClosed().subscribe((result: any) => {
       this.loginDialogRef = null;
@@ -153,12 +130,21 @@ export class Header implements OnInit {
   }
 
   openSignup(): void {
-    const signupDialogRef = this.dialog.open(UserSignupComponent, {
+    if (this.signupDialogRef) return; // prevent duplicate signup dialogs
+
+    // close login if open
+    if (this.loginDialogRef) {
+      this.loginDialogRef.close();
+      this.loginDialogRef = null;
+    }
+
+    this.signupDialogRef = this.dialog.open(UserSignupComponent, {
       width: '400px',
       panelClass: 'custom-dialog-container',
     });
 
-    signupDialogRef.afterClosed().subscribe((result: any) => {
+    this.signupDialogRef.afterClosed().subscribe((result: any) => {
+      this.signupDialogRef = null;
       if (result === 'open-login') {
         this.openLogin();
       }

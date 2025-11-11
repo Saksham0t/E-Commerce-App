@@ -55,14 +55,14 @@
     <div class="row g-3">
       <div *ngFor="let p of order.products" class="col-md-6">
         <div class="d-flex align-items-center border rounded p-2 bg-white">
-          <img [src]="getProductDetails(p.id).imageUrl"
+          <img [src]="getProductDetails(p.productid).imageUrl"
                alt="Product Image"
                width="60"
                class="me-3 rounded border">
           <div>
-            <h6 class="mb-1">{{ getProductDetails(p.id).name }}</h6>
+            <h6 class="mb-1">{{ getProductDetails(p.productid).name }}</h6>
             <small class="text-muted d-block">Quantity: {{ p.quantity }}</small>
-            <small class="text-muted d-block">Price: ₹{{ (getProductDetails(p.id)?.price || 0) * p.quantity }}</small>
+            <small class="text-muted d-block">Price: ₹{{ (getProductDetails(p.productid)?.price || 0) * p.quantity }}</small>
           </div>
         </div>
       </div>

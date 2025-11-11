@@ -1,46 +1,14 @@
--- drop database matrix;
--- addCartItem database matrix;
--- use matrix;
---
--- drop table orders;
--- drop table product;
--- drop table order_product;
--- drop table orders_products;
--- drop table user;
--- drop table cart_item;
---
---
--- CREATE TABLE orders (
---     id VARCHAR(50) PRIMARY KEY,
---     user_id VARCHAR(50) NOT NULL,
---     total_price INT NOT NULL,
---     order_date DATE NOT NULL,
---     shipping_address TEXT,
---     order_status VARCHAR(50),
---     payment_status VARCHAR(50),
---     payment_method VARCHAR(50)
--- );
---
--- CREATE TABLE product (
---      id INT PRIMARY KEY,
---      name VARCHAR(100) NOT NULL,
---      price INT NOT NULL,
---      category VARCHAR(50),
---      description TEXT,
---      image_url TEXT
--- );
-
 INSERT INTO product (id, name, price, category, description, image_url) VALUES
-    (201, 'Office Chair', 3200, 'Furniture', 'Ergonomic office chair with lumbar support', 'https://i5.walmartimages.com/asr/5a9c9482-c045-48e6-b540-f91885fa9007_1.62e743362e4a382af57edb00451d55b9.jpeg'),
-    (202, 'Coffee Mug', 150, 'Kitchen', 'Ceramic coffee mug with matte finish', 'https://img.freepik.com/premium-photo/white-blank-ceramic-coffee-mug-mockup_1022426-2518.jpg'),
-    (203, 'Backpack', 1200, 'Accessories', 'Durable backpack suitable for travel and office use', 'https://images-na.ssl-images-amazon.com/images/I/91kh7Y9VYNL._AC_SL1500_.jpg'),
-    (204, 'Smartphone', 15000, 'Electronics', 'Latest model smartphone with high-resolution display', 'https://m.media-amazon.com/images/I/81js+FWp4XL._AC_SL1500_.jpg'),
-    (205, 'Running Shoes', 2200, 'Footwear', 'Lightweight running shoes for daily workouts', 'https://i5.walmartimages.com/seo/ALLSWIFIT-Men-s-Slip-On-Walking-Running-Shoes-DreamLife-Lightweight-Non-Slip-Athletic-Sneakers-for-Gym-Tennis-and-Everyday-Workouts_994d03cc-754a-42e7-a314-82048fbc2494.8e1858cc3a9a092013e1a0622a82ab74.jpeg'),
-    (206, 'Novel Book', 499, 'Books', 'Bestselling fiction novel paperback edition', 'https://templates.mediamodifier.com/5db698f47c3dc9731647a4e9/fiction-novel-book-cover-template.jpg'),
-    (209, 'Lipstick', 599, 'Beauty', 'Long-lasting matte lipstick in a vibrant red shade', 'https://tse3.mm.bing.net/th/id/OIP.YTB2WlzaguAb2e9e9lUaFAHaJV?rs=1&pid=ImgDetMain&o=7&rm=3'),
-    (210, 'Men''s T-Shirt', 450, 'Fashion Wear (Male)', 'Comfortable cotton t-shirt with a round neck', 'https://i5.walmartimages.com/asr/4157cd44-1dda-44e4-8973-a49a482425c9_1.79a3c179916e263a8b975595bdf04952.jpeg'),
-    (211, 'Women''s Jeans',1500,'Fashion Wear (Ladies)','High-waist skinny jeans for a stylish look','https://tse2.mm.bing.net/th/id/OIP.J1i4Ab2JK3PhAKMC-QseOQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'),
-    (212, 'Cookbook',750,'Books','Collection of international recipes and cooking tips','https://marketplace.canva.com/EAFpS1ceGQQ/1/0/1003w/canva-colorful-modern-cookbook-book-cover-YTEX1G_wu18.jpg'),
+    (201,'Office Chair', 3200, 'Furniture', 'Ergonomic office chair with lumbar support', 'https://i5.walmartimages.com/asr/5a9c9482-c045-48e6-b540-f91885fa9007_1.62e743362e4a382af57edb00451d55b9.jpeg'),
+    (202,'Coffee Mug', 150, 'Kitchen', 'Ceramic coffee mug with matte finish', 'https://img.freepik.com/premium-photo/white-blank-ceramic-coffee-mug-mockup_1022426-2518.jpg'),
+    (203,'Backpack', 1200, 'Accessories', 'Durable backpack suitable for travel and office use', 'https://images-na.ssl-images-amazon.com/images/I/91kh7Y9VYNL._AC_SL1500_.jpg'),
+    (204,'Smartphone', 15000, 'Electronics', 'Latest model smartphone with high-resolution display', 'https://m.media-amazon.com/images/I/81js+FWp4XL._AC_SL1500_.jpg'),
+    (205,'Running Shoes', 2200, 'Footwear', 'Lightweight running shoes for daily workouts', 'https://i5.walmartimages.com/seo/ALLSWIFIT-Men-s-Slip-On-Walking-Running-Shoes-DreamLife-Lightweight-Non-Slip-Athletic-Sneakers-for-Gym-Tennis-and-Everyday-Workouts_994d03cc-754a-42e7-a314-82048fbc2494.8e1858cc3a9a092013e1a0622a82ab74.jpeg'),
+    (206,'Novel Book', 499, 'Books', 'Bestselling fiction novel paperback edition', 'https://templates.mediamodifier.com/5db698f47c3dc9731647a4e9/fiction-novel-book-cover-template.jpg'),
+    (209,'Lipstick', 599, 'Beauty', 'Long-lasting matte lipstick in a vibrant red shade', 'https://tse3.mm.bing.net/th/id/OIP.YTB2WlzaguAb2e9e9lUaFAHaJV?rs=1&pid=ImgDetMain&o=7&rm=3'),
+    (210,'Men''s T-Shirt', 450, 'Fashion Wear (Male)', 'Comfortable cotton t-shirt with a round neck', 'https://i5.walmartimages.com/asr/4157cd44-1dda-44e4-8973-a49a482425c9_1.79a3c179916e263a8b975595bdf04952.jpeg'),
+    (211,'Women''s Jeans',1500,'Fashion Wear (Ladies)','High-waist skinny jeans for a stylish look','https://tse2.mm.bing.net/th/id/OIP.J1i4Ab2JK3PhAKMC-QseOQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'),
+    (212,'Cookbook',750,'Books','Collection of international recipes and cooking tips','https://marketplace.canva.com/EAFpS1ceGQQ/1/0/1003w/canva-colorful-modern-cookbook-book-cover-YTEX1G_wu18.jpg'),
     (213,'Blender',2500,'Kitchen','High-power blender for smoothies and shakes','https://media3.bsh-group.com/Product_Shots/5120x/17923822_Product_Shot_MMB6386M_STP_def.webp'),
     (214,'Protein Powder',1800,'Grocery','Whey protein powder with chocolate flavor','https://cdn0.woolworths.media/content/wowproductimages/large/508160.jpg'),
     (215,'Dumbbells',1100,'Sports','Set of 5kg dumbbells for strength training','https://tse3.mm.bing.net/th/id/OIP.ChVYZPgpBX2hxrH6KXi1kAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3'),
@@ -51,7 +19,7 @@ INSERT INTO product (id, name, price, category, description, image_url) VALUES
     (221,'Dinner Set',4500,'Kitchen','12-piece ceramic dinner set for a family of four','https://image.made-in-china.com/2f0j00JBkToYIGZNbV/15-Pieces-of-Dinner-Set.jpg'),
     (222,'Breakfast Cereal',250,'Grocery','Multigrain breakfast cereal with dry fruits','https://www.eatthis.com/wp-content/uploads/sites/4/2021/04/general-mills-fiber-one-honey-clusters.jpg?resize=473'),
     (223,'Basketball',900,'Sports','Official size and weight basketball for outdoor play','https://tse4.mm.bing.net/th/id/OIP.2H2FP7z9E5b3boc5lQp61QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3'),
-    (225,'Mascara',450,'Beauty','Volumizing mascara for long and curled lashes','https://tse4.mm.bing.net/th/id/OIP.UUbMoRTRCiaopkzwlUX8nAHaNF?rs=1&pid=ImgDetMain&o=7&rm=3'),
+    (225,'Mascara',450,'Beauty','Volumizing mascara for long and curled lashes','https://sdcdn.io/cl/cl_sku_V82P01_2400x2400_0.jpg'),
     (226,'Men''s Hoodie',1600,'Fashion Wear (Male)','Casual hoodie with a fleece lining for warmth','https://i5.walmartimages.com/asr/3a043039-85a5-4510-b6ff-f7521d8705bf_1.090f41bdf20ceb990ac16daa8d626417.jpeg'),
     (227,'Women''s Handbag',2000,'Fashion Wear (Ladies)','Faux leather handbag with multiple compartments','https://sc04.alicdn.com/kf/He18cc5474e23408fab819fc7770931814/254097870/He18cc5474e23408fab819fc7770931814.jpg'),
     (228,'Mystery Book',480,'Books','Gripping mystery novel with an unexpected twist','https://tse4.mm.bing.net/th/id/OIP.J2bLqbAtZKC7k1ns0xEiRQHaLA?rs=1&pid=ImgDetMain&o=7&rm=3'),
@@ -92,6 +60,6 @@ INSERT INTO product (id, name, price, category, description, image_url) VALUES
     (273,'Non-Stick Frying Pan',950,'Kitchen','Premium non-stick frying pan for healthy cooking. Easy to clean and compatible with all stovetops.','https://m.media-amazon.com/images/I/8149APAwGPL._AC_.jpg'),
     (274,'Wooden Coffee Table',4500,'Furniture','Elegant wooden coffee table with a smooth finish. Perfect for living rooms and modern interiors.','https://m.media-amazon.com/images/I/71-3+Q8rAkL._SL1500_.jpg');
 
-INSERT INTO user (id, name, email, password, shipping_address, payment_details) VALUES
-    ('1', 'Saksham', 's@test.com', 's@123456', 'Coimbatore', 'UPI'),
-    ('2', 'Jayesh', 'j@test.com', 'j@123456', 'Pune', 'Net Banking');
+-- INSERT INTO user (id, name, email, password, shipping_address, payment_details) VALUES
+--     ('1', 'Saksham', 's@test.com', 's@123456', 'Coimbatore', 'UPI'),
+--     ('2', 'Jayesh', 'j@test.com', 'j@123456', 'Pune', 'Net Banking');

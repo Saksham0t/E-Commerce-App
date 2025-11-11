@@ -11,20 +11,27 @@
       <div class="card border-0 shadow-sm h-100">
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
-            <div class="rounded-circle bg-secondary text-white fw-bold d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+            <!-- <div class="rounded-circle bg-secondary text-white fw-bold d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
               {{ customer.name.charAt(0) }}
-            </div>
+            </div> -->
             <div class="ms-3">
               <h5 class="mb-0">{{ customer.name }}</h5>
               <small class="text-muted">{{ customer.email }}</small>
             </div>
           </div>
-          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-muted"></i>{{ customer.shippingAddress }}</p>
-          <p class="mb-1"><i class="bi bi-credit-card-fill me-2 text-muted"></i>{{ customer.paymentDetails }}</p>
+          <p class="mb-1">
+            <i class="bi bi-geo-alt-fill me-2 text-muted"></i>{{ customer.shippingAddress }}
+          </p>
+          <p class="mb-1">
+            <i class="bi bi-credit-card-fill me-2 text-muted"></i>{{ customer.paymentDetails }}
+          </p>
           <div class="mt-3 d-flex justify-content-between">
-            <button class="btn btn-sm btn-outline-primary" (click)="openOrdersModal(customer)">View Orders</button>
-            <button class="btn btn-sm btn-outline-secondary" (click)="openUserModal(customer)">Edit</button>
-            <button class="btn btn-sm btn-outline-warning" (click)="deleteUser(customer)">Delete</button>
+            <button class="btn btn-sm btn-outline-primary" (click)="openOrdersModal(customer)">
+              View Orders
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="openUserModal(customer)">
+              Edit
+            </button>
           </div>
         </div>
       </div>
@@ -32,38 +39,102 @@
   </div>
 </div>
 
-
-
-
 <!-- Modal Section -->
-<div class="modal fade show d-block" tabindex="-1" *ngIf="selectedUser" [ngClass]="{ 'd-block': selectedUser }" style="background-color: rgba(0,0,0,0.5);">
+<div
+  class="modal fade show d-block"
+  tabindex="-1"
+  *ngIf="selectedUser"
+  [ngClass]="{ 'd-block': selectedUser }"
+  style="background-color: rgba(0, 0, 0, 0.5)"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Customer: {{ selectedUser.Name }}</h5>
+        <h5 class="modal-title">Edit Customer: {{ selectedUser.name }}</h5>
         <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Name</label>
-          <input class="form-control" [(ngModel)]="selectedUser.Name" />
+          <p class="form-control-plaintext">{{ selectedUser.name }}</p>
         </div>
         <div class="mb-3">
           <label class="form-label">Email</label>
-          <input class="form-control" [(ngModel)]="selectedUser.Email" />
+          <input class="form-control" [(ngModel)]="selectedUser.email" />
         </div>
         <div class="mb-3">
           <label class="form-label">Shipping Address</label>
-          <input class="form-control" [(ngModel)]="selectedUser.ShippingAddress" />
+          <input class="form-control" [(ngModel)]="selectedUser.shippingAddress" />
         </div>
         <div class="mb-3">
           <label class="form-label">Payment Details</label>
-          <textarea class="form-control" rows="3" [(ngModel)]="selectedUser.PaymentDetails"></textarea>
+          <textarea
+            class="form-control"
+            rows="3"
+            [(ngModel)]="selectedUser.paymentDetails"
+          ></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" (click)="saveProduct()">Save</button>
         <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stylish Orders Modal -->
+<div
+  *ngIf="selectedCustomerOrders"
+  class="modal fade show d-block"
+  tabindex="-1"
+  style="background-color: rgba(0, 0, 0, 0.5)"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4">
+      <div class="modal-header bg-dark text-white rounded-top-4">
+        <h5 class="modal-title">
+          <i class="bi bi-box-seam me-2"></i> Orders for {{ selectedCustomer.name }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          (click)="closeOrdersModal()"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body bg-light">
+        <div *ngIf="selectedCustomerOrders.length > 0; else noOrders">
+          <div class="row g-3">
+            <div class="col-md-6" *ngFor="let order of selectedCustomerOrders">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="card-title mb-2">
+                    <i class="bi bi-receipt me-2 text-primary"></i> Order #{{ order.id }}
+                  </h6>
+                  <p class="mb-1"><strong>Status:</strong> {{ order.orderStatus || 'Pending' }}</p>
+                  <p class="mb-1">
+                    <strong>Date:</strong> {{ order.orderDate | date : 'mediumDate' }}
+                  </p>
+                  <p class="mb-1"><strong>Total:</strong> ₹{{ order.totalPrice }}</p>
+                  <p class="mb-0"><strong>Items:</strong> {{ order.products.length }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noOrders>
+          <div class="text-center py-4">
+            <i class="bi bi-emoji-frown fs-2 text-muted"></i>
+            <p class="mt-2 mb-0">No orders found for this customer.</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="modal-footer bg-white rounded-bottom-4">
+        <button class="btn btn-outline-secondary" (click)="closeOrdersModal()">Close</button>
       </div>
     </div>
   </div>
