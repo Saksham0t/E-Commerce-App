@@ -55,11 +55,8 @@ INSERT INTO product (id, name, price, category, description, image_url) VALUES
     (268,'Smart Watch',3500,'Watches','Feature-rich smartwatch with fitness tracking, notifications, and sleek design. Compatible with Android and iOS.','https://img.freepik.com/premium-photo/sleek-realistic-smart-watch-mockup_1077802-43708.jpg'),
     (269,'Luxury Watch',7500,'Watches','Premium luxury watch with stainless steel body and elegant design. Perfect for special occasions.','https://tse2.mm.bing.net/th/id/OIP.WThUB0fFQGezqtXX1rJQcgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3'),
     (270,'Leather Belt',900,'Accessories','High-quality leather belt with a stylish buckle','https://tse2.mm.bing.net/th/id/OIP.rDAUfG3idCYJh8QtaJOYKwHaE6?rs=1&pid=ImgDetMain&o=7&rm=3'),
-    (271,'Sunglasses',1200,'Accessories','Trendy UV-protected sunglasses for outdoor wear','https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb'),
+    (271,'Sunglasses',1200,'Accessories','Trendy UV-protected sunglasses for outdoor wear','https://tse1.mm.bing.net/th/id/OIP.rThDQ0FnFr5F92CWtkV6ewHaF7?cb=ucfimgc2&w=2400&h=1920&rs=1&pid=ImgDetMain&o=7&rm=3'),
     (272,'Wallet',1100,'Accessories','Compact leather wallet with multiple compartments for cards and cash','https://img.freepik.com/premium-photo/designer-leather-wallets-4k-image-downloaded_555090-12925.jpg'),
     (273,'Non-Stick Frying Pan',950,'Kitchen','Premium non-stick frying pan for healthy cooking. Easy to clean and compatible with all stovetops.','https://m.media-amazon.com/images/I/8149APAwGPL._AC_.jpg'),
     (274,'Wooden Coffee Table',4500,'Furniture','Elegant wooden coffee table with a smooth finish. Perfect for living rooms and modern interiors.','https://m.media-amazon.com/images/I/71-3+Q8rAkL._SL1500_.jpg');
 
--- INSERT INTO user (id, name, email, password, shipping_address, payment_details) VALUES
---     ('1', 'Saksham', 's@test.com', 's@123456', 'Coimbatore', 'UPI'),
---     ('2', 'Jayesh', 'j@test.com', 'j@123456', 'Pune', 'Net Banking');

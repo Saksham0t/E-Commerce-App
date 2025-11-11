@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Table(name = "cart_item")
 public class CartItem {
 
     @Id
@@ -17,4 +16,8 @@ public class CartItem {
     private String productid;
     private int quantity;
     private int totalPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -7,14 +7,21 @@
     <!-- Success message -->
     @if (signupForm.errors?.['signupSuccess']) {
       <div class="text-success text-center mb-3">
-        Signed up successfully!
+        User signed up successfully!
       </div>
     }
  
-    <!-- Error message for existing user -->
+    <!-- Error message for existing user (409 Conflict) -->
     @if (signupForm.errors?.['userExists']) {
       <div class="text-danger text-center mb-3">
-        Unable to sign up, user already present.
+        User already exists, unable to signup.
+      </div>
+    }
+ 
+    <!-- General signup failure -->
+    @if (signupForm.errors?.['signupFailed']) {
+      <div class="text-danger text-center mb-3">
+        Signup failed. Please try again later.
       </div>
     }
  
