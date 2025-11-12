@@ -23,7 +23,7 @@ public class CartItemService {
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
         CartItem item = new CartItem();
-        item.setId(UUID.randomUUID().toString());
+        item.setId(item.getId());
         item.setProductid(productid);
         item.setQuantity(quantity);
         item.setTotalPrice(product.getPrice() * quantity);
@@ -60,4 +60,19 @@ public class CartItemService {
         return cartItemRepository.findByProductid(id);
     }
 
+    public CartItem patchCartItem(String id, Map<String, Object> updates) {
+        Optional<CartItem> optionalItem = cartItemRepository.findById(id);
+        if (optionalItem.isEmpty()) return null;
+
+        CartItem item = optionalItem.get();
+
+        if (updates.containsKey("quantity")) {
+            item.setQuantity((Integer) updates.get("quantity"));
+        }
+        if (updates.containsKey("totalPrice")) {
+            item.setTotalPrice((Integer) updates.get("totalPrice"));
+        }
+
+        return cartItemRepository.save(item);
+    }
 }

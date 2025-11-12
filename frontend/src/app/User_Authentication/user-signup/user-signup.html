@@ -1,30 +1,17 @@
 <div class="modal-body p-4 bg-light rounded shadow-sm mt-2">
-  <h4 class="text-center mb-4 fw-bold">
-    <i class="bi bi-person-plus-fill me-2"></i> User Signup
-  </h4>
- 
+  <h4 class="text-center mb-4 fw-bold"><i class="bi bi-person-plus-fill me-2"></i> User Signup</h4>
+
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- Success message -->
     @if (signupForm.errors?.['signupSuccess']) {
-      <div class="text-success text-center mb-3">
-        User signed up successfully!
-      </div>
+    <div class="text-success text-center mb-3">User signed up successfully!</div>
     }
- 
+
     <!-- Error message for existing user (409 Conflict) -->
     @if (signupForm.errors?.['userExists']) {
-      <div class="text-danger text-center mb-3">
-        User already exists, unable to signup.
-      </div>
+    <div class="text-danger text-center mb-3">User already exists, unable to signup.</div>
     }
- 
-    <!-- General signup failure -->
-    @if (signupForm.errors?.['signupFailed']) {
-      <div class="text-danger text-center mb-3">
-        Signup failed. Please try again later.
-      </div>
-    }
- 
+
     <!-- Username -->
     <div class="mb-3">
       <label for="username" class="form-label fw-semibold">Username</label>
@@ -36,10 +23,10 @@
         placeholder="Enter your username"
       />
       @if (signupForm.get('username')?.touched && signupForm.get('username')?.invalid) {
-        <div class="text-danger small mt-1">Username is required.</div>
+      <div class="text-danger small mt-1">Username is required.</div>
       }
     </div>
- 
+
     <!-- Email -->
     <div class="mb-3">
       <label for="email" class="form-label fw-semibold">Email address</label>
@@ -51,10 +38,10 @@
         placeholder="Enter your email"
       />
       @if (signupForm.get('email')?.touched && signupForm.get('email')?.invalid) {
-        <div class="text-danger small mt-1">Please enter a valid email.</div>
+      <div class="text-danger small mt-1">Please enter a valid email.</div>
       }
     </div>
- 
+
     <!-- Password -->
     <div class="mb-3">
       <label for="password" class="form-label fw-semibold">Password</label>
@@ -66,10 +53,10 @@
         placeholder="Enter your password"
       />
       @if (signupForm.get('password')?.touched && signupForm.get('password')?.invalid) {
-        <div class="text-danger small mt-1">Password must be at least 8 characters.</div>
+      <div class="text-danger small mt-1">Password must be at least 8 characters.</div>
       }
     </div>
- 
+
     <!-- Shipping Address -->
     <div class="mb-3">
       <label for="shippingAddress" class="form-label fw-semibold">Shipping Address</label>
@@ -80,11 +67,12 @@
         class="form-control"
         placeholder="Enter your shipping address"
       />
-      @if (signupForm.get('shippingAddress')?.touched && signupForm.get('shippingAddress')?.invalid) {
-        <div class="text-danger small mt-1">Shipping address is required.</div>
+      @if (signupForm.get('shippingAddress')?.touched && signupForm.get('shippingAddress')?.invalid)
+      {
+      <div class="text-danger small mt-1">Shipping address is required.</div>
       }
     </div>
- 
+
     <!-- Payment Details -->
     <div class="mb-3">
       <label for="paymentDetails" class="form-label fw-semibold">Payment Details</label>
@@ -96,19 +84,19 @@
         placeholder="Enter your payment details"
       />
       @if (signupForm.get('paymentDetails')?.touched && signupForm.get('paymentDetails')?.invalid) {
-        <div class="text-danger small mt-1">Payment details are required.</div>
+      <div class="text-danger small mt-1">Payment details are required.</div>
       }
     </div>
- 
+
     <!-- Sign Up button -->
     <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="signupForm.invalid">
       <i class="bi bi-check-circle-fill me-1"></i> Sign Up
     </button>
- 
+
     <!-- Switch to login -->
     <div class="text-center">
       <span>Already have an account?</span>
-      <a (click)="switchToLogin()" class="fw-semibold" style="cursor: pointer;">Login</a>
+      <a (click)="switchToLogin()" class="fw-semibold" style="cursor: pointer">Login</a>
     </div>
   </form>
 </div>

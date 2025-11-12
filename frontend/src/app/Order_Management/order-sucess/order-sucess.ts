@@ -14,7 +14,7 @@ export class OrderSuccessComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<OrderSuccessComponent>,
     private router: Router,
-    private cartService: CartService, // ✅ Injected
+    private cartService: CartService, 
     @Inject(MAT_DIALOG_DATA) public data: { orderId: string }
   ) {}
 

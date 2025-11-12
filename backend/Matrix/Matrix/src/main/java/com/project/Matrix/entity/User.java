@@ -37,8 +37,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Product> products;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<CartItem> cartItems;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<CartItem> cartItems;
 
     @Override
     public String getUsername() {
