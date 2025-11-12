@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AdminAuthGuard } from './Admin_Dashboard/admin-auth-guard';
-import { authGuard } from './User_Authentication/services/auth.guard';
 
 export const routes: Routes = [
   {
@@ -10,15 +9,9 @@ export const routes: Routes = [
   },
   {
     path: 'cart',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./Shopping_Cart/cart/cart').then(m => m.Cart),
   },
-  // {
-  //   path: 'user-signup',
-  //   loadComponent: () =>
-  //     import('./User_Authentication/user-signup/user-signup').then(m => m.UserSignupComponent),
-  // },
   {
     path: 'admin-login',
     loadComponent: () =>
@@ -26,7 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    // canActivate: [AdminAuthGuard],
+    canActivate: [AdminAuthGuard],
     loadComponent: () =>
       import('./Admin_Dashboard/admin/admin').then(m => m.admin),
     children: [

@@ -43,7 +43,7 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    this.userNameSubject.next('Guest');
+    // this.userNameSubject.next('Guest');
     this.isLoggedInSubject.next(false);
     this.router.navigate(['/home']);
   }
@@ -51,10 +51,10 @@ export class AuthService {
   isTokenExpired(token: string): boolean {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
-      const expiry = payload.exp * 1000; // exp is in seconds → convert to ms
+      const expiry = payload.exp * 1000; 
       return Date.now() > expiry;
     } catch {
-      return true; // treat malformed token as expired
+      return true; 
     }
   }
 

@@ -39,14 +39,6 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-//    public Order updateOrder(String id, Order updatedOrder) {
-//        Order existingOrder = orderRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Order not found with ID: " + id));
-//
-//        modelMapper.map(updatedOrder, existingOrder);
-//        return orderRepository.save(existingOrder);
-//    }
-
     public void deleteOrder(String id) {
         if (!orderRepository.existsById(id)) {
             throw new RuntimeException("Order not found with ID: " + id);

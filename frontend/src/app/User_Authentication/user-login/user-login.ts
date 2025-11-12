@@ -13,7 +13,7 @@ import { CartService } from '../../Shopping_Cart/cart-service';
   styleUrls: ['./user-login.css']
 })
 export class UserLoginComponent {
-  email = '';
+  name = '';
   password = '';
   loginError = false;
 
@@ -25,7 +25,7 @@ export class UserLoginComponent {
   ) {}
 
   onLogin(): void {
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.login(this.name, this.password).subscribe({
       next: () => {
         this.cartService.initCartState();
 

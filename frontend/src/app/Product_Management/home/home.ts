@@ -18,7 +18,7 @@ declare const bootstrap: any;
   styleUrls: ['./home.css'],
   providers: [Rest1],
 })
-export class Home implements OnInit {
+export class Home implements OnInit, AfterViewInit {
   
   productsByCategory: { [key: string]: ProductsList[] } = {};
   products: ProductsList[] = [];
@@ -56,6 +56,16 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.getProductsfromService();
     this.syncCartState();
+  }
+
+  ngAfterViewInit(): void {
+    const carouselEl = document.getElementById('carouselExample');
+    if (carouselEl && typeof bootstrap !== 'undefined') {
+      new (bootstrap as any).Carousel(carouselEl, {
+        interval: 3500,   
+        ride: 'carousel'  
+      });
+    }
   }
 
   getProductsfromService() {

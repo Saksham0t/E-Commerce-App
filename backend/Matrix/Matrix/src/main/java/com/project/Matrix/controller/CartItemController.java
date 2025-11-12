@@ -29,7 +29,7 @@ public class CartItemController {
     }
 
     @GetMapping(params = "productid")
-    public ResponseEntity<Optional<CartItem>> getItemById(@RequestParam("productid") String productId) {
+    public ResponseEntity<Optional<CartItem>> getItemByProductId(@RequestParam("productid") String productId) {
         return ResponseEntity.ok(cartItemService.getCartItemByProductid(productId));
     }
 
@@ -43,12 +43,6 @@ public class CartItemController {
     public ResponseEntity<CartItem> updateCartItemQuantity(@PathVariable String id, @RequestBody CartItem cartItem) {
         CartItem updatedItem = cartItemService.updateCartItemQuantity(id, cartItem.getQuantity());
         return updatedItem != null ? ResponseEntity.ok(updatedItem) : ResponseEntity.notFound().build();
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<CartItem> patchCartItem(@PathVariable String id, @RequestBody Map<String, Object> updates) {
-        CartItem patchedItem = cartItemService.patchCartItem(id, updates);
-        return patchedItem != null ? ResponseEntity.ok(patchedItem) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
